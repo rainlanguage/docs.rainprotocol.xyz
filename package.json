@@ -1,0 +1,8 @@
+{
+  "name": "docs.rainprotocol.xyz",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "deploy": "npm run-script build; aws --profile unegma s3 sync --delete ./_site/ s3://docs.rainprotocol.xyz/"
+  }
+}
