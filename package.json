@@ -5,7 +5,7 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
-    "build-rain-docs": "solidity-docgen -i ./node_modules/@beehiveinnovation/rain-protocol/contracts/ -o ./docs/smart-contracts/ --solc-module solc-0.8 --exclude ./node_modules/@beehiveinnovation/rain-protocol/contracts/test/ -t ./.templates/",
+    "build-rain-docs": "echo '!!! Remember to pull down the latest version of rain-protocol#developsale !!!'; solidity-docgen -i ./node_modules/@beehiveinnovation/rain-protocol/contracts/ -o ./docs/smart-contracts/ --solc-module solc-0.8 --exclude ./node_modules/@beehiveinnovation/rain-protocol/contracts/test/ -t ./.templates/",
     "build": "npm run build-rain-docs; docusaurus build",
     "swizzle": "docusaurus swizzle",
     "clear": "docusaurus clear",
