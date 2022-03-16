@@ -18,29 +18,38 @@ const config = {
 
   presets: [
     [
-      'classic',
-      /** @type {import('@docusaurus/preset-classic').Options} */
-      ({
+      "classic",
+      {
         docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
-          editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-        },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          path: "./docs",
+          routeBasePath: "/",
+          // includeCurrentVersion: false, // seems to be breaking it
+          exclude: ["**/*/test/**/*.md"],
+          sidebarPath: require.resolve("./sidebars.js"),
+          async sidebarItemsGenerator({
+              // eslint-disable-next-line @typescript-eslint/no-unused-vars
+              isCategoryIndex: defaultCategoryIndexMatcher, // The default matcher implementation, given below
+              defaultSidebarItemsGenerator,
+              ...args
+            }) {
+            return defaultSidebarItemsGenerator({
+              isCategoryIndex() {
+                // No doc will be automatically picked as category index
+                return false;
+              },
+              ...args,
+            });
+          },
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: require.resolve("./src/css/custom.css"),
         },
-      }),
+      },
     ],
   ],
 
   themeConfig:
-    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+  /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
         title: 'Rain Protocol',
