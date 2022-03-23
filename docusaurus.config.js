@@ -7,14 +7,14 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Rain Protocol',
-  tagline: 'For Pre-Audited Web3 Tooling and Human Readable Smart Contracts',
+  tagline: 'Build Your Economy',
   url: 'https://docs.rainprotocol.xyz',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'beehive-innovation', // Usually your GitHub org/user name.
+  projectName: 'rain-protocol', // Usually your repo name.
 
   presets: [
     [
