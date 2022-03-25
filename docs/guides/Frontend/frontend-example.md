@@ -120,10 +120,88 @@ Your application should now connect when you click `connect` (make sure you have
 
 ## Calling a contract
 
+We will now call a contract with an opcodes example. We won't go into too much detail here on what is happening in the opcodes (see the [opcodes guides section][opcodes-guides]) for more details.
+
+This opcodes example will check if an arbitrary block number is before or after the current block number:
+
+Save this code to a new file `opcodeExample.ts`:
+
+```
+import { concat } from "ethers/lib/utils";
+import { op } from "./utils";
+
+export const enum Opcode {
+  VAL,
+  BLOCK_NUMBER,
+  GREATER_THAN,
+}
+
+export const afterBlockNumberConfig = (blockNumber: number) => {
+  return {
+    sources: [
+      concat([
+        op(Opcode.BLOCK_NUMBER),
+        op(Opcode.VAL, 0),
+        op(Opcode.GREATER_THAN),
+      ]),
+    ],
+    constants: [blockNumber - 1],
+    stackLength: 3,
+    argumentsLength: 0,
+  };
+};
+```
+
+We also need to create a stripped back version of `utils.ts` (which will eventually come bundled with our SDK):
+
+```
+import { concat, Hexable, hexlify, zeroPad } from "ethers/lib/utils";
+import type { BytesLike } from "ethers";
+
+/**
+ * Converts an opcode and operand to bytes, and returns their concatenation.
+ * @param code - the opcode
+ * @param erand - the operand, currently limited to 1 byte (defaults to 0)
+ */
+export function op(code: number, erand = 0): Uint8Array {
+  return concat([bytify(code), bytify(erand)]);
+}
+
+/**
+ * Converts a value to raw bytes representation. Assumes `value` is less than or equal to 1 byte, unless a desired `bytesLength` is specified.
+ *
+ * @param value - value to convert to raw bytes format
+ * @param bytesLength - (defaults to 1) number of bytes to left pad if `value` doesn't completely fill the desired amount of memory. Will throw `InvalidArgument` error if value already exceeds bytes length.
+ * @returns {Uint8Array} - raw bytes representation
+ */
+export function bytify(
+  value: number | BytesLike | Hexable,
+  bytesLength = 1
+): BytesLike {
+  return zeroPad(hexlify(value), bytesLength);
+}
+```
+
+## Linking it all up
+
+Let us link everything up. We will now create a second button for calling the Smart Contract Backend:
+
+```
+<button onClick={runOpcodesExample}>
+  Run Opcodes Example
+</button>
+```
+
+And finally we will create the function which is called when the button is pressed:
+
+```
+  const runOpcodesExample = async () => {
+  
+  
+  
+```
 
 
-
-[//]: # (todo does hardhat work with regular ethers?)
 [//]: # (todo what is the best way to get the abi in or are we using typechain)
 [//]: # (todo does josh use own connect button or a library?)
 
@@ -137,3 +215,4 @@ Your application should now connect when you click `connect` (make sure you have
 [web3-react]: https://github.com/NoahZinsmeister/web3-react
 [matic-faucet]: https://faucet.polygon.technology/
 [matic-setup]: https://medium.com/stakingbits/setting-up-metamask-for-polygon-matic-network-838058f6d844
+[opcodes-guides]: https://docs.rainprotocol.xyz/guides/Opcodes/running-an-opcodes-example
