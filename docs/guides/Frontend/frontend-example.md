@@ -136,7 +136,7 @@ export const enum Opcode {
   GREATER_THAN,
 }
 
-export const afterBlockNumberConfig = (blockNumber: number) => {
+export const isAfterBlockNumber = (blockNumber: number) => {
   return {
     sources: [
       concat([
@@ -151,6 +151,8 @@ export const afterBlockNumberConfig = (blockNumber: number) => {
   };
 };
 ```
+
+Add the import to `App.tsx`: `import { isAfterBlockNumber } from "./opcodeExample";`
 
 We also need to create a stripped back version of `utils.ts` (which will eventually come bundled with our SDK):
 
