@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Rain Protocol: Running an Opcodes examples"
+title:  "Rain Protocol: Running an Opcodes example"
 date:   2022-01-21 14:00:23 +0000
 categories: development
 ---
