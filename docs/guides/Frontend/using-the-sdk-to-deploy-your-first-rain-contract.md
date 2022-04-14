@@ -9,9 +9,9 @@ categories: various
 
 In this tutorial, we will take you through how to deploy a Gated NFT using Rain Protocol's SDK, all in under 100 lines of code. We will assume you know how to set up a [browser based wallet][metamask]. We will also use the Polygon Mumbai Testnet, so you will need some [Testnet Matic tokens][mumbai] to pay for transaction fees.
 
-You are welcome to use your favourite frontend framework instead of the provided boilerplate code (there is a more complex [example which uses React][react-example] here for reference if you want some inspiration, the example for this is deployed at https://examples.rainprotocol.xyz/deploy-gatednft-example).
+You are welcome to use your favourite frontend framework instead of the provided boilerplate code (there is a more complex [example which uses React][react-example] for reference if you want some inspiration, the example for which is deployed at https://examples.rainprotocol.xyz/deploy-gatednft-example).
 
-PLEASE ALSO NOTE, this very minimal example uses `importmap` as part of the boilerplate code, this feature, at the time of writing, is only working in the Chrome browser, but the [example using React][react-example] should work in all modern browsers.
+PLEASE ALSO NOTE, this very minimal example uses [`importmap`][system-js] as part of the boilerplate code, this feature, at the time of writing, is relatively new and we found was only working in the Chrome browser; the [example using React][react-example] should work in all modern browsers.
 
 # Adding the Files
 
@@ -29,7 +29,7 @@ Let's first create `package.json`:
 }
 ```
 
-Let's not talk too much about what is happening here, but `npx serve`, which you can use to run the example will be using this configuration in order to run the project.
+Let's not talk too much about what is happening here, but with the [`npx serve`][npx] command, you can run the example which will be using this configuration file.
 
 Next let's create `index.html`:
 
@@ -56,7 +56,7 @@ Next let's create `index.html`:
 
 This is mostly boilerplate code which is pulling in `index.js` and importing the dependencies (`rain-sdk` and `ethers`) using the `importmap` feature.
 
-If you use the code for this tutorial along with a frontend framework, you will likely use `dependencies` in `package.json` and the `node_modules` folder instead of `importmap`. 
+If you use the code for this tutorial along with a frontend framework, instead of `importmap`, you will use `dependencies` in `package.json` and the `node_modules` folder. 
 
 (Please note, for this tutorial we are using the `@unegma/rain-sdk` package, which will eventually be migrated to `rain-sdk` (or `@beehiveinnovation/rain-sdk`)).
 
@@ -77,7 +77,7 @@ export async function gatedNFTExample() {
 gatedNFTExample();
 ```
 
-We are able to import the sdk and the classes from `ethers` due to the previous `importmap` which included their locations using the [unpkg][unpkg] CDN which is a CDN wrapper around npm.
+We are able to import the sdk and the classes from `ethers` due to the previous `importmap` which included their code using the [unpkg][unpkg] CDN which is a CDN wrapper around npm.
 
 ## Adding the Functionality
 
@@ -105,11 +105,11 @@ Let's first add some defaults and constants to the codebase:
   }
 ```
 
-Here we have defined the Chain ID of Polygon's Mumbai Testnet, which we will be using to run the example. As previously mentioned, to deploy you contract, you will need some [Testnet Matic which can be found here][mumbai].
+Here we have defined the Chain ID of Polygon's Mumbai Testnet, which we will be using to run the example. As previously mentioned, to deploy you contract, you will need some [Testnet Matic][mumbai].
 
-Next, we create some defaults to be used in the deployment of our contract. Feel free to experiment with changing the parameters. You can check over the [docs for the backend smart contract][docs] for extra details.
+Next, we create some defaults to be used in the deployment of our contract. Feel free to experiment with changing the parameters. You can check over the [docs for the smart contract][docs] for extra details about the inputs.
 
-Within our `try` block, we will now add the most basic code possible for connecting to your browser wallet, in a production enviroment, you will want to add proper handling for other scenarios such as swwitching networks:
+Within our `try` block, we will now add the most basic code possible for connecting to your browser wallet, in a production environment, you will want to add proper handling for other scenarios such as switching networks:
 
 ```
 const {ethereum} = window;
@@ -139,11 +139,11 @@ gatedNFTState.royaltyBPS = BigNumber.from(
   Math.floor(gatedNFTState.royaltyBPS * 100)
 );
 
-// set YOU to the recipient
+// set YOU to be the recipient
 gatedNFTState.royaltyRecipient = address;
 ```
 
-This will convert one of the parameters to a BigNumber format (which it needs to be), and secondly, we will set the royaltyRecipient to the Browser wallet user (i.e. you).
+This will convert one of the parameters to a BigNumber format (which it needs to be), and secondly, we will set the `royaltyRecipient` to the Browser wallet address, (i.e. your address).
 
 Finally, we will deploy the contract and `await` the result:
 
@@ -157,16 +157,22 @@ const result = await rainSDK.GatedNFT.deploy(
 console.log(result);
 ```
 
-As we have abstracted away most of the complex functionality into our SDK, deploying is as easy as these lines of code.
+As we have abstracted away most of the complex functionality into our SDK, deploying is as easy as using these few lines of code.
 
 After approving the transaction and waiting for a very short moment, you should be able to see the result in the `console` in your browser.
 
 ## Conclusion
 
-And that is a wrap on deploying your very first smart contract with Rain! If you want to see the code in action, integrated as part of a more complex React example, you can do so here: https://examples.rainprotocol.xyz/deploy-gatednft-example, and if you are wondering where to go next, [seeing how to integrate this example with React][react-example] would be a great next step. Happy buidling!
+And that is a wrap on deploying your very first smart contract with Rain! If you are wondering where to go next, [seeing how to integrate this example with React][react-example] would be a great next step ([demo here][react-example-live]). 
 
+Any questions, feel free to [reach out to us in our Discord][discord]. Happy buidling!
+
+[discord]: https://discord.gg/dzYS3JSwDP
 [docs]: https://docs.rainprotocol.xyz
 [react-example]: https://github.com/beehive-innovation/examples.rainprotocol.xyz/tree/master/src/examples/DeployGatedNFTExample
+[react-example-live]:  https://examples.rainprotocol.xyz/deploy-gatednft-example
 [unpkg]: https://unpkg.com/
 [mumbai]: https://faucet.polygon.technology/
 [metamask]: https://www.youtube.com/watch?v=6h_liI6atEk
+[system-js]: https://www.digitalocean.com/community/tutorials/how-to-dynamically-import-javascript-with-import-maps
+[npx]: https://stackoverflow.com/questions/50605219/difference-between-npx-and-npm
