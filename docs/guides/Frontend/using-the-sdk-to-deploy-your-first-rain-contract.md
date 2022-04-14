@@ -7,15 +7,15 @@ categories: various
 
 # Intro
 
-In this tutorial, we will take you through an example of deploying a Gated NFT using the SDK in under 100 lines of code. We will assume you know how to set up a [browser based wallet][metamask]. We will also use the Polygon Mumbai Testnet, so you will need some [Testnet Matic tokens][mumbai] for paying for transaction fees.
+In this tutorial, we will take you through how to deploy a Gated NFT using Rain Protocol's SDK, all in under 100 lines of code. We will assume you know how to set up a [browser based wallet][metamask]. We will also use the Polygon Mumbai Testnet, so you will need some [Testnet Matic tokens][mumbai] to pay for transaction fees.
 
-You are welcome to use your favourite frontend framework instead of the provided boilerplate code (there is a more complex [example which uses React][react-example] here for reference if you get stuck).
+You are welcome to use your favourite frontend framework instead of the provided boilerplate code (there is a more complex [example which uses React][react-example] here for reference if you want some inspiration, the example for this is deployed at https://examples.rainprotocol.xyz/deploy-gatednft-example).
 
-PLEASE ALSO NOTE, this very minimal example uses `importmap` as part of the boilerplate code, this feature, at the time of writing, this feature was only working in the Chrome browser, but the [example using React][react-example] should work in all modern browsers.
+PLEASE ALSO NOTE, this very minimal example uses `importmap` as part of the boilerplate code, this feature, at the time of writing, is only working in the Chrome browser, but the [example using React][react-example] should work in all modern browsers.
 
 # Adding the Files
 
-For this very short project, you will only need 3 files: `index.html`, `index.js` and `package.json`.
+For this very short example, you will only need 3 files: `index.html`, `index.js` and `package.json`.
 
 Let's first create `package.json`:
 
@@ -25,14 +25,11 @@ Let's first create `package.json`:
   "description": "",
   "type": "module",
   "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "start": "npx serve",
-  }
+  "main": "index.js"
 }
 ```
 
-Let's not talk too much about what is happening here, but `npx serve` will be using this configuration in order to run the project.
+Let's not talk too much about what is happening here, but `npx serve`, which you can use to run the example will be using this configuration in order to run the project.
 
 Next let's create `index.html`:
 
@@ -57,13 +54,13 @@ Next let's create `index.html`:
 </html>
 ```
 
-This is mostly boilerplate code which is pulling in `index.js` and importing the dependencies using the new `importmap` feature.
+This is mostly boilerplate code which is pulling in `index.js` and importing the dependencies (`rain-sdk` and `ethers`) using the `importmap` feature.
 
-If you use the code for this tutorial along with a frontend framework, you will likely use `dependencies` in `package.json` and the `node_modules` folder instead of the `importmap`. 
+If you use the code for this tutorial along with a frontend framework, you will likely use `dependencies` in `package.json` and the `node_modules` folder instead of `importmap`. 
 
 (Please note, for this tutorial we are using the `@unegma/rain-sdk` package, which will eventually be migrated to `rain-sdk` (or `@beehiveinnovation/rain-sdk`)).
 
-Finally lets add `index.js` where we will add the main code for running this example.
+Finally lets add `index.js` where we will add the main code for running this example:
 
 ```
 import * as rainSDK from "@unegma/rain-sdk";
@@ -82,7 +79,7 @@ gatedNFTExample();
 
 We are able to import the sdk and the classes from `ethers` due to the previous `importmap` which included their locations using the [unpkg][unpkg] CDN which is a CDN wrapper around npm.
 
-## Adding the functionality
+## Adding the Functionality
 
 Let's first add some defaults and constants to the codebase:
 
