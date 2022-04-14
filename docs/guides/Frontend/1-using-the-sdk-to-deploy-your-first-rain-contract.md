@@ -17,6 +17,8 @@ PLEASE ALSO NOTE, this very minimal example uses [`importmap`][system-js] as par
 
 For this very short example, you will only need 3 files: `index.html`, `index.js` and `package.json`.
 
+### package.json
+
 Let's first create `package.json`:
 
 ```
@@ -30,6 +32,8 @@ Let's first create `package.json`:
 ```
 
 Let's not talk too much about what is happening here, but with the [`npx serve`][npx] command, you can run the example which will be using this configuration file.
+
+### index.html
 
 Next let's create `index.html`:
 
@@ -59,6 +63,8 @@ This is mostly boilerplate code which is pulling in `index.js` and importing the
 If you use the code for this tutorial along with a frontend framework, instead of `importmap`, you will use `dependencies` in `package.json` and the `node_modules` folder. 
 
 (Please note, for this tutorial we are using the `@unegma/rain-sdk` package, which will eventually be migrated to `rain-sdk` (or `@beehiveinnovation/rain-sdk`)).
+
+### index.js
 
 Finally lets add `index.js` where we will add the main code for running this example:
 
