@@ -5,7 +5,7 @@ date:   2022-04-14 14:00:23 +0000
 categories: various
 ---
 
-# Intro
+## Intro
 
 In this tutorial, we will take you through how to deploy a Gated NFT using Rain Protocol's SDK, all in under 100 lines of code. We will assume you know how to set up a [browser based wallet][metamask]. We will also use the Polygon Mumbai Testnet, so you will need some [Testnet Matic tokens][mumbai] to pay for transaction fees.
 
@@ -13,7 +13,7 @@ You are welcome to use your favourite frontend framework instead of the provided
 
 PLEASE ALSO NOTE, this very minimal example uses [`importmap`][system-js] as part of the boilerplate code, this feature, at the time of writing, is relatively new and we found was only working in the Chrome browser; the [example using React][react-example] should work in all modern browsers.
 
-# Adding the Files
+## Adding the Files
 
 For this very short example, you will only need 3 files: `index.html`, `index.js` and `package.json`.
 
