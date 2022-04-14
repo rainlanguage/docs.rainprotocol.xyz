@@ -7,7 +7,7 @@ categories: various
 
 ## Intro
 
-In this tutorial, we will take you through how to deploy a Gated NFT using Rain Protocol's SDK, all in under 100 lines of code. We will assume you know how to set up a [browser based wallet][metamask]. We will also use the Polygon Mumbai Testnet, so you will need some [Testnet Matic tokens][mumbai] to pay for transaction fees.
+In this tutorial, we will take you through how to deploy a [Gated NFT][token-gating] using Rain Protocol's SDK, all in under 100 lines of code. We will assume you know how to set up a [browser based wallet][metamask]. We will also use the Polygon Mumbai Testnet, so you will need some [Testnet Matic tokens][mumbai] to pay for transaction fees.
 
 You are welcome to use your favourite frontend framework instead of the provided boilerplate code (there is a more complex [example which uses React][react-example] for reference if you want some inspiration, the example for which is deployed at https://examples.rainprotocol.xyz/deploy-gatednft-example).
 
@@ -167,6 +167,7 @@ And that is a wrap on deploying your very first smart contract with Rain! If you
 
 Any questions, feel free to [reach out to us in our Discord][discord]. Happy buidling!
 
+[token-gating]: https://medium.com/@jshanks21/nft-meaning-token-gating-ad83aef7cccd
 [discord]: https://discord.gg/dzYS3JSwDP
 [docs]: https://docs.rainprotocol.xyz
 [react-example]: https://github.com/beehive-innovation/examples.rainprotocol.xyz/tree/master/src/examples/DeployGatedNFTExample
