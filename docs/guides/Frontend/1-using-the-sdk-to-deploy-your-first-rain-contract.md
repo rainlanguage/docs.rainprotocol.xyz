@@ -58,7 +58,7 @@ Next let's create `index.html`:
 </html>
 ```
 
-This is mostly boilerplate code which is pulling in `index.js` and importing the dependencies (`rain-sdk` and `ethers`) using the `importmap` feature.
+This is mostly boilerplate code which is pulling in `index.js` and importing the dependencies ([`rain-sdk`][rain-sdk] and [`ethers`][ethers]) using the `importmap` feature.
 
 If you use the code for this tutorial along with a frontend framework, instead of `importmap`, you will use `dependencies` in `package.json` and the `node_modules` folder. 
 
@@ -184,3 +184,4 @@ Any questions, feel free to [reach out to us in our Discord][discord]. Happy bui
 [system-js]: https://www.digitalocean.com/community/tutorials/how-to-dynamically-import-javascript-with-import-maps
 [npx]: https://stackoverflow.com/questions/50605219/difference-between-npx-and-npm
 [rain-sdk]: https://github.com/unegma/rain-sdk
+[ethers]: https://github.com/ethers-io/ethers.js/
