@@ -7,7 +7,7 @@ categories: various
 
 ## Intro
 
-In this tutorial, we will take you through how to deploy a [Gated NFT][token-gating] using [Rain Protocol's SDK][rain-sdk], all in under 100 lines of code. We will assume you know how to set up a [browser based wallet][metamask]. We will also use the Polygon Mumbai Testnet, so you will need some [Testnet Matic tokens][mumbai] to pay for transaction fees.
+In this tutorial, we will take you through how to deploy a [Gated NFT][token-gating] using [Rain Protocol's SDK][rain-sdk], all in under 100 lines of code ([full example here][full-example]). We will assume you know how to set up a [browser based wallet][metamask]. We will also use the Polygon Mumbai Testnet, so you will need some [Testnet Matic tokens][mumbai] to pay for transaction fees.
 
 You are welcome to use your favourite frontend framework instead of the provided boilerplate code (there is a more complex [example which uses React][react-example] for reference if you want some inspiration, the example for which is deployed at https://examples.rainprotocol.xyz/deploy-gatednft-example).
 
@@ -181,3 +181,4 @@ Any questions, feel free to [reach out to us in our Discord][discord]. Happy bui
 [npx]: https://stackoverflow.com/questions/50605219/difference-between-npx-and-npm
 [rain-sdk]: https://github.com/unegma/rain-sdk
 [ethers]: https://github.com/ethers-io/ethers.js/
+[full-example]: https://github.com/unegma/sdk-tutorial
