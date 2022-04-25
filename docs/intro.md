@@ -30,6 +30,12 @@ The sdk can then be used as follows `rainSDK.Sale.deploy(..`
 
 See our [Guides][guides] for examples of how to use.
 
+
+## Community
+
+Join our community here: [Discord][discord]
+
+
 [smart-contracts]: https://docs.rainprotocol.xyz/smart-contracts/claim/EmissionsERC20
 
 [//]: # (todo add this to environment variables)
@@ -38,3 +44,4 @@ See our [Guides][guides] for examples of how to use.
 [mumbai-subgraph]: https://thegraph.com/hosted-service/subgraph/beehive-innovation/rain-protocol-v2-mumbai
 [github]: https://github.com/beehive-innovation/rain-protocol
 [guides]: https://docs.rainprotocol.xyz/guides/Frontend/using-the-sdk-to-deploy-your-first-rain-contract
+[discord]: https://discord.gg/dzYS3JSwDP
