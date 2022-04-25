@@ -16,7 +16,7 @@ Build Your Economy
 
 ## Usage Notes
 
-"Always use the SDK when you are making calls which make changes to the state of the blockchain (e.g. redeeming your funds from an `Escrow`, or making a purchase in a `Sale`). For querying read only data, in nearly all cases it's better to use the [Subgraph][sugraph] ([Polygon Subgraph][polygon-subgraph]), especially as this can prevent cross-block inconsistencies when fetching multiple types of data."
+Always use the SDK when you are making calls which make changes to the state of the blockchain (e.g. redeeming your funds from an `Escrow`, or making a purchase in a `Sale`). For querying read only data, in nearly all cases it's better to use the [Subgraph][sugraph] ([Polygon Subgraph][polygon-subgraph]), especially as this can prevent cross-block inconsistencies when fetching multiple types of data.
 
 
 ## How to Install and Use the SDK
