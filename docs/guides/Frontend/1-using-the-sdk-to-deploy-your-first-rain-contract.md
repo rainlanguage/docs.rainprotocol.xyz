@@ -48,7 +48,7 @@ Next let's create `index.html`:
     <script type="importmap">
       {
         "imports": {
-          "@unegma/rain-sdk": "https://unpkg.com/@unegma/rain-sdk@1.0.11/dist/index.js",
+          "rain-sdk": "https://unpkg.com/rain-sdk@0.0.1-alpha.7/dist/rain-sdk.esm.js",
           "ethers": "https://unpkg.com/ethers@5.6.2/dist/ethers.esm.js"
         }
       }
@@ -62,14 +62,12 @@ This is mostly boilerplate code which is pulling in `index.js` and importing the
 
 If you use the code for this tutorial along with a frontend framework, instead of `importmap`, you will use `dependencies` in `package.json` and the `node_modules` folder. 
 
-(Please note, for this tutorial we are using the `@unegma/rain-sdk` package, which will eventually be migrated to `rain-sdk` (or `@beehiveinnovation/rain-sdk`)).
-
 ### index.js
 
 Finally lets add `index.js` where we will add the main code for running this example:
 
 ```
-import * as rainSDK from "@unegma/rain-sdk";
+import * as rainSDK from "rain-sdk";
 import { ethers, BigNumber } from "ethers";
 
 export async function gatedNFTExample() {
@@ -90,7 +88,6 @@ We are able to import the sdk and the classes from `ethers` due to the previous 
 Let's first add some defaults and constants to the codebase:
 
 ```
-  const CHAIN_ID = 80001;
   const gatedNFTState = {
     config: {
       name: 'My Gated NFT',
@@ -132,7 +129,7 @@ const provider = new ethers.providers.Web3Provider(ethereum, {
 // Prompt user for account connections
 await provider.send("eth_requestAccounts", []);
 const signer = provider.getSigner();
-const address = await signer.getAddress();
+const address = await signer.getAddress(); // your wallet address
 console.log(`Signer:`, signer);
 console.log(`Address: ${address}`);
 ```
@@ -149,23 +146,22 @@ gatedNFTState.royaltyBPS = BigNumber.from(
 gatedNFTState.royaltyRecipient = address;
 ```
 
-This will convert one of the parameters to a BigNumber format (which it needs to be), and secondly, we will set the `royaltyRecipient` to the Browser wallet address, (i.e. your address).
+This will convert one of the parameters to a BigNumber format (see [docs][docs] for more info), and secondly, we will set the `royaltyRecipient` to the Browser wallet address, (i.e. your address).
 
 Finally, we will deploy the contract and `await` the result:
 
 ```
 const result = await rainSDK.GatedNFT.deploy(
   signer,
-  CHAIN_ID,
   gatedNFTState
 );
 
 console.log(result);
 ```
 
-As we have abstracted away most of the complex functionality into our SDK, deploying is as easy as using these few lines of code.
+As we have abstracted away most of the complex functionality into the SDK, deploying is as easy as using these few lines of code.
 
-After approving the transaction and waiting for a very short moment, you should be able to see the result in the `console` in your browser.
+After approving the transaction and waiting for a very short moment, you should be able to see the result (the deployed contract's address) in the `console` in your browser.
 
 ## Conclusion
 
