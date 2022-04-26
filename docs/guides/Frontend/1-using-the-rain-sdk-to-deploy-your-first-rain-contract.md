@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Using the SDK to Deploy Your First Rain Contract"
+title:  "Using the Rain SDK to Deploy Your First Rain Contract"
 date:   2022-04-14 14:00:23 +0000
 categories: various
 ---
