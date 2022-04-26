@@ -111,7 +111,7 @@ const redeemableState = {
 
 As in the [previous tutorial][previous-tutorial] we have defined the Chain ID of Polygon's Mumbai Testnet, which we will be using to run the example. As previously mentioned, to deploy you contract, you will need some [Testnet Matic][mumbai].
 
-Next, we create some defaults for the states of both the `saleState` and the `redeemableState` (standard erc20 config) to be used in the deployment of our contract. You can check over the [docs for the smart contract][docs] for extra details about the inputs, with which you can experiment.
+Next, we create some defaults for the states of both the `saleState` and the `redeemableState` (standard erc20 config) to be used in the deployment of our contract. You can check over the [Smart Contracts docs for the smart contract][docs] for extra details about the inputs, with which you can experiment.
 
 ### Add the Connection
 
@@ -141,7 +141,7 @@ console.log(`Address: ${address}`);
 
 ### Add the Expected Output
 
-We will now add the deployment and expected output, between which, in the next section, we will put the rest of the code.
+We will now add the deployment and expected output, between which - in the next section - we will put the rest of the code.
 
 ```
 // ^-- Configuration code above this line --^
@@ -165,11 +165,11 @@ console.log(result); // the Sale contract and corresponding address
 
 This part is slightly more complex than in the [previous tutorial][previous-tutorial], as it will include the use of Opcodes. Rain makes it easy to create very bespoke configurations for our Virtual Machine.
 
-We won't go into too much detail about the VM here, but what we will be doing, is passing over a small stack of `uint256` values that will be feeding into the wrapping solidity code. This will enable us to configure the parameters for buying this contract's tokens each time the `calculatePrice` function is called.
+We won't go into too much detail about the VM here, but what we will be doing, is passing over a small stack of `uint256` values that will be feeding into the wrapping Solidity code. This will enable us to configure the parameters for buying this contract's tokens each time the `calculatePrice` function is called.
 
 #### canStartStateConfig and canEndStateConfig
 
-Let's pass the first two sets of configuration needed (see the [React Example][react-example] for a more complex example of passing opcodes to detect whether `canStart/end` is after now or not).
+Let's pass the first two sets of configuration needed (see the [React Example][react-example] for a more complex example of passing [opcodes][opcodes] to detect whether `canStart/end` is after now or not).
 
 ```
 saleState.canStartStateConfig = {
@@ -197,11 +197,13 @@ saleState.canEndStateConfig = {
 };
 ```
 
-We won't go into too much depth as to what is happening here, the next section will cover a more configurable example, but if you are working with Rain Opcodes, this is the standard 'Opcodes block' format you will see and work with regularly. As written in the comments, `stackLength` and `argumentsLength` will be removed in future versions of the VM as they will be calculated automatically.
+We won't go into too much depth as to what is happening here, the next section will cover a more configurable example, but if you are working with Rain Opcodes, this is the standard 'Opcodes block' format you will see and work with regularly. 
+
+As noted in the comments, `stackLength` and `argumentsLength` will be removed in future versions of the VM as they will be calculated automatically.
 
 #### calculatePriceStateConfig
 
-In this next section we will look a little bit at what is happening with the RainVM. If you want to skip this part and just deploy a `Sale` contract, then just copy this code as is and skip this section. If you want your sale to have a different `walletCap`, then change the second constant from `10` to something else.
+In this next section we will look a little bit at what is happening with the RainVM. If you want to skip this part and just deploy a `Sale` contract, then just copy this code as is and skip this section (remember, you can see the [full example here][full-example]). If you want your Sale to have a different `walletCap` (i.e. how many tokens a user is allowed), then change the second constant from `10` to something else.
 
 We won't go into too much depth on how assembly language works, but this code works in a similar way, and we will cover this a bit more in a later article.
 
@@ -300,3 +302,4 @@ Any questions, feel free to [reach out to us in our Discord][discord].
 [rain-sdk]: https://github.com/beehive-innovation/rain-sdk
 [ethers]: https://github.com/ethers-io/ethers.js/
 [full-example]: https://github.com/unegma/sdk-tutorial-sale
+[opcodes]: https://en.wikipedia.org/wiki/Opcode
