@@ -179,6 +179,7 @@ saleState.canStartStateConfig = {
       rainSDK.VM.op(rainSDK.Sale.Opcodes.VAL, 0),
     ]),
   ],
+  // these will be auto calculated in later versions of the VM and so won't be needed
   stackLength: 1,
   argumentsLength: 0,
 };
@@ -190,8 +191,9 @@ saleState.canEndStateConfig = {
       rainSDK.VM.op(rainSDK.Sale.Opcodes.VAL, 0),
     ]),
   ],
+  // these will be auto calculated in later versions of the VM and so won't be needed
   stackLength: 1,
-  argumentsLength: 0  // this will be auto calculated in later versions of the vm
+  argumentsLength: 0
 };
 ```
 
@@ -237,8 +239,9 @@ saleState.calculatePriceStateConfig = {
       rainSDK.VM.op(rainSDK.Sale.Opcodes.EAGER_IF),
     ]),
   ],
+  // these will be auto calculated in later versions of the VM and so won't be needed
   stackLength: 10,
-  argumentsLength: 0 // this will be auto calculated in later versions of the vm
+  argumentsLength: 0
 };
 ```
 
