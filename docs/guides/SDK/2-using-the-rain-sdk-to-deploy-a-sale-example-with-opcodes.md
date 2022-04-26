@@ -7,7 +7,7 @@ categories: various
 
 ## Intro
 
-_This example uses version `rain-sdk@0.0.1-alpha.8` of the sdk_
+_This example uses version [`rain-sdk@0.0.1-alpha.8`][rain-sdk] of the sdk_
 
 In this tutorial, we will take you through how to deploy a [Sale][sale] using [Rain Protocol's SDK][rain-sdk]. ([Full Example of the code here][full-example]). We will assume you have already completed the [previous tutorial][previous-tutorial] and are therefore familiar with using the Polygon testnet. This tutorial will follow a similar configuration.
 
@@ -297,6 +297,6 @@ Any questions, feel free to [reach out to us in our Discord][discord].
 [metamask-tutorial]: https://www.youtube.com/watch?v=6h_liI6atEk
 [system-js]: https://www.digitalocean.com/community/tutorials/how-to-dynamically-import-javascript-with-import-maps
 [npx]: https://stackoverflow.com/questions/50605219/difference-between-npx-and-npm
-[rain-sdk]: https://github.com/unegma/rain-sdk
+[rain-sdk]: https://github.com/beehive-innovation/rain-sdk
 [ethers]: https://github.com/ethers-io/ethers.js/
 [full-example]: https://github.com/unegma/sdk-tutorial-sale
