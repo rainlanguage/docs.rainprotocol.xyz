@@ -173,25 +173,25 @@ Let's pass the first two sets of configuration needed (see the [React Example][r
 
 ```
 saleState.canStartStateConfig = {
+  constants: [1],
   sources: [
     ethers.utils.concat([
       rainSDK.VM.op(rainSDK.Sale.Opcodes.VAL, 0),
     ]),
   ],
-  constants: [1],
   stackLength: 1,
   argumentsLength: 0,
 };
 
 saleState.canEndStateConfig = {
+  constants: [1],
   sources: [
     ethers.utils.concat([
       rainSDK.VM.op(rainSDK.Sale.Opcodes.VAL, 0),
     ]),
   ],
-  constants: [1],
   stackLength: 1,
-  argumentsLength: 0,
+  argumentsLength: 0  // this will be auto calculated in later versions of the vm
 };
 ```
 
@@ -199,47 +199,64 @@ We won't go into too much depth as to what is happening here, the next section w
 
 #### calculatePriceStateConfig
 
-```
-// current buy units: amount want to buy, put into stack
-// token address
-// returns current token balance
+In this next section we will look a little bit at what is happening with the RainVM. If you want to skip this part and just deploy a `Sale` contract, then just copy this code as is and skip this section.
 
-// define the parameters for the VM which will be used whenever the price is calculated, for example, when a user wants to buy a number of units
-// the order is important
-//
+We won't go into too much depth on how assembly language works, but this code works in a similar way, and we will cover this a bit more in a later article.
+
+In this example, we will be checking that a user doesn't have more tokens than a pre-set value in their wallet. We will also check that the user will not have more after they have made a purchase. Depending on the result of this check, we will either sell the tokens to the user at a `staticPrice` or at an infinity value so they can't buy any.
+
+Limiting a user's allowance of token is just one example of how the VM can be used to configure a Sale contract, and is by no means the only way. After this example, we will reverse it to check the user doesn't have `LESS_THAN` the amount.
+
+
+
+```
 saleState.calculatePriceStateConfig = {
+  constants: [100, 10, ethers.constants.MaxUint256], // staticPrice, walletCap, MaxUint256 (ffff..) // todo check if staticPrice/walletCap needs to be parsed (divide by 18 0s?)
   sources: [
     ethers.utils.concat([
-      // put onto the stack, the amount the current user wants to buy
-      rainSDK.VM.op(rainSDK.Sale.Opcodes.CURRENT_BUY_UNITS), //
+      // 1. put onto the stack, the amount the current user wants to buy
+      rainSDK.VM.op(rainSDK.Sale.Opcodes.CURRENT_BUY_UNITS), // this is determined when users interact with the contract via a request to buy
 
-      // put onto the stack, the current token balance of the user (the Sale's rTKN represented in the smart contract)
+      // 2. put onto the stack, the current token balance of the user (the Sale's rTKN represented in the smart contract)
       rainSDK.VM.op(rainSDK.Sale.Opcodes.TOKEN_ADDRESS),
       rainSDK.VM.op(rainSDK.Sale.Opcodes.SENDER),
       rainSDK.VM.op(rainSDK.Sale.Opcodes.IERC20_BALANCE_OF),
 
-      // add the first two elements of the stack (current buy units and balance of that user)
+      // 3. add the first two elements of the stack (current buy units and balance of that user)
       rainSDK.VM.op(rainSDK.Sale.Opcodes.ADD, 2),
 
-      // here we have a potential new value which we will compare to walletCap
+      // here we have a new value which we will compare to walletCap
 
-      // and then check if it exceeds the walletCap (ie the amount allowed)
+      // 4. and then check if it exceeds the walletCap (ie the amount allowed)
       rainSDK.VM.op(rainSDK.Sale.Opcodes.VAL, 1),// walletCap ()
       rainSDK.VM.op(rainSDK.Sale.Opcodes.GREATER_THAN), // this will put a boolean on the stack (true: 1, false: 0)
 
-      // this will behave like a minimum wallet cap, so you cant buy below this amount
-      // rainSDK.VM.op(rainSDK.Sale.Opcodes.LESS_THAN), // this will put a boolean on the stack (true: 1, false: 0)
-
-      // eager if will get the 1st (result of greater than) and 3rd value
+      // 5. eager if will get the 1st (result of greater than) and 3rd value
       rainSDK.VM.op(rainSDK.Sale.Opcodes.VAL, 2), // `MaxUint256` this will be executed if the check above is true (this is an infinity price so it can't be bought)
       rainSDK.VM.op(rainSDK.Sale.Opcodes.VAL, 0), // `staticPrice` this will be executed if the check above is false (staticPrice is the price that the user wants to exchange the tokens for)
       rainSDK.VM.op(rainSDK.Sale.Opcodes.EAGER_IF),
     ]),
   ],
-  constants: [100, 10, ethers.constants.MaxUint256], // staticPrice, walletCap, MaxUint256 (ffff..) todo check if staticPrice/walletCap needs to be parsed (divide by 18 0s?)
   stackLength: 10,
-  argumentsLength: 0,
+  argumentsLength: 0 // this will be auto calculated in later versions of the vm
 };
+```
+
+As with other coding languages, these lines are executed top to bottom, and the price is calculated each time a user makes a request to that smart contract that calls the calculatePrice function (for example when the user wants to purchase some tokens).
+
+The comments in the code say what is happening at each step, but in short, we are configuring the `calculatePrice` function to:
+
+1. Expect a buy amount
+2. Check the token balance of the user
+3. Add the first 2 elements on the stack (the buy units and balance of that user)
+4. Check if this is `GREATER_THAN` the pre-set `walletCap` which was passed in via the `constants` array
+5. Return the 3rd value (0 indexed) from the stack OR the 1st depending on the result of the comparison.
+
+Finally, if you want to try setting a different configuration, change the `GREATER_THAN` line to the line below:
+
+```
+// this will behave like a minimum wallet cap, so you cant buy below this amount
+rainSDK.VM.op(rainSDK.Sale.Opcodes.LESS_THAN), // this will put a boolean on the stack (true: 1, false: 0)
 ```
 
 #### Final Configuration
@@ -258,7 +275,7 @@ saleState.recipient = address;
 
 ## Conclusion
 
-And that is a wrap on deploying a Sale contract with Rain! If you are wondering where to go next, [seeing how to integrate this example with React][react-example] would be a great next step ([demo here][react-example-live]).
+Running `npm start` and then viewing your example in your Browser (currently just Chrome for this example) should result in a new Sale contract deployed with Rain! If you are wondering where to go next, [seeing how to integrate this example with React][react-example] would be a great next step ([demo here][react-example-live]).
 
 Any questions, feel free to [reach out to us in our Discord][discord].
 
