@@ -7,7 +7,7 @@ categories: various
 
 ## Intro
 
-In this tutorial, we will take you through how to deploy a [Sale][sale] using [Rain Protocol's SDK][rain-sdk]. ([Full Example][full-example] of the code here). We will assume you have already completed the [previous tutorial][previous-tutorial] and are therefore familiar with using the Polygon testnet. This tutorial will follow a similar configuration.
+In this tutorial, we will take you through how to deploy a [Sale][sale] using [Rain Protocol's SDK][rain-sdk]. ([Full Example of the code][full-example]). We will assume you have already completed the [previous tutorial][previous-tutorial] and are therefore familiar with using the Polygon testnet. This tutorial will follow a similar configuration.
 
 PLEASE AGAIN NOTE, this very minimal example uses [`importmap`][system-js] as part of the boilerplate code, this feature, at the time of writing, is relatively new and we found was only working in the Chrome browser; the [example using React][react-example] should work in all modern browsers.
 
@@ -56,7 +56,7 @@ Next let's create `index.html`:
 </html>
 ```
 
-This boilerplate code is slightly different to the example in the previous tutorial, so please make sure you copy exactly. 
+This boilerplate code may be slightly different to the example in the previous tutorial, so please make sure you copy exactly (especially re the version numbers). 
 
 ### index.js
 
@@ -109,11 +109,11 @@ const redeemableState = {
 
 As in the [previous tutorial][previous-tutorial] we have defined the Chain ID of Polygon's Mumbai Testnet, which we will be using to run the example. As previously mentioned, to deploy you contract, you will need some [Testnet Matic][mumbai].
 
-Next, we create some defaults for the states of both the `sale` and the `redeemable` (standard erc20 config) to be used in the deployment of our contract. You can check over the [docs for the smart contract][docs] for extra details about the inputs with which you can experiment.
+Next, we create some defaults for the states of both the `saleState` and the `redeemableState` (standard erc20 config) to be used in the deployment of our contract. You can check over the [docs for the smart contract][docs] for extra details about the inputs, with which you can experiment.
 
 ### Add the Connection
 
-Within our `try` block, we will now add the most basic code possible for connecting to your browser wallet, in a production environment, you will want to add proper handling for other scenarios such as switching networks:
+Within our `try` block, we will now add the most basic code possible for connecting to your [browser wallet][metamask-tutorial], in a production environment, you will want to add proper handling for other scenarios such as switching networks:
 
 ```
 const {ethereum} = window;
@@ -134,17 +134,15 @@ const address = await signer.getAddress(); // your wallet address
 console.log(`Signer:`, signer);
 console.log(`Address: ${address}`);
 
-// v Configuration code below this line
+// v-- Configuration code below this line --v
 ```
 
 ### Add the Expected Output
 
-We will now add the deployment and expected output, between which we will next put the rest of the code.
+We will now add the deployment and expected output, between which, in the next section, we will put the rest of the code.
 
 ```
-// ^ Configuration code above this line
-
-saleState.recipient = address;
+// ^-- Configuration code above this line --^
 
 console.log(
   "Submitting the following state:",
@@ -163,13 +161,13 @@ console.log(result); // the Sale contract and corresponding address
 
 ### The Configuration
 
-This part is slightly more complex than in the [previous tutorial][previous-tutorial] as it will include the use of Opcodes. Rain makes it easy to create very bespoke configurations for our Virtual Machine.
+This part is slightly more complex than in the [previous tutorial][previous-tutorial], as it will include the use of Opcodes. Rain makes it easy to create very bespoke configurations for our Virtual Machine.
 
-We won't go into too much detail about the VM here, but what we will be doing, is passing over a small stack of `uint256` values that will be feeding into the wrapping solidity code. This will enable us to configure the parameters for buying these contract's tokens.
+We won't go into too much detail about the VM here, but what we will be doing, is passing over a small stack of `uint256` values that will be feeding into the wrapping solidity code. This will enable us to configure the parameters for buying this contract's tokens each time the `calculatePrice` function is called.
 
 #### canStartStateConfig and canEndStateConfig
 
-Let's pass the first two sets of configuration needed (see the [React Example][react-example] for a more complex example of passing opcodes to detect can start/end is after now or not).
+Let's pass the first two sets of configuration needed (see the [React Example][react-example] for a more complex example of passing opcodes to detect whether `canStart/end` is after now or not).
 
 ```
 saleState.canStartStateConfig = {
@@ -197,23 +195,23 @@ saleState.canEndStateConfig = {
 };
 ```
 
-We won't go into too much depth as to what is happening here, the next section will cover a more configurable example, but if you are working with Rain Opcodes, this is the standard 'Opcodes block' format you will see and work with regularly.
+We won't go into too much depth as to what is happening here, the next section will cover a more configurable example, but if you are working with Rain Opcodes, this is the standard 'Opcodes block' format you will see and work with regularly. As written in the comments, `stackLength` and `argumentsLength` will be removed in future versions of the VM as they will be calculated automatically.
 
 #### calculatePriceStateConfig
 
-In this next section we will look a little bit at what is happening with the RainVM. If you want to skip this part and just deploy a `Sale` contract, then just copy this code as is and skip this section.
+In this next section we will look a little bit at what is happening with the RainVM. If you want to skip this part and just deploy a `Sale` contract, then just copy this code as is and skip this section. If you want your sale to have a different `walletCap`, then change the second constant from `10` to something else.
 
 We won't go into too much depth on how assembly language works, but this code works in a similar way, and we will cover this a bit more in a later article.
 
-In this example, we will be checking that a user doesn't have more tokens than a pre-set value in their wallet. We will also check that the user will not have more after they have made a purchase. Depending on the result of this check, we will either sell the tokens to the user at a `staticPrice` or at an infinity value so they can't buy any.
+In this example, we will be checking that a user doesn't have more tokens than a pre-set value in their wallet. We will also check that the user will not have more after they have made a purchase. Depending on the result of this check, we will either sell the tokens to the user at a `staticPrice` or at an infinity value so they can't buy any (in the future this might change to `0` instead of infinity).
 
-Limiting a user's allowance of token is just one example of how the VM can be used to configure a Sale contract, and is by no means the only way. After this example, we will reverse it to check the user doesn't have `LESS_THAN` the amount.
+Limiting a user's allowance of tokens is just one example of how the VM can be used to configure a [`Sale contract`][sale], and is by no means the only way. After this example, we will look at a very slightly different configuration so you can get used to how it is working.
 
-
+[//]: # (// todo check if staticPrice/walletCap needs to be parsed &#40;divide by 18 0s?&#41;)
 
 ```
 saleState.calculatePriceStateConfig = {
-  constants: [100, 10, ethers.constants.MaxUint256], // staticPrice, walletCap, MaxUint256 (ffff..) // todo check if staticPrice/walletCap needs to be parsed (divide by 18 0s?)
+  constants: [100, 10, ethers.constants.MaxUint256], // Constants to be used in the configuration: `staticPrice`, `walletCap`, `0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff`
   sources: [
     ethers.utils.concat([
       // 1. put onto the stack, the amount the current user wants to buy
@@ -245,26 +243,28 @@ saleState.calculatePriceStateConfig = {
 };
 ```
 
-As with other coding languages, these lines are executed top to bottom, and the price is calculated each time a user makes a request to that smart contract that calls the calculatePrice function (for example when the user wants to purchase some tokens).
+As with other coding languages, these lines are executed top to bottom, and the price is calculated each time a user makes a request to that smart contract that calls the `calculatePrice` function (for example when the user wants to purchase some tokens).
 
-The comments in the code say what is happening at each step, but in short, we are configuring the `calculatePrice` function to:
+The comments in the code say what is happening at each step, but in short, we are configuring the `calculatePrice` function to always:
 
-1. Expect a buy amount
-2. Check the token balance of the user
-3. Add the first 2 elements on the stack (the buy units and balance of that user)
-4. Check if this is `GREATER_THAN` the pre-set `walletCap` which was passed in via the `constants` array
+1. Expect a buy amount.
+2. Check the token balance of the user.
+3. Add the first 2 elements on the stack (the buy units and balance of that user).
+4. Check if this is `GREATER_THAN` the pre-set `walletCap` which was passed in via the `constants` array.
 5. Return the 3rd value (0 indexed) from the stack OR the 1st depending on the result of the comparison.
 
-Finally, if you want to try setting a different configuration, change the `GREATER_THAN` line to the line below:
+##### Alternate example
+
+Finally, if you want to try setting a different configuration, change the `GREATER_THAN` line to the below:
 
 ```
-// this will behave like a minimum wallet cap, so you cant buy below this amount
+// 4.b. this will behave like a minimum wallet cap, so you cant buy below this amount
 rainSDK.VM.op(rainSDK.Sale.Opcodes.LESS_THAN), // this will put a boolean on the stack (true: 1, false: 0)
 ```
 
 #### Final Configuration
 
-Now to add the final configuration (make sure it continues to be above this line: `// ^ Configuration code above this line`.
+Now to add the final configuration (make sure it continues to be above: `// ^ Configuration code above this line`.
 
 ```
 // convert the initial supply into the correct format
@@ -278,7 +278,7 @@ saleState.recipient = address;
 
 ## Conclusion
 
-Running `npm start` and then viewing your example in your Browser (currently just Chrome for this example) should result in a new Sale contract deployed with Rain! If you are wondering where to go next, [seeing how to integrate this example with React][react-example] would be a great next step ([demo here][react-example-live]).
+Running `npx serve` and then viewing your example in your Browser (currently just Chrome for this example) should result in a new Sale contract deployed with Rain! If you are wondering where to go next, [seeing how to integrate this example with React][react-example] would be a great next step ([demo here][react-example-live]).
 
 Any questions, feel free to [reach out to us in our Discord][discord].
 
@@ -292,7 +292,7 @@ Any questions, feel free to [reach out to us in our Discord][discord].
 [react-example-live]:  https://examples.rainprotocol.xyz/deploy-sale-example
 [unpkg]: https://unpkg.com/
 [mumbai]: https://faucet.polygon.technology/
-[metamask]: https://www.youtube.com/watch?v=6h_liI6atEk
+[metamask-tutorial]: https://www.youtube.com/watch?v=6h_liI6atEk
 [system-js]: https://www.digitalocean.com/community/tutorials/how-to-dynamically-import-javascript-with-import-maps
 [npx]: https://stackoverflow.com/questions/50605219/difference-between-npx-and-npm
 [rain-sdk]: https://github.com/unegma/rain-sdk
