@@ -9,9 +9,9 @@ categories: various
 
 _This example uses version [`rain-sdk@0.0.1-alpha.8`][rain-sdk] of the sdk_
 
-In this tutorial, we will take you through how to deploy a [Sale][sale] using [Rain Protocol's SDK][rain-sdk]. ([Full Example of the code here][full-example]). We will assume you have already completed the [previous tutorial][previous-tutorial] and are therefore familiar with using the Polygon testnet. This tutorial will follow a similar configuration.
+In this tutorial, we will take you through how to deploy a [Sale Contract][sale] using [Rain Protocol's SDK][rain-sdk]. ([Full Example of the code here][full-example]). We will assume you have already completed the [previous tutorial][previous-tutorial] and are therefore familiar with using the [Polygon testnet][mumbai].
 
-PLEASE AGAIN NOTE, this very minimal example uses [`importmap`][system-js] as part of the boilerplate code, this feature, at the time of writing, is relatively new and we found was only working in the Chrome browser; the [example using React][react-example] should work in all modern browsers.
+PLEASE AGAIN NOTE, this very minimal example uses [`importmap`][system-js] as part of the boilerplate code, this feature, at the time of writing, is relatively new and we found only working in the Chrome browser; the [example using React][react-example] should work in all modern browsers.
 
 ## Adding the Files
 
@@ -286,7 +286,7 @@ Any questions, feel free to [reach out to us in our Discord][discord].
 
 [full-example]: https://github.com/unegma/sdk-tutorial-sale
 [sale]: https://docs.rainprotocol.xyz/smart-contracts/sale/
-[previous-tutorial]: https://docs.rainprotocol.xyz/guides/Frontend/using-the-sdk-to-deploy-your-first-rain-contract
+[previous-tutorial]: https://docs.rainprotocol.xyz/guides/SDK/using-the-rain-sdk-to-deploy-your-first-rain-contract
 [token-gating]: https://medium.com/@jshanks21/nft-meaning-token-gating-ad83aef7cccd
 [discord]: https://discord.gg/dzYS3JSwDP
 [docs]: https://docs.rainprotocol.xyz
