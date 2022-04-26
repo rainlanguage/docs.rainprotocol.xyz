@@ -209,7 +209,7 @@ We won't go into too much depth on how assembly language works, but this code wo
 
 In this example, we will be checking that a user doesn't have more tokens than a pre-set value (`walletCap` set at `10`) in their wallet. We will also check that the user will not have more after they have made a purchase. Depending on the result of this check, we will either sell the tokens to the user at a `staticPrice` set at `100` otherwise at a value which prevents a purchase.
 
-Limiting a user's allowance of tokens is just one example of how the VM can be used to configure a [`Sale contract`][sale], and is by no means the only way. After this example, we will look at a very slightly different configuration so you can get used to how it is working.
+Limiting a user's allowance of tokens is just one example of how the VM can be used to configure a [`Sale Contract`][sale], but is by no means the only way. After this example, we will look at a very slightly different configuration so you can get used to how it is working.
 
 [//]: # (// todo check if staticPrice/walletCap needs to be parsed &#40;divide by 18 0s?&#41;)
 
