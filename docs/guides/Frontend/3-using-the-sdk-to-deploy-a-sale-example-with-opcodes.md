@@ -163,7 +163,9 @@ console.log(result); // the Sale contract and corresponding address
 
 ### The Configuration
 
-This part is slightly more complex than the [previous tutorial][previous-tutorial] as 
+This part is slightly more complex than in the [previous tutorial][previous-tutorial] as it will include the use of Opcodes. Rain makes it easy to create very bespoke configurations for our Virtual Machine.
+
+We won't go into too much detail about the VM here, but what we will be doing, is passing over a small stack of `uint256` values that will be feeding into the wrapping solidity code. This will enable us to configure the parameters for buying these contract's tokens.
 
 [previous-tutorial]: https://example.com
 [token-gating]: https://medium.com/@jshanks21/nft-meaning-token-gating-ad83aef7cccd
