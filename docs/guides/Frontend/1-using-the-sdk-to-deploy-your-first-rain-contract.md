@@ -88,24 +88,25 @@ We are able to import the sdk and the classes from `ethers` due to the previous 
 Let's first add some defaults and constants to the codebase:
 
 ```
-  const gatedNFTState = {
-    config: {
-      name: 'My Gated NFT',
-      symbol: 'myGNFT',
-      description: 'My Gated NFT can be used to token gate things',
-      animationUrl: '',
-      animationHash: '0x0000000000000000000000000000000000000000000000000000000000000000',
-      imageUrl: 'https://thumbs.dreamstime.com/b/gold-badge-5392868.jpg',
-      imageHash: '0x0000000000000000000000000000000000000000000000000000000000000000',
-    },
-    tier: '0xcd953b94999808ee07a33860dd46689580c90cf4',
-    minimumStatus: 2,
-    maxPerAddress: 2,
-    transferrable: 0,
-    maxMintable: 10,
-    royaltyRecipient: "",
-    royaltyBPS: 10
-  }
+const CHAIN_ID = 80001;
+const gatedNFTState = {
+config: {
+  name: 'My Gated NFT',
+  symbol: 'myGNFT',
+  description: 'My Gated NFT can be used to token gate things',
+  animationUrl: '',
+  animationHash: '0x0000000000000000000000000000000000000000000000000000000000000000',
+  imageUrl: 'https://thumbs.dreamstime.com/b/gold-badge-5392868.jpg',
+  imageHash: '0x0000000000000000000000000000000000000000000000000000000000000000',
+},
+tier: '0xcd953b94999808ee07a33860dd46689580c90cf4',
+minimumStatus: 2,
+maxPerAddress: 2,
+transferrable: 0,
+maxMintable: 10,
+royaltyRecipient: "",
+royaltyBPS: 10
+}
 ```
 
 Here we have defined the Chain ID of Polygon's Mumbai Testnet, which we will be using to run the example. As previously mentioned, to deploy you contract, you will need some [Testnet Matic][mumbai].

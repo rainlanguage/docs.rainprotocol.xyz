@@ -79,8 +79,93 @@ saleExample();
 
 ## Adding the Functionality
 
+The defaults and constants we will use for the Sale deployment are as follows:
 
+```
+const CHAIN_ID = 80001;
+const saleState = {
+  canStartStateConfig: undefined,
+  canEndStateConfig: undefined,
+  calculatePriceStateConfig: undefined,
+  recipient: "",
+  reserve: "0x25a4dd4cd97ed462eb5228de47822e636ec3e31a",
+  saleTimeout: 100,
+  cooldownDuration: 100,
+  minimumRaise: 1000,
+  dustSize: 0
+};
+const redeemableState = {
+  erc20Config: {
+    name: "Raise token",
+    symbol: "rTKN",
+    distributor: "0x0000000000000000000000000000000000000000",
+    initialSupply: 1000,
+  },
+  tier: "0xC064055DFf6De32f44bB7cCB0ca59Cbd8434B2de",
+  minimumTier: 0,
+  distributionEndForwardingAddress: "0x0000000000000000000000000000000000000000"
+}
+```
 
+As in the [previous tutorial][previous-tutorial] we have defined the Chain ID of Polygon's Mumbai Testnet, which we will be using to run the example. As previously mentioned, to deploy you contract, you will need some [Testnet Matic][mumbai].
+
+Next, we create some defaults for the states of both the `sale` and the `redeemable` (standard erc20 config) to be used in the deployment of our contract. You can check over the [docs for the smart contract][docs] for extra details about the inputs with which you can experiment.
+
+### Add the Connection
+
+Within our `try` block, we will now add the most basic code possible for connecting to your browser wallet, in a production environment, you will want to add proper handling for other scenarios such as switching networks:
+
+```
+const {ethereum} = window;
+
+if (!ethereum) {
+  console.log("No Web3 Wallet installed");
+}
+
+const provider = new ethers.providers.Web3Provider(ethereum, {
+  name: 'Mumbai',
+  chainId: CHAIN_ID,
+});
+
+// Prompt user for account connections
+await provider.send("eth_requestAccounts", []);
+const signer = provider.getSigner();
+const address = await signer.getAddress(); // your wallet address
+console.log(`Signer:`, signer);
+console.log(`Address: ${address}`);
+
+// v Configuration code below this line
+```
+
+### Add the Expected Output
+
+We will now add the deployment and expected output, between which we will next put the rest of the code.
+
+```
+// ^ Configuration code above this line
+
+saleState.recipient = address;
+
+console.log(
+  "Submitting the following state:",
+  saleState,
+  redeemableState
+);
+
+const result = await rainSDK.Sale.deploy(
+  signer,
+  saleState,
+  redeemableState
+);
+
+console.log(result); // the Sale contract and corresponding address
+```
+
+### The Configuration
+
+This part is slightly more complex than the [previous tutorial][previous-tutorial] as 
+
+[previous-tutorial]: https://example.com
 [token-gating]: https://medium.com/@jshanks21/nft-meaning-token-gating-ad83aef7cccd
 [discord]: https://discord.gg/dzYS3JSwDP
 [docs]: https://docs.rainprotocol.xyz
@@ -93,3 +178,4 @@ saleExample();
 [npx]: https://stackoverflow.com/questions/50605219/difference-between-npx-and-npm
 [rain-sdk]: https://github.com/unegma/rain-sdk
 [ethers]: https://github.com/ethers-io/ethers.js/
+[full-example]: https://github.com/unegma/sdk-tutorial-sale
