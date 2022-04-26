@@ -167,6 +167,101 @@ This part is slightly more complex than in the [previous tutorial][previous-tuto
 
 We won't go into too much detail about the VM here, but what we will be doing, is passing over a small stack of `uint256` values that will be feeding into the wrapping solidity code. This will enable us to configure the parameters for buying these contract's tokens.
 
+#### canStartStateConfig and canEndStateConfig
+
+Let's pass the first two sets of configuration needed (see the [React Example][react-example] for a more complex example of passing opcodes to detect can start/end is after now or not).
+
+```
+saleState.canStartStateConfig = {
+  sources: [
+    ethers.utils.concat([
+      rainSDK.VM.op(rainSDK.Sale.Opcodes.VAL, 0),
+    ]),
+  ],
+  constants: [1],
+  stackLength: 1,
+  argumentsLength: 0,
+};
+
+saleState.canEndStateConfig = {
+  sources: [
+    ethers.utils.concat([
+      rainSDK.VM.op(rainSDK.Sale.Opcodes.VAL, 0),
+    ]),
+  ],
+  constants: [1],
+  stackLength: 1,
+  argumentsLength: 0,
+};
+```
+
+We won't go into too much depth as to what is happening here, the next section will cover a more configurable example, but if you are working with Rain Opcodes, this is the standard 'Opcodes block' format you will see and work with regularly.
+
+#### calculatePriceStateConfig
+
+```
+// current buy units: amount want to buy, put into stack
+// token address
+// returns current token balance
+
+// define the parameters for the VM which will be used whenever the price is calculated, for example, when a user wants to buy a number of units
+// the order is important
+//
+saleState.calculatePriceStateConfig = {
+  sources: [
+    ethers.utils.concat([
+      // put onto the stack, the amount the current user wants to buy
+      rainSDK.VM.op(rainSDK.Sale.Opcodes.CURRENT_BUY_UNITS), //
+
+      // put onto the stack, the current token balance of the user (the Sale's rTKN represented in the smart contract)
+      rainSDK.VM.op(rainSDK.Sale.Opcodes.TOKEN_ADDRESS),
+      rainSDK.VM.op(rainSDK.Sale.Opcodes.SENDER),
+      rainSDK.VM.op(rainSDK.Sale.Opcodes.IERC20_BALANCE_OF),
+
+      // add the first two elements of the stack (current buy units and balance of that user)
+      rainSDK.VM.op(rainSDK.Sale.Opcodes.ADD, 2),
+
+      // here we have a potential new value which we will compare to walletCap
+
+      // and then check if it exceeds the walletCap (ie the amount allowed)
+      rainSDK.VM.op(rainSDK.Sale.Opcodes.VAL, 1),// walletCap ()
+      rainSDK.VM.op(rainSDK.Sale.Opcodes.GREATER_THAN), // this will put a boolean on the stack (true: 1, false: 0)
+
+      // this will behave like a minimum wallet cap, so you cant buy below this amount
+      // rainSDK.VM.op(rainSDK.Sale.Opcodes.LESS_THAN), // this will put a boolean on the stack (true: 1, false: 0)
+
+      // eager if will get the 1st (result of greater than) and 3rd value
+      rainSDK.VM.op(rainSDK.Sale.Opcodes.VAL, 2), // `MaxUint256` this will be executed if the check above is true (this is an infinity price so it can't be bought)
+      rainSDK.VM.op(rainSDK.Sale.Opcodes.VAL, 0), // `staticPrice` this will be executed if the check above is false (staticPrice is the price that the user wants to exchange the tokens for)
+      rainSDK.VM.op(rainSDK.Sale.Opcodes.EAGER_IF),
+    ]),
+  ],
+  constants: [100, 10, ethers.constants.MaxUint256], // staticPrice, walletCap, MaxUint256 (ffff..) todo check if staticPrice/walletCap needs to be parsed (divide by 18 0s?)
+  stackLength: 10,
+  argumentsLength: 0,
+};
+```
+
+#### Final Configuration
+
+Now to add the final configuration (make sure it continues to be above this line: `// ^ Configuration code above this line`.
+
+```
+// convert the initial supply into the correct format
+redeemableState.erc20Config.initialSupply = ethers.utils.parseUnits(
+  redeemableState.erc20Config.initialSupply.toString()
+);
+
+// set the recipient to your wallet address
+saleState.recipient = address;
+```
+
+## Conclusion
+
+And that is a wrap on deploying a Sale contract with Rain! If you are wondering where to go next, [seeing how to integrate this example with React][react-example] would be a great next step ([demo here][react-example-live]).
+
+Any questions, feel free to [reach out to us in our Discord][discord].
+
 [previous-tutorial]: https://example.com
 [token-gating]: https://medium.com/@jshanks21/nft-meaning-token-gating-ad83aef7cccd
 [discord]: https://discord.gg/dzYS3JSwDP
