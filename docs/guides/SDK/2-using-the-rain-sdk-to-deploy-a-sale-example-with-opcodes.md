@@ -111,7 +111,7 @@ const redeemableState = {
 
 As in the [previous tutorial][previous-tutorial] we have defined the Chain ID of Polygon's Mumbai Testnet, which we will be using to run the example. As previously mentioned, to deploy you contract, you will need some [Testnet Matic][mumbai].
 
-Next, we create some defaults for the states of both the `saleState` and the `redeemableState` (standard erc20 config) to be used in the deployment of our contract. You can check over the [docs for the smart contract][docs] for extra details about the inputs, with which you can experiment.
+Next, we create some defaults for the states of both the `saleState` and the `redeemableState` (standard erc20 config) to be used in the deployment of our contract. You can check over the [Smart Contracts docs for the smart contract][docs] for extra details about the inputs, with which you can experiment.
 
 ### Add the Connection
 
@@ -141,7 +141,7 @@ console.log(`Address: ${address}`);
 
 ### Add the Expected Output
 
-We will now add the deployment and expected output, between which, in the next section, we will put the rest of the code.
+We will now add the deployment and expected output, between which - in the next section - we will put the rest of the code.
 
 ```
 // ^-- Configuration code above this line --^
@@ -169,7 +169,7 @@ We won't go into too much detail about the VM here, but what we will be doing, i
 
 #### canStartStateConfig and canEndStateConfig
 
-Let's pass the first two sets of configuration needed (see the [React Example][react-example] for a more complex example of passing opcodes to detect whether `canStart/end` is after now or not).
+Let's pass the first two sets of configuration needed (see the [React Example][react-example] for a more complex example of passing [opcodes][opcodes] to detect whether `canStart/end` is after now or not).
 
 ```
 saleState.canStartStateConfig = {
@@ -300,3 +300,4 @@ Any questions, feel free to [reach out to us in our Discord][discord].
 [rain-sdk]: https://github.com/beehive-innovation/rain-sdk
 [ethers]: https://github.com/ethers-io/ethers.js/
 [full-example]: https://github.com/unegma/sdk-tutorial-sale
+[opcodes]: https://en.wikipedia.org/wiki/Opcode
