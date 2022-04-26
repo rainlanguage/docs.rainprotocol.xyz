@@ -7,7 +7,7 @@ categories: various
 
 ## Intro
 
-In this tutorial, we will take you through how to deploy a [Sale][sale] using [Rain Protocol's SDK][rain-sdk]. ([Full Example of the code][full-example]). We will assume you have already completed the [previous tutorial][previous-tutorial] and are therefore familiar with using the Polygon testnet. This tutorial will follow a similar configuration.
+In this tutorial, we will take you through how to deploy a [Sale][sale] using [Rain Protocol's SDK][rain-sdk]. ([Full Example of the code here][full-example]). We will assume you have already completed the [previous tutorial][previous-tutorial] and are therefore familiar with using the Polygon testnet. This tutorial will follow a similar configuration.
 
 PLEASE AGAIN NOTE, this very minimal example uses [`importmap`][system-js] as part of the boilerplate code, this feature, at the time of writing, is relatively new and we found was only working in the Chrome browser; the [example using React][react-example] should work in all modern browsers.
 
@@ -264,7 +264,7 @@ rainSDK.VM.op(rainSDK.Sale.Opcodes.LESS_THAN), // this will put a boolean on the
 
 #### Final Configuration
 
-Now to add the final configuration (make sure it continues to be above: `// ^ Configuration code above this line`.
+Now to add the final configuration; make sure it continues to be above this: `// ^ Configuration code above this line`.
 
 ```
 // convert the initial supply into the correct format
