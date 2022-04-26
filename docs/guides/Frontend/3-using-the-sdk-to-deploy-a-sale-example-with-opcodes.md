@@ -7,7 +7,7 @@ categories: various
 
 ## Intro
 
-In this tutorial, we will take you through how to deploy a [Sale][sale] using [Rain Protocol's SDK][rain-sdk]. We will assume you have already completed the [previous tutorial][previous-tutorial] and are therefore familiar with using the Polygon testnet. This tutorial will follow a similar configuration.
+In this tutorial, we will take you through how to deploy a [Sale][sale] using [Rain Protocol's SDK][rain-sdk]. ([Full Example][full-example] of the code here). We will assume you have already completed the [previous tutorial][previous-tutorial] and are therefore familiar with using the Polygon testnet. This tutorial will follow a similar configuration.
 
 PLEASE AGAIN NOTE, this very minimal example uses [`importmap`][system-js] as part of the boilerplate code, this feature, at the time of writing, is relatively new and we found was only working in the Chrome browser; the [example using React][react-example] should work in all modern browsers.
 
@@ -46,7 +46,7 @@ Next let's create `index.html`:
     <script type="importmap">
       {
         "imports": {
-          "rain-sdk": "https://unpkg.com/rain-sdk@0.0.1-alpha.7/dist/rain-sdk.esm.js",
+          "rain-sdk": "https://unpkg.com/rain-sdk@0.0.1-alpha.8/dist/rain-sdk.esm.js",
           "ethers": "https://unpkg.com/ethers@5.6.2/dist/ethers.esm.js"
         }
       }
@@ -282,12 +282,14 @@ Running `npm start` and then viewing your example in your Browser (currently jus
 
 Any questions, feel free to [reach out to us in our Discord][discord].
 
-[previous-tutorial]: https://example.com
+[full-example]: https://github.com/unegma/sdk-tutorial-sale
+[sale]: https://docs.rainprotocol.xyz/smart-contracts/sale/
+[previous-tutorial]: https://docs.rainprotocol.xyz/guides/Frontend/using-the-sdk-to-deploy-your-first-rain-contract
 [token-gating]: https://medium.com/@jshanks21/nft-meaning-token-gating-ad83aef7cccd
 [discord]: https://discord.gg/dzYS3JSwDP
 [docs]: https://docs.rainprotocol.xyz
-[react-example]: https://github.com/beehive-innovation/examples.rainprotocol.xyz/tree/master/src/examples/DeployGatedNFTExample
-[react-example-live]:  https://examples.rainprotocol.xyz/deploy-gatednft-example
+[react-example]: https://github.com/beehive-innovation/examples.rainprotocol.xyz/blob/master/src/examples/DeploySaleExample/DeploySaleExample.tsx
+[react-example-live]:  https://examples.rainprotocol.xyz/deploy-sale-example
 [unpkg]: https://unpkg.com/
 [mumbai]: https://faucet.polygon.technology/
 [metamask]: https://www.youtube.com/watch?v=6h_liI6atEk
