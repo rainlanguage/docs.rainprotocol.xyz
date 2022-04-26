@@ -247,7 +247,7 @@ saleState.calculatePriceStateConfig = {
 };
 ```
 
-As with other coding languages, these lines are executed top to bottom, and the price is calculated each time a user makes a request to that smart contract that calls the `calculatePrice` function (for example when the user wants to purchase some tokens).
+As with other coding languages, these lines are executed top to bottom, and they configure the `calculatePrice` function with a set of parameters which are used each time a user makes a request to the deployed Sale via the `calculatePrice` function (for example when the user wants to purchase some tokens).
 
 The comments in the code say what is happening at each step, but in short, we are configuring the `calculatePrice` function to always:
 
@@ -255,7 +255,7 @@ The comments in the code say what is happening at each step, but in short, we ar
 2. Check the token balance of the user.
 3. Add the first 2 elements on the stack (the buy units and balance of that user).
 4. Check if this is `GREATER_THAN` the pre-set `walletCap` which was passed in via the `constants` array.
-5. Return the 3rd value (0 indexed) from the stack OR the 1st depending on the result of the comparison.
+5. Return the 3rd value (`2` as this is 0 indexed) from the stack OR the 1st depending on the result of the comparison (using `EAGER_IF`).
 
 ##### Alternate example
 
