@@ -207,7 +207,7 @@ In this next section we will look a little bit at what is happening with the Rai
 
 We won't go into too much depth on how assembly language works, but this code works in a similar way, and we will cover this a bit more in a later article.
 
-In this example, we will be checking that a user doesn't have more tokens than a pre-set value (`walletCap` which is currently `10`) in their wallet. We will also check that the user will not have more after they have made a purchase. Depending on the result of this check, we will either sell the tokens to the user at a `staticPrice` which is currently `100` or at an infinity value so they can't buy any (in the future this might change to `0` instead of infinity).
+In this example, we will be checking that a user doesn't have more tokens than a pre-set value (`walletCap` set at `10`) in their wallet. We will also check that the user will not have more after they have made a purchase. Depending on the result of this check, we will either sell the tokens to the user at a `staticPrice` set at `100` otherwise at a value which prevents a purchase.
 
 Limiting a user's allowance of tokens is just one example of how the VM can be used to configure a [`Sale contract`][sale], and is by no means the only way. After this example, we will look at a very slightly different configuration so you can get used to how it is working.
 
