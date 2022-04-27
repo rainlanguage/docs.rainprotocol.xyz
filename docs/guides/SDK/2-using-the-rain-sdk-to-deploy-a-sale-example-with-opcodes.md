@@ -93,10 +93,10 @@ const saleState = {
   canEndStateConfig: undefined,
   calculatePriceStateConfig: undefined,
   recipient: "",
-  reserve: "0x25a4dd4cd97ed462eb5228de47822e636ec3e31a",
+  reserve: "0x25a4dd4cd97ed462eb5228de47822e636ec3e31a", // the reserve token contract address
   saleTimeout: 100, // this will be 100 blocks
   cooldownDuration: 100, // this will be 100 blocks
-  minimumRaise: ethers.utils.parseUnits("1000", erc20decimals),
+  minimumRaise: ethers.utils.parseUnits("1000", erc20decimals), // minimum to complete a Raise
   dustSize: ethers.utils.parseUnits("0", erc20decimals),
 };
 const redeemableState = {
@@ -106,13 +106,13 @@ const redeemableState = {
     distributor: "0x0000000000000000000000000000000000000000",
     initialSupply: ethers.utils.parseUnits("1000", erc20decimals),
   },
-  tier: "0xC064055DFf6De32f44bB7cCB0ca59Cbd8434B2de",
+  tier: "0xC064055DFf6De32f44bB7cCB0ca59Cbd8434B2de", // tier contract address
   minimumTier: 0,
   distributionEndForwardingAddress: "0x0000000000000000000000000000000000000000"
 }
 ```
 
-As in the [previous tutorial][previous-tutorial] we have defined the Chain ID of Polygon's Mumbai Testnet, which we will be using to run the example. As previously mentioned, to deploy you contract, you will need some [Testnet Matic][mumbai].
+As in the [previous tutorial][previous-tutorial] we have defined the Chain ID of Polygon's Mumbai Testnet, which we will be using to run the example. As previously mentioned, to deploy your contract, you will need some [Testnet Matic][mumbai].
 
 Next, we create some defaults for the states of both the `saleState` and the `redeemableState` (standard erc20 config) to be used in the deployment of our contract. You can check over the [Smart Contracts docs for the smart contract][docs] for extra details about the inputs, with which you can experiment.
 
