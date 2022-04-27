@@ -11,6 +11,8 @@ _This example uses version [`rain-sdk@0.0.1-alpha.8`][rain-sdk] of the sdk_
 
 In this tutorial, we will take you through how to deploy a [Sale Contract][sale] using [Rain Protocol's SDK][rain-sdk]. ([Full Example of the code here][full-example]). We will assume you have already completed the [previous tutorial][previous-tutorial] and are therefore familiar with using the [Polygon testnet][mumbai].
 
+A Sale contract can be used for selling a set of Digital Assets, and can be configured with various different types of price curves, as well as Tiered access.
+
 PLEASE AGAIN NOTE, this very minimal example uses [`importmap`][system-js] as part of the boilerplate code, this feature, at the time of writing, is relatively new and we found only working in the Chrome browser; the [example using React][react-example] should work in all modern browsers.
 
 ## Adding the Files
@@ -166,7 +168,7 @@ console.log(saleContract); // the Sale contract and corresponding address
 
 ### The Configuration
 
-This part is slightly more complex than in the [previous tutorial][previous-tutorial], as it will include the use of Opcodes. Rain makes it easy to create very bespoke configurations for our Virtual Machine.
+This part is slightly more complex than in the [previous tutorial][previous-tutorial], as it will include the use of Opcodes. Rain makes it easy to create very bespoke configurations for our Virtual Machine, in this example, we are configuring how several functions will run each time they are called (e.g. `calculatePrice`).
 
 We won't go into too much detail about the VM here, but what we will be doing, is passing over a small stack of `uint256` values that will be feeding into the wrapping Solidity code. This will enable us to configure the parameters for buying this contract's tokens each time the `calculatePrice` function is called.
 
