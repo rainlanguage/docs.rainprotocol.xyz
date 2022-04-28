@@ -91,10 +91,10 @@ const erc20decimals = 18; // See here for more info: https://docs.openzeppelin.c
 const staticPrice = ethers.utils.parseUnits("100", erc20decimals);
 const walletCap = ethers.utils.parseUnits("10", erc20decimals);
 const saleState = {
-  canStartStateConfig: undefined,
-  canEndStateConfig: undefined,
-  calculatePriceStateConfig: undefined,
-  recipient: "",
+  canStartStateConfig: undefined, // config for the start of the Sale (see opcodes section below)
+  canEndStateConfig: undefined, // config for the end of the Sale (see opcodes section below)
+  calculatePriceStateConfig: undefined, // config for the `calculatePrice` function (see opcodes section below)
+  recipient: "", // who will receive the RESERVE token (e.g. USDCC) after the Sale completes
   reserve: "0x25a4dd4cd97ed462eb5228de47822e636ec3e31a", // the reserve token contract address
   saleTimeout: 100, // this will be 100 blocks
   cooldownDuration: 100, // this will be 100 blocks
@@ -102,15 +102,15 @@ const saleState = {
   dustSize: ethers.utils.parseUnits("0", erc20decimals),
 };
 const redeemableState = {
-  erc20Config: {
-    name: "Raise token",
-    symbol: "rTKN",
-    distributor: "0x0000000000000000000000000000000000000000",
-    initialSupply: ethers.utils.parseUnits("1000", erc20decimals),
+  erc20Config: { // config for the redeemable token (rTKN) which participants will get in exchange for reserve tokens
+    name: "Raise token", // the name of the rTKN
+    symbol: "rTKN", // the symbol for your rTKN
+    distributor: "0x0000000000000000000000000000000000000000", // distributor address
+    initialSupply: ethers.utils.parseUnits("1000", erc20decimals), // initial rTKN supply
   },
-  tier: "0xC064055DFf6De32f44bB7cCB0ca59Cbd8434B2de", // tier contract address
-  minimumTier: 0,
-  distributionEndForwardingAddress: "0x0000000000000000000000000000000000000000"
+  tier: "0xC064055DFf6De32f44bB7cCB0ca59Cbd8434B2de", // tier contract address (used for gating)
+  minimumTier: 0, // minimum tier a user needs to take part
+  distributionEndForwardingAddress: "0x0000000000000000000000000000000000000000" // the rTKNs that are not sold get forwarded here (0x00.. will burn them)
 }
 ```
 
