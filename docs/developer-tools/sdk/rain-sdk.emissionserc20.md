@@ -9,7 +9,7 @@ A class for calling methods on a EmissionsERC20.
 <b>Signature:</b>
 
 ```typescript
-export declare class EmissionsERC20 extends TierFactoryContract 
+export declare class EmissionsERC20 extends TierFactoryContract {} 
 ```
 <b>Extends:</b> [TierFactoryContract](./rain-sdk.tierfactorycontract.md)
 
