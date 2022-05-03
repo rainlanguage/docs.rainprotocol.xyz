@@ -66,7 +66,7 @@ This boilerplate code may be slightly different to the example in the previous t
 
 Finally lets add `index.js` where we will add the main code for running this example:
 
-```
+```javascript
 import * as rainSDK from "rain-sdk";
 import { ethers, BigNumber, utils } from "ethers";
 

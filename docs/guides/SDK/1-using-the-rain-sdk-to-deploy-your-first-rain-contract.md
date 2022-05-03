@@ -23,7 +23,7 @@ For this very short example, you will only need 3 files: `index.html`, `index.js
 
 Let's first create `package.json`:
 
-```
+```json
 {
   "name": "sdk-tutorial",
   "description": "",
@@ -39,7 +39,7 @@ Let's not talk too much about what is happening here, but with the [`npx serve`]
 
 Next let's create `index.html`:
 
-```
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -68,7 +68,7 @@ If you use the code for this tutorial along with a frontend framework, instead o
 
 Finally lets add `index.js` where we will add the main code for running this example:
 
-```
+```javascript
 import * as rainSDK from "rain-sdk";
 import { ethers, BigNumber } from "ethers";
 
@@ -89,7 +89,7 @@ We are able to import the sdk and the classes from `ethers` due to the previous 
 
 Let's first add some defaults and constants to the codebase:
 
-```
+```javascript
 const CHAIN_ID = 80001;
 const gatedNFTState = {
 config: {
@@ -117,7 +117,7 @@ Next, we create some defaults to be used in the deployment of our contract. Feel
 
 Within our `try` block, we will now add the most basic code possible for connecting to your browser wallet, in a production environment, you will want to add proper handling for other scenarios such as switching networks:
 
-```
+```javascript
 const {ethereum} = window;
 
 if (!ethereum) {
@@ -139,7 +139,7 @@ console.log(`Address: ${address}`);
 
 Next we need to convert a few of the default parameters before deploying:
 
-```
+```javascript
 // convert royaltyBPS to BigNumber format
 gatedNFTState.royaltyBPS = BigNumber.from(
   Math.floor(gatedNFTState.royaltyBPS * 100)
@@ -153,7 +153,7 @@ This will convert one of the parameters to a BigNumber format (see [docs][docs] 
 
 Finally, we will deploy the contract and `await` the result:
 
-```
+```javascript
 const result = await rainSDK.GatedNFT.deploy(
   signer,
   gatedNFTState
