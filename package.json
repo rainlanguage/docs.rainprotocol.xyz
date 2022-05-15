@@ -8,7 +8,7 @@
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
     "build-rain-docs": "solidity-docgen -i ./node_modules/@beehiveinnovation/rain-protocol/contracts/ -o ./docs/developer-tools/smart-contracts/ --solc-module solc-0.8 --exclude ./node_modules/@beehiveinnovation/rain-protocol/contracts/test/ -t ./.templates/",
-    "build-rain-sdk-docs": "rm -rf ./docs/developer-tools/sdk/* && cp -r ./node_modules/rain-sdk/docs/. ./docs/developer-tools/sdk",
+    "build-rain-sdk-docs": "rm -rf \"./docs/developer-tools/sdk/!(_category_.json)\" && cp -r ./node_modules/rain-sdk/docs/. ./docs/developer-tools/sdk",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "clear": "docusaurus clear",
