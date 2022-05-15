@@ -28,6 +28,6 @@ pkgs.stdenv.mkDerivation {
   shellHook = ''
     export PATH=$( npm bin ):$PATH
     # keep it fresh
-    npm install
+    npm install --verbose --fetch-timeout 3000000
   '';
 }
