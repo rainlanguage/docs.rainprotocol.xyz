@@ -37,16 +37,17 @@ const tx = await notice.createNotices([noticeArg]);
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [get](./noticeboard.md#get-property-static) | `(signer: Signer) => Promise<NoticeBoard>` | Create the NoticeBoard instance.<br><br>The function ask to the provider inside of the ethers signer what is the chain identifier to get the address in this chain. |
-|  [getChainId](./raincontract.md#getChainId-property-static) | `(signerOrProvider: Signer \| Provider) => Promise<number>` | Get the chain ID from a valid ethers provider.<br><br>Request to the provider stored in the signer which is the chain ID.<br><br><i>Inherited from [RainContract.getChainId](./raincontract.md#getChainId-property-static)</i> |
-|  [nameBookReference](./noticeboard.md#nameBookReference-property-static) | `` | Reference to find the address in the book address. Should be implemented and assign it to each subclass<br><br><i>Overrides [RainContract.nameBookReference](./raincontract.md#nameBookReference-property-static)</i> |
+|  [get](./noticeboard.md#get-property-static) | `(signer: Signer) => Promise<NoticeBoard>` | Create the NoticeBoard instance.<br></br>The function ask to the provider inside of the ethers signer what is the chain identifier to get the address in this chain. |
+|  [getAddressesForChainId](./addressbook.md#getAddressesForChainId-property-static) | `(chainId: number) => Addresses` | Obtain all the addresses deployed in a specific network with a chain ID<br></br><i>Inherited from [AddressBook.getAddressesForChainId](./addressbook.md#getAddressesForChainId-property-static)</i> |
+|  [getChainId](./raincontract.md#getChainId-property-static) | `(signerOrProvider: Signer \| Provider) => Promise<number>` | Get the chain ID from a valid ethers provider.<br></br>Request to the provider stored in the signer which is the chain ID.<br></br><i>Inherited from [RainContract.getChainId](./raincontract.md#getChainId-property-static)</i> |
+|  [nameBookReference](./noticeboard.md#nameBookReference-property-static) | `` | Reference to find the address in the book address. Should be implemented and assign it to each subclass<br></br><i>Overrides [RainContract.nameBookReference](./raincontract.md#nameBookReference-property-static)</i> |
 
 ## Properties
 
 |  Property | Type | Description |
 |  --- | --- | --- |
 |  [address](./raincontract.md#address-property) | `string` | <i>Inherited from [RainContract.address](./raincontract.md#address-property)</i> |
-|  [connect](./noticeboard.md#connect-property) | `(signer: Signer) => NoticeBoard` | Connect the current instance to a new signer<br><br><i>Overrides [RainContract.connect](./raincontract.md#connect-property)</i> |
+|  [connect](./noticeboard.md#connect-property) | `(signer: Signer) => NoticeBoard` | Connect the current instance to a new signer<br></br><i>Overrides [RainContract.connect](./raincontract.md#connect-property)</i> |
 |  [createNotices](./noticeboard.md#createNotices-property) | `(notices: NoticeStruct[], overrides?: TxOverrides) => Promise<ContractTransaction>` | Anyone can create notices about some subject. The notice is opaque bytes. The indexer/GUI is expected to understand the context to decode/interpret it. The indexer/GUI is strongly recommended to filter out untrusted content. |
 |  [signer](./raincontract.md#signer-property) | `Signer` | <i>Inherited from [RainContract.signer](./raincontract.md#signer-property)</i> |
 
@@ -54,13 +55,13 @@ const tx = await notice.createNotices([noticeArg]);
 
 |  Method | Description |
 |  --- | --- |
-|  [getBookAddress(chainId)](./raincontract.md#getBookAddress-method-static-1) | Get the address stored in the book to this chain<br><br><i>Inherited from [RainContract.getBookAddress()](./raincontract.md#getBookAddress-method-static-1)</i> |
+|  [getBookAddress(chainId)](./raincontract.md#getBookAddress-method-static-1) | Get the address stored in the book to this chain<br></br><i>Inherited from [RainContract.getBookAddress()](./raincontract.md#getBookAddress-method-static-1)</i> |
 
 ## Methods
 
 |  Method | Description |
 |  --- | --- |
-|  [checkAddress(address, message)](./raincontract.md#checkAddress-method-1) | Check if an address is correctly formatted and throw an error if it is not an valid address<br><br><i>Inherited from [RainContract.checkAddress()](./raincontract.md#checkAddress-method-1)</i> |
+|  [checkAddress(address, message)](./raincontract.md#checkAddress-method-1) | Check if an address is correctly formatted and throw an error if it is not an valid address<br></br><i>Inherited from [RainContract.checkAddress()](./raincontract.md#checkAddress-method-1)</i> |
 
 ## Static Property Details
 

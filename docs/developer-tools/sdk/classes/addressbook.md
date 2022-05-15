@@ -2,6 +2,7 @@
 
 # Class AddressBook
 
+Class related to handle all the addresses deployed and stored in the SDK
 
 <b>Signature:</b>
 
@@ -13,13 +14,15 @@ class AddressBook
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [getAddressesForChainId](./addressbook.md#getAddressesForChainId-property-static) | `(chainId: number) => Addresses` |  |
+|  [getAddressesForChainId](./addressbook.md#getAddressesForChainId-property-static) | `(chainId: number) => Addresses` | Obtain all the addresses deployed in a specific network with a chain ID |
 
 ## Static Property Details
 
 <a id="getAddressesForChainId-property-static"></a>
 
 ### getAddressesForChainId
+
+Obtain all the addresses deployed in a specific network with a chain ID
 
 <b>Signature:</b>
 
