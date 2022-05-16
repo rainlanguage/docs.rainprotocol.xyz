@@ -6,7 +6,7 @@
 
 |  Class | Description |
 |  --- | --- |
-|  [AddressBook](./classes/addressbook.md) | Class related to handle all the addresses deployed and stored in the SDK |
+|  [AddressBook](./classes/addressbook.md) | Class related to handle and obtain all the addresses and tools (like Subgraph) deployed by chain and stored in the SDK. |
 |  [CombineTier](./classes/combinetier.md) | A class for deploying and calling methods on a CombineTier.<br></br>Implements `ReadOnlyTier` over RainVM. Allows combining the reports from any other `ITier` contracts referenced in the `ImmutableSource` set at construction. value at the top of the stack after executing the rain script will be used as the return of `report`<!-- -->. |
 |  [EmissionsERC20](./classes/emissionserc20.md) | A class for calling methods on a EmissionsERC20. |
 |  [ERC1155](./classes/erc1155.md) | Generic ERC1155 interface to get connected to any ERC1155 address and make transactions.<br></br>Take in mind that only have generics function calls. |

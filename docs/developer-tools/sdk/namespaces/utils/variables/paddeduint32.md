@@ -2,7 +2,6 @@
 
 # Variable utils.paddedUInt32
 
-
 <b>Signature:</b>
 
 ```typescript

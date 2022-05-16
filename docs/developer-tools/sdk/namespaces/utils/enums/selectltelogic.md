@@ -2,7 +2,6 @@
 
 # Enum utils.selectLteLogic
 
-
 <b>Signature:</b>
 
 ```typescript

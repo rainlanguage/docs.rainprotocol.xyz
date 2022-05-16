@@ -2,7 +2,6 @@
 
 # Type SaleParams
 
-
 <b>Signature:</b>
 
 ```typescript

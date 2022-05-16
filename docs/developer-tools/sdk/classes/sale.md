@@ -39,8 +39,9 @@ await existingSale.buy(config_)
 |  [EXTRA\_TIME](./sale.md#EXTRA_TIME-property-static) | `() => Uint8Array` |  |
 |  [EXTRA\_TIME\_DISCOUNT](./sale.md#EXTRA_TIME_DISCOUNT-property-static) | `(i: number) => Uint8Array` |  |
 |  [FIXED\_PRICE\_SOURCES](./sale.md#FIXED_PRICE_SOURCES-property-static) | `() => Uint8Array` |  |
-|  [getAddressesForChainId](./addressbook.md#getAddressesForChainId-property-static) | `(chainId: number) => Addresses` | Obtain all the addresses deployed in a specific network with a chain ID<br></br><i>Inherited from [AddressBook.getAddressesForChainId](./addressbook.md#getAddressesForChainId-property-static)</i> |
+|  [getAddressesForChainId](./addressbook.md#getAddressesForChainId-property-static) | `(chainId: number) => Addresses` | Obtain all the addresses deployed in a specific network with a chain ID.<br></br><i>Inherited from [AddressBook.getAddressesForChainId](./addressbook.md#getAddressesForChainId-property-static)</i> |
 |  [getChainId](./raincontract.md#getChainId-property-static) | `(signerOrProvider: Signer \| Provider) => Promise<number>` | Get the chain ID from a valid ethers provider.<br></br>Request to the provider stored in the signer which is the chain ID.<br></br><i>Inherited from [RainContract.getChainId](./raincontract.md#getChainId-property-static)</i> |
+|  [getSubgraphEndpoint](./addressbook.md#getSubgraphEndpoint-property-static) | `(chainId: number) => string` | Obtain the latest subgraph endpoint related to the version that use the SDK.<br></br><i>Inherited from [AddressBook.getSubgraphEndpoint](./addressbook.md#getSubgraphEndpoint-property-static)</i> |
 |  [INC\_PRICE\_SOURCES](./sale.md#INC_PRICE_SOURCES-property-static) | `() => Uint8Array` |  |
 |  [isChild](./sale.md#isChild-property-static) | `(signer: Signer, maybeChild: string) => Promise<boolean>` | Checks if address is registered as a child contract of this SaleFactory on a specific network |
 |  [MAX\_CAP\_SOURCES](./sale.md#MAX_CAP_SOURCES-property-static) | `() => Uint8Array` |  |

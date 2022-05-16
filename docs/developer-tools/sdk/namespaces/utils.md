@@ -26,7 +26,7 @@
 |  --- | --- |
 |  [arrayify](./utils/variables/arrayify.md) |  |
 |  [bytify](./utils/variables/bytify.md) | Converts a value to raw bytes representation. Assumes `value` is less than or equal to 1 byte, unless a desired `bytesLength` is specified. |
-|  [concat](./utils/variables/concat.md) | Concanate |
+|  [concat](./utils/variables/concat.md) |  |
 |  [hexlify](./utils/variables/hexlify.md) |  |
 |  [hexZeroPad](./utils/variables/hexzeropad.md) |  |
 |  [op](./utils/variables/op.md) | Converts an opcode and operand to bytes, and returns their concatenation. |

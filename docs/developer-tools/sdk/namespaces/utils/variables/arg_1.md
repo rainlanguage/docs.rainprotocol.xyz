@@ -2,7 +2,6 @@
 
 # Function utils.arg()
 
-
 <b>Signature:</b>
 
 ```typescript

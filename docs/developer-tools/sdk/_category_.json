@@ -1,4 +1,8 @@
 {
   "label": "SDK",
-  "position": 1
+  "position": 2,
+  "link": {
+    "type": "doc",
+    "id": "developer-tools/sdk/index"
+  }
 }

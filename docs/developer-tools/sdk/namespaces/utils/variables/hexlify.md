@@ -2,7 +2,6 @@
 
 # Variable utils.hexlify
 
-
 <b>Signature:</b>
 
 ```typescript

@@ -2,7 +2,6 @@
 
 # Variable utils.arrayify
 
-
 <b>Signature:</b>
 
 ```typescript

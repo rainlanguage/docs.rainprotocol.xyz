@@ -2,7 +2,6 @@
 
 # Variable utils.hexZeroPad
 
-
 <b>Signature:</b>
 
 ```typescript

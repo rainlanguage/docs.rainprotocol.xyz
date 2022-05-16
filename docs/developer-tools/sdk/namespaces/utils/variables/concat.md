@@ -2,8 +2,6 @@
 
 # Variable utils.concat
 
-Concanate
-
 <b>Signature:</b>
 
 ```typescript
