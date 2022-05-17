@@ -1,6 +1,7 @@
-[Home](../index.md) &gt; [SaleParams](./saleparams.md)
 
 # Type SaleParams
+
+The parameters necessaries to use the sale script generator
 
 <b>Signature:</b>
 

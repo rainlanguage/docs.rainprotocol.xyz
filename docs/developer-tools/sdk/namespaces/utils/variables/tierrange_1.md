@@ -1,6 +1,6 @@
-[Home](../../../index.md) &gt; [utils](../../utils.md) &gt; [tierRange](./tierrange_1.md)
 
 # Function utils.tierRange()
+
 
 <b>Signature:</b>
 

@@ -1,6 +1,6 @@
-[Home](../../../index.md) &gt; [utils](../../utils.md) &gt; [parseUnits](./parseunits.md)
 
 # Variable utils.parseUnits
+
 
 <b>Signature:</b>
 

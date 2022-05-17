@@ -1,6 +1,6 @@
-[Home](../../../index.md) &gt; [utils](../../utils.md) &gt; [selectLte](./selectlte_1.md)
 
 # Function utils.selectLte()
+
 
 <b>Signature:</b>
 
