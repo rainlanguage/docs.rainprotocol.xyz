@@ -135,6 +135,8 @@ console.log('------------------------------'); // separator
 
 ## Creating and Tier Gating the Sale
 
+// todo write that this is an ERC721 Balance Tier Contract and that it is possible to Combine Tiers
+
 We will now add the Sale and pass in the Tier contract. Again, we won't go over what is happening here, as we covered this in another tutorial.
 
 Create `deploySale.js` and import as previously: `import deploySale from "./deploySale.js";`
@@ -228,6 +230,61 @@ We can now create this Sale in `index.js`:
 const saleContract = deploySale(signer, tierContract);
 console.log('------------------------------'); // separator
 ```
+
+## Interacting with what we have done
+
+Now that we have our Gated Sale deployed, we want to test that it works.
+
+First off, we will get the `price` of tokens in the Sale and create a buy configuration:
+
+```javascript
+let price = await saleContract.calculatePrice(ethers.utils.parseUnits("100", erc20decimals));
+console.log(`Info: Price of tokens in the Sale: ${price}`); // todo check the price is correct
+
+// configure buy for the sale (We have set this to Matic which is also used for paying gas fees, but this could easily be set to usdcc or some other token)
+const buyConfig = {
+  feeRecipient: address,
+  fee: price*0.01, // 1 percent fee for the platform
+  minimumUnits: 1000000, // 1 million??
+  desiredUnits: 1000000,
+  maximumPrice: price*10, // TODO VERY ARBITRARY ETHERS CONSTANT MAX AMOUNT // todo why do we set this?
+}
+```
+
+`fee` is an amount which platforms can set to take a commission of a Sale, the `feeRecipient` is who gets the fee.
+
+### Testing that a buy fails
+
+We now want to check that a buy fails (as we don't have the required tiket-like NFT for taking part):
+
+```javascript
+try { // separate try block as we want to catch the error separately
+  console.log(`Info: Buying from Sale with parameters:`, buyConfig);
+  await saleContract.buy(buyConfig); // this should trigger the catch below
+} catch (err) {
+  console.log(`Info: This should have failed because you don't have one of the NFTs required for taking part`, err); // console log the error which should be a revert
+}
+```
+
+Here we have created a separate `try` block to catch the error so that the we can handle how the program responds to the error, i.e. that it continues and tries again after the User has the required NFT.
+
+### Testing that a buy passes
+
+Finally, we want to give the User (you) an NFT and check that the buy passes:
+
+```javascript
+console.log(`Info: Minting you a required NFT to take part in Sale:`); // mint and send to you
+const result = await gatedNFTContract.mint(address); // get one of the NFTs needed to take part in the sale
+console.log(`Result: of NFT Minting:`, result);
+
+console.log(`Info: Buying from Sale with parameters:`, buyConfig);
+const buyStatus = await saleContract.buy(buyConfig);
+console.log(`Info: This should have passed because you do have one of the NFTs required for taking part`, buyStatus);
+```
+
+## Conclusion
+
+And that is a wrap on how you can connect different Rain components together. As always, if you have questions please reach out, and you can become part of our community by joining here.
 
 [full-example]: https://github.com/unegma/sdk-tutorial-sale
 [sale]: https://docs.rainprotocol.xyz/smart-contracts/sale/
