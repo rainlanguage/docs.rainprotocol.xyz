@@ -242,7 +242,7 @@ saleState.calculatePriceStateConfig = {
       rainSDK.VM.op(rainSDK.Sale.Opcodes.GREATER_THAN), // this will put a boolean on the stack (true: 1, false: 0)
 
       // this will behave like a minimum wallet cap, so you cant buy below this amount
-      // rainSDK.VM.op(rainSDK.Sale.Opcodes.LESS_THAN), // this will put a boolean on the stack (true: 1, false: 0)
+      // rainSDK.VM.op(rainSDK.Sale.Using Rain VM Opcodes.LESS_THAN), // this will put a boolean on the stack (true: 1, false: 0)
 
       // eager if will get the 1st (result of greater than) and 3rd value
       rainSDK.VM.op(rainSDK.Sale.Opcodes.VAL, 2), // `MaxUint256` this will be executed if the check above is true (this is an infinity price so it can't be bought)

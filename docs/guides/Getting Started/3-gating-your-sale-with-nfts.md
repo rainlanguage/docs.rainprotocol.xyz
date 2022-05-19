@@ -13,7 +13,14 @@ In a previous tutorial, you created a Sale which allowed users to buy a custom D
 
 If you remember, this sale was configured using a `tier` contract even though we didn't specifiy any configuration for this. We will now deploy another Sale, but this time use a custom Tiering system.
 
-##
+## Creating the Asset for use with Tier Gating the Sale
+
+If you did the GatedNFT tutorial, we will now begin by using the same code in order to create a custom NFT, send one to our address, then create a Sale with a requirement for 2 of these tokens (so we can see a fail happening). We will then send ourselves a second token so that we can participate in the sale.
+
+Please note, we can tier gate this Sale with any type of digital object, not just a Gated NFT (to which, as with fractals, we can add gating requirements).
+
+## 
+
 
 [full-example]: https://github.com/unegma/sdk-tutorial-sale
 [sale]: https://docs.rainprotocol.xyz/smart-contracts/sale/
