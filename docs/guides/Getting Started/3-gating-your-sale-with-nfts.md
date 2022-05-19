@@ -44,7 +44,7 @@ https://github.com/unegma/javascript-importmap-template
 
 For this tutorial, we are going to create 3 separate Javascript files, in addition to `index.js`, in order to keep things clean, and to show more easily what configuration belongs to what (it should also allow you to easily see what parts of the system are connected to each tutorial).
 
-Create a new file called `deployGatedNFTContract.js` and make sure to import it into `index.js` like so: `import deployGatedNFTContract from "./deployGatedNFTContract.js";`
+Create a new file called `deployGatedNFT.js` and make sure to import it into `index.js` like so: `import deployGatedNFT from "./deployGatedNFT.js";`
 
 This file will be very similar to this previous tutorial, and we won't go into much detail about what is going on, as that is covered over there:
 
@@ -98,7 +98,7 @@ const gatedNFTContract = deployGatedNFTContract(signer);
 
 Now we need to link the required ticket-like NFT to the Tier.
 
-As before, we will create a new file called `deployTierContract.js` and import it into `index.js` like so: `import deployTierContract from "./deployTierContract.js";`.
+As before, we will create a new file called `deployTier.js` and import it into `index.js` like so: `import deployTier from "./deployTier.js";`.
 
 This tier contract needs to use the Gated NFT created previously, so must include `gatedNFTContract` as a parameter:
 
@@ -134,6 +134,100 @@ console.log('------------------------------'); // separator
 ```
 
 ## Creating and Tier Gating the Sale
+
+We will now add the Sale and pass in the Tier contract. Again, we won't go over what is happening here, as we covered this in another tutorial.
+
+Create `deploySale.js` and import as previously: `import deploySale from "./deploySale.js";`
+
+And then create the functionality for the Sale itself:
+
+```javascript
+import * as rainSDK from "rain-sdk";
+
+export default async function deploySale(signer, tierContract) {
+  const address = await signer.getAddress()
+
+  // config for the sale
+  const erc20decimals = 18; // See here for more info: https://docs.openzeppelin.com/contracts/3.x/erc20#a-note-on-decimals
+  const staticPrice = ethers.utils.parseUnits("100", erc20decimals);
+  const walletCap = ethers.utils.parseUnits("10", erc20decimals);
+  const saleState = {
+    canStartStateConfig: undefined, // config for the start of the Sale (see opcodes section below)
+    canEndStateConfig: undefined, // config for the end of the Sale (see opcodes section below)
+    calculatePriceStateConfig: undefined, // config for the `calculatePrice` function (see opcodes section below)
+    recipient: "", // who will receive the RESERVE token (e.g. Matic/USDCC) after the Sale completes
+    reserve: "0x0000000000000000000000000000000000001010", // the reserve token contract address (Polygon Testnet MATIC)
+    saleTimeout: 100, // this will be 100 blocks
+    cooldownDuration: 100, // this will be 100 blocks
+    minimumRaise: ethers.utils.parseUnits("1000", erc20decimals), // minimum to complete a Raise
+    dustSize: ethers.utils.parseUnits("0", erc20decimals),
+  };
+  const redeemableState = {
+    erc20Config: { // config for the redeemable token (rTKN) which participants will get in exchange for reserve tokens
+      name: "Raise token", // the name of the rTKN
+      symbol: "rTKN", // the symbol for your rTKN
+      distributor: "0x0000000000000000000000000000000000000000", // distributor address
+      initialSupply: ethers.utils.parseUnits("1000", erc20decimals), // initial rTKN supply
+    },
+    tier: undefined, // tier contract address (used for gating), will be set to the address of the tier contract after deployment
+    minimumTier: 0, // minimum tier a user needs to take part
+    distributionEndForwardingAddress: "0x0000000000000000000000000000000000000000" // the rTKNs that are not sold get forwarded here (0x00.. will burn them)
+  }
+  redeemableState.tier = tierContract.address; // to gate the sale, we are actually setting the tiering on the token (which will be bought from the sale) itself
+
+  // Opcode Configurations
+  saleState.canStartStateConfig = {
+    constants: [1],
+    sources: [ethers.utils.concat([ rainSDK.VM.op(rainSDK.Sale.Opcodes.VAL, 0) ])],
+    stackLength: 1,
+    argumentsLength: 0,
+  };
+  saleState.canEndStateConfig = {
+    constants: [1],
+    sources: [ethers.utils.concat([ rainSDK.VM.op(rainSDK.Sale.Opcodes.VAL, 0) ])],
+    stackLength: 1,
+    argumentsLength: 0,
+  };
+
+  // define the parameters for the VM which will be used whenever the price is calculated, for example, when a user wants to buy a number of units
+  saleState.calculatePriceStateConfig = {
+    constants: [staticPrice, walletCap, ethers.constants.MaxUint256],
+    sources: [
+      ethers.utils.concat([
+        rainSDK.VM.op(rainSDK.Sale.Opcodes.CURRENT_BUY_UNITS),
+        rainSDK.VM.op(rainSDK.Sale.Opcodes.TOKEN_ADDRESS),
+        rainSDK.VM.op(rainSDK.Sale.Opcodes.SENDER),
+        rainSDK.VM.op(rainSDK.Sale.Opcodes.IERC20_BALANCE_OF),
+        rainSDK.VM.op(rainSDK.Sale.Opcodes.ADD, 2),
+        rainSDK.VM.op(rainSDK.Sale.Opcodes.VAL, 1),
+        rainSDK.VM.op(rainSDK.Sale.Opcodes.GREATER_THAN),
+        rainSDK.VM.op(rainSDK.Sale.Opcodes.VAL, 2),
+        rainSDK.VM.op(rainSDK.Sale.Opcodes.VAL, 0),
+        rainSDK.VM.op(rainSDK.Sale.Opcodes.EAGER_IF),
+      ]),
+    ],
+    stackLength: 10,
+    argumentsLength: 0,
+  };
+  saleState.recipient = address;
+
+  console.log("Creating: Sale (Using Tier contract which uses GatedNFT) with the following State:", saleState, redeemableState);
+  const saleContract = await rainSDK.Sale.deploy(signer, saleState, redeemableState); // todo should this be then passed to the constructor in the sdk or used as is?
+  console.log('Result: Sale Contract:', saleContract); // the Sale contract and corresponding address
+  return saleContract;
+}
+```
+Here we can see that we have set the `tier` parameter on the ERC20 being sold in the Sale, to be the tier contract of the Tier we just created: `tier: tierContract.address`.
+
+We have also set the `reserve` in the Sale (i.e the token-to-gather) to be the Contract address of Mumbai TestNet Matic, which we will be gathering for this example.
+
+We can now create this Sale in `index.js`:
+
+```javascript
+// Deploy Sale
+const saleContract = deploySale(signer, tierContract);
+console.log('------------------------------'); // separator
+```
 
 [full-example]: https://github.com/unegma/sdk-tutorial-sale
 [sale]: https://docs.rainprotocol.xyz/smart-contracts/sale/
