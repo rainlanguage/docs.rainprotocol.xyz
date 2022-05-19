@@ -7,17 +7,33 @@ categories: various
 
 ## Intro
 
-We will now begin to combine knowledge gathered from the previous tutorials in order to show how the composability side of Rain works.
+We will now begin to combine knowledge gathered from previous tutorials in order to show how composability works with the Rain ecosystem.
 
-In a previous tutorial, you created a Sale which allowed users to buy a custom Digital Object (in that case, an NFT), in exchange for another Digital Object (in that case a digital currency)
+In a previous tutorial, we created a Sale which allowed users to buy custom Digital Objects (rTKN), in exchange for other Digital Objects (a Digital Currency).
 
-If you remember, this sale was configured using a `tier` contract even though we didn't specifiy any configuration for this. We will now deploy another Sale, but this time use a custom Tiering system.
+If you remember, the Sale was configured using a pre existing Tier contract even though we didn't specify any configuration for this. We will now deploy another Sale, but this time use a custom Tier system.
+
+
+## Overview
+
+As an overview, this tutorial will show you how to do the following in this order: 
+
+1. Create an Asset (Digital Object/NFT) which the User is required to own in order to take part in the Sale.
+2. Create a Tier 'barrier' which connects with the Asset and is responsible for allowing (or not) access to the Sale based on ownership.
+3. Create the Sale and connect the Tier system (which is connected to the Asset). The Sale will then be using this system when users want to take part.
+
+Finally:
+* We will demonstrate the Sale failing if the User (you) do not have the required access token.
+* We will mint an Asset for the User (i.e. we will send you one of these NFTs).
+* We will demonstrate the Sale passing after the User is given an access token (i.e. we will allow you to buy from the Sale).
+
+As always, you will need Polygon Mumbai Testnet Matic tokens for this tutorial, for both network fees AND for buying from the Sale. 
 
 ## Creating the Asset for use with Tier Gating the Sale
 
-If you did the GatedNFT tutorial, we will now begin by using the same code in order to create a custom NFT, send one to our address, then create a Sale with a requirement for 2 of these tokens (so we can see a fail happening). We will then send ourselves a second token so that we can participate in the sale.
+If you followed the GatedNFT tutorial, we created a custom NFT and specified parameters for how it should work. We will now create another NFT for token gating a Sale.
 
-Please note, we can tier gate this Sale with any type of digital object, not just a Gated NFT (to which, as with fractals, we can add gating requirements).
+
 
 ## 
 
