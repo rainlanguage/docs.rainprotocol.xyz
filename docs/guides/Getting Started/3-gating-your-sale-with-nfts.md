@@ -7,7 +7,9 @@ categories: various
 
 ## Intro
 
-We will now begin to combine knowledge gathered from previous tutorials in order to show how composability works with the Rain ecosystem.
+_(Alpha Version)_
+
+We will now begin to combine knowledge gathered from previous tutorials in order to show how composibility works within the Rain ecosystem.
 
 In a previous tutorial, we created a Sale which allowed users to buy custom Digital Objects (rTKN), in exchange for other Digital Objects (a Digital Currency).
 
@@ -171,11 +173,10 @@ export default async function deploySale(signer, tierContract) {
       distributor: "0x0000000000000000000000000000000000000000", // distributor address
       initialSupply: ethers.utils.parseUnits("1000", erc20decimals), // initial rTKN supply
     },
-    tier: undefined, // tier contract address (used for gating), will be set to the address of the tier contract after deployment
+    tier: tierContract.address, // tier contract address (used for gating), will be set to the address of the tier contract after deployment
     minimumTier: 0, // minimum tier a user needs to take part
     distributionEndForwardingAddress: "0x0000000000000000000000000000000000000000" // the rTKNs that are not sold get forwarded here (0x00.. will burn them)
   }
-  redeemableState.tier = tierContract.address; // to gate the sale, we are actually setting the tiering on the token (which will be bought from the sale) itself
 
   // Opcode Configurations
   saleState.canStartStateConfig = {
