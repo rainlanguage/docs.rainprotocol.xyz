@@ -287,6 +287,8 @@ console.log(`Info: This should have passed because you do have one of the NFTs r
 
 And that is a wrap on how you can connect different Rain components together. As always, if you have questions please reach out, and you can become part of our community by joining here.
 
+Here is a demo on how it might work with a frontend: https://github.com/unegma/gated-sale-frontend
+
 [full-example]: https://github.com/unegma/sdk-tutorial-sale
 [sale]: https://docs.rainprotocol.xyz/smart-contracts/sale/
 [previous-tutorial]: https://docs.rainprotocol.xyz/guides/SDK/using-the-rain-sdk-to-deploy-your-first-rain-contract
