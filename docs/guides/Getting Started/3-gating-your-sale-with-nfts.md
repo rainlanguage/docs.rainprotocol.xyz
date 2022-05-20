@@ -41,8 +41,8 @@ https://github.com/unegma/javascript-importmap-template
 
 
 
-// todo remember to remind user to approve transactions at each stage (may need to click off and back on to metamask)
-// todo remember to remind user who they will be at each point (dev vs user)
+[//]: # (// todo remember to remind user to approve transactions at each stage &#40;may need to click off and back on to metamask&#41;)
+[//]: # (// todo remember to remind user who they will be at each point &#40;dev vs user&#41;)
 
 For this tutorial, we are going to create 3 separate Javascript files, in addition to `index.js`, in order to keep things clean, and to show more easily what configuration belongs to what (it should also allow you to easily see what parts of the system are connected to each tutorial).
 
@@ -137,7 +137,7 @@ console.log('------------------------------'); // separator
 
 ## Creating and Tier Gating the Sale
 
-// todo write that this is an ERC721 Balance Tier Contract and that it is possible to Combine Tiers
+[//]: # (// todo write that this is an ERC721 Balance Tier Contract and that it is possible to Combine Tiers)
 
 We will now add the Sale and pass in the Tier contract. Again, we won't go over what is happening here, as we covered this in another tutorial.
 
