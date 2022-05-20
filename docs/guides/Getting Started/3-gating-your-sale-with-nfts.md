@@ -9,9 +9,9 @@ categories: various
 
 _(Alpha Version)_
 
-We will now begin to combine knowledge gathered from previous tutorials in order to show how composibility works within the Rain ecosystem.
+We will now begin to combine knowledge gathered from [previous tutorials][gated-nft-tutorial] in order to show how composibility works within the [Rain][rain-protocol] ecosystem.
 
-In a previous tutorial, we created a Sale which allowed users to buy custom Digital Objects (rTKN), in exchange for other Digital Objects (a Digital Currency).
+In a [previous tutorial][sale-tutorial], we created a Sale which allowed users to buy custom Digital Objects (rTKN), in exchange for other Digital Objects (a Digital Currency).
 
 If you remember, the Sale was configured using a pre existing Tier contract even though we didn't specify any configuration for this. We will now deploy another Sale, but this time use a custom Tier system.
 
@@ -29,17 +29,13 @@ Finally:
 * We will mint an Asset for the User (i.e. we will send you one of these NFTs).
 * We will demonstrate the Sale passing after the User is given an access token (i.e. we will allow you to buy from the Sale).
 
-As always, you will need Polygon Mumbai Testnet Matic tokens for this tutorial, for both network fees AND for buying from the Sale. 
+As always, you will need [Polygon Mumbai Testnet Matic][polygon-faucet] tokens for this tutorial, for both network fees AND for buying from the Sale. 
 
 ## Creating the Asset for use with Tier Gating the Sale
 
-If you followed the GatedNFT tutorial, we created a custom NFT and specified parameters for how it should work. We will now create another NFT for token gating a Sale.
+If you followed the [GatedNFT tutorial][gated-nft-tutorial], we created a custom NFT and specified parameters for how it should work. We will now create another NFT for token gating a Sale.
 
-As before, we will need the boilerplate set up which is agnostic to any framework (such as React), but you are welcome to follow this example using a framework of your choice.
-
-https://github.com/unegma/javascript-importmap-template
-
-
+As before, we will need the [importmap boilerplate][importmap-boilerplate] set up which is agnostic to any framework (such as React), but you are welcome to follow this example using a framework of your choice ([see an example of how to use this tutorial with React][gated-sale-frontend]).
 
 [//]: # (// todo remember to remind user to approve transactions at each stage &#40;may need to click off and back on to metamask&#41;)
 [//]: # (// todo remember to remind user who they will be at each point &#40;dev vs user&#41;)
@@ -95,7 +91,6 @@ const gatedNFTContract = deployGatedNFTContract(signer);
 ```
 
 
-
 ## Creating the Tier Contract for use with Gating the Sale
 
 Now we need to link the required ticket-like NFT to the Tier.
@@ -125,7 +120,7 @@ We set the `erc721` address here to the address of the Gated NFT Contract, and s
 
 Currently, to deploy a tiering system, 8 different parameters need to be passed, representing an amount of `erc721` tokens of the type configured above.
 
-We set `tier1` to be `1` token, and this is the main tier we will use. The rest of the values, we set to `2` which will be impossible to acheive because previously we set the  `maxPerAddress` and `maxMintable` values of the token itself to 1 (so it will be impossible for anyone to own more, and therefore achieve a tier higher than 1).
+We set `tier1` to be `1` token, and this is the main tier we will use. The rest of the values, we set to `2` which will be impossible to achieve because previously we set the  `maxPerAddress` and `maxMintable` values of the token itself to 1 (so it will be impossible for anyone to own more, and therefore achieve a tier higher than 1).
 
 We can now deploy the Tier in `index.js` as we did with the Gated NFT:
 
@@ -222,7 +217,7 @@ export default async function deploySale(signer, tierContract) {
 ```
 Here we can see that we have set the `tier` parameter on the ERC20 being sold in the Sale, to be the tier contract of the Tier we just created: `tier: tierContract.address`.
 
-We have also set the `reserve` in the Sale (i.e the token-to-gather) to be the Contract address of Mumbai TestNet Matic, which we will be gathering for this example.
+We have also set the `reserve` in the Sale (i.e the token-to-gather) to be the Contract address of [Mumbai TestNet Matic][polygon-faucet], which we will be gathering for this example.
 
 We can now create this Sale in `index.js`:
 
@@ -285,20 +280,20 @@ console.log(`Info: This should have passed because you do have one of the NFTs r
 
 ## Conclusion
 
-And that is a wrap on how you can connect different Rain components together. As always, if you have questions please reach out, and you can become part of our community by joining here.
+And that is a wrap on how you can connect different Rain components together. As always, if you have questions please reach out, and you can [become part of our community by joining here][discord].
 
-Here is a demo on how it might work with a frontend: https://github.com/unegma/gated-sale-frontend
+[Here is a demo on how it might work with a React frontend][gated-sale-frontend].
 
+[rain-protocol]: https://rainprotocol.xyz
 [full-example]: https://github.com/unegma/sdk-tutorial-sale
 [sale]: https://docs.rainprotocol.xyz/smart-contracts/sale/
-[previous-tutorial]: https://docs.rainprotocol.xyz/guides/SDK/using-the-rain-sdk-to-deploy-your-first-rain-contract
 [token-gating]: https://medium.com/@jshanks21/nft-meaning-token-gating-ad83aef7cccd
 [discord]: https://discord.gg/dzYS3JSwDP
 [docs]: https://docs.rainprotocol.xyz
 [react-example]: https://github.com/beehive-innovation/examples.rainprotocol.xyz/blob/master/src/examples/DeploySaleExample/DeploySaleExample.tsx
 [react-example-live]:  https://examples.rainprotocol.xyz/deploy-sale-example
 [unpkg]: https://unpkg.com/
-[mumbai]: https://faucet.polygon.technology/
+[polygon-faucet]: https://faucet.polygon.technology/
 [metamask-tutorial]: https://www.youtube.com/watch?v=6h_liI6atEk
 [system-js]: https://www.digitalocean.com/community/tutorials/how-to-dynamically-import-javascript-with-import-maps
 [npx]: https://stackoverflow.com/questions/50605219/difference-between-npx-and-npm
@@ -306,3 +301,7 @@ Here is a demo on how it might work with a frontend: https://github.com/unegma/g
 [ethers]: https://github.com/ethers-io/ethers.js/
 [full-example]: https://github.com/unegma/sdk-tutorial-sale
 [opcodes]: https://en.wikipedia.org/wiki/Opcode
+[sale-tutorial]: https://docs.rainprotocol.xyz/guides/Getting%20Started/using-the-rain-sdk-to-deploy-a-sale-example-with-opcodes
+[gated-nft-tutorial]: https://docs.rainprotocol.xyz/guides/Getting%20Started/using-the-rain-sdk-to-deploy-your-first-rain-contract
+[importmap-boilerplate]: https://github.com/unegma/javascript-importmap-template
+[gated-sale-frontend]: https://github.com/unegma/gated-sale-frontend
