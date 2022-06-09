@@ -1,4 +1,4 @@
-Factory for creating and deploying `VerifyTier` contracts.
+Factory for creating and deploying `CombineTier` contracts.
 
 
 ## Variables
@@ -31,9 +31,9 @@ arguments and pass them to this function directly.
 
 
 
-### `createChildTyped(address verify_) → contract VerifyTier` (external)
+### `createChildTyped(struct StateConfig config_) → contract CombineTier` (external)
 
-Typed wrapper for `createChild` with `Verify`.
+Typed wrapper for `createChild` with Source.
 Use original `Factory` `createChild` function signature if function
 parameters are already encoded.
 

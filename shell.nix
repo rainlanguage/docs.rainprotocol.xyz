@@ -15,10 +15,29 @@ let
     prettier --write .
   '';
 
-  docs-version = pkgs.writeShellScriptBin "docs-version" ''
+  build-docs = pkgs.writeShellScriptBin "build-docs" ''
+    check-contracts
+    npm run build-rain-docs
+    npm run build-rain-sdk-docs
+
     version=`jq .version node_modules/rain-sdk/package.json`; version=''${version:1:-1}
-    echo $version
-    # docusaurus docs:version $version
+    docusaurus docs:version $version
+  '';
+
+  check-contracts = pkgs.writeShellScriptBin "check-contracts" ''
+    # Get the Rain Protocol commit in the SDK
+    sdkCommit=`jq '.devDependencies."@beehiveinnovation/rain-protocol"' node_modules/rain-sdk/package.json`;
+    sdkCommit=''${sdkCommit#*\#}; sdkCommit=''${sdkCommit::-1}
+
+    # Get the current commit used
+    currentCommit=`jq '.devDependencies."@beehiveinnovation/rain-protocol"' package.json`;
+    currentCommit=''${currentCommit#*\#}; currentCommit=''${currentCommit::-1}
+
+    # If the commits are different, then update it
+    if [[ $sdkCommit != $currentCommit ]]; then
+       echo "The commit in the SDK is different. Updating..."
+       npm install beehive-innovation/rain-protocol.git#''${sdkCommit}
+    fi
   '';
 
 in
@@ -31,12 +50,13 @@ pkgs.stdenv.mkDerivation {
     pkgs.jq
     prettier-check
     prettier-write
-    docs-version 
+    check-contracts
+    build-docs
   ];
 
   shellHook = ''
     export PATH=$( npm bin ):$PATH
     # keep it fresh
-    # npm install --verbose --fetch-timeout 3000000
+    npm install --verbose --fetch-timeout 3000000
   '';
 }
