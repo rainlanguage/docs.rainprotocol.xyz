@@ -14,6 +14,13 @@ let
   prettier-write = pkgs.writeShellScriptBin "prettier-write" ''
     prettier --write .
   '';
+
+  docs-version = pkgs.writeShellScriptBin "docs-version" ''
+    version=`jq .version node_modules/rain-sdk/package.json`; version=''${version:1:-1}
+    echo $version
+    # docusaurus docs:version $version
+  '';
+
 in
 pkgs.stdenv.mkDerivation {
   name = "shell";
@@ -21,13 +28,15 @@ pkgs.stdenv.mkDerivation {
     pkgs.nixpkgs-fmt
     pkgs.yarn
     pkgs.nodejs-17_x
+    pkgs.jq
     prettier-check
     prettier-write
+    docs-version 
   ];
 
   shellHook = ''
     export PATH=$( npm bin ):$PATH
     # keep it fresh
-    npm install --verbose --fetch-timeout 3000000
+    # npm install --verbose --fetch-timeout 3000000
   '';
 }
