@@ -40,6 +40,7 @@ const config = {
               ...args,
             });
           },
+          includeCurrentVersion: false,
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
@@ -69,6 +70,11 @@ const config = {
             href: "https://github.com/beehive-innovation",
             label: "GitHub",
             position: "right",
+          },
+          {
+            type: "docsVersionDropdown",
+            position: "left",
+            dropdownActiveClassDisabled: true,
           },
         ],
       },
