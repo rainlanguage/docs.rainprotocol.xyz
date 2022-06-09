@@ -46,7 +46,7 @@ pkgs.stdenv.mkDerivation {
   buildInputs = [
     pkgs.nixpkgs-fmt
     pkgs.yarn
-    pkgs.nodejs-17_x
+    pkgs.nodejs-16_x
     pkgs.jq
     prettier-check
     prettier-write
