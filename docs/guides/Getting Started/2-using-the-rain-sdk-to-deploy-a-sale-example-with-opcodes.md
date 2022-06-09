@@ -316,3 +316,6 @@ console.log(`Price: ${price}`);
 [ethers]: https://github.com/ethers-io/ethers.js/
 [full-example]: https://github.com/unegma/sdk-tutorial-sale
 [opcodes]: https://en.wikipedia.org/wiki/Opcode
+
+
+[//]: # (todo write about this nubmer 115792089237316195423570985008687907853269984665640564039457584007913129639935)
