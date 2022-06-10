@@ -288,7 +288,7 @@ And that is a wrap on how you can connect different Rain components together. As
 [full-example]: https://github.com/unegma/sdk-tutorial-sale
 [sale]: https://docs.rainprotocol.xyz/smart-contracts/sale/
 [token-gating]: https://medium.com/@jshanks21/nft-meaning-token-gating-ad83aef7cccd
-[discord]: https://discord.gg/dzYS3JSwDP
+[telegram]: https://t.me/+w4mJbCT6IfI2YTU0
 [docs]: https://docs.rainprotocol.xyz
 [react-example]: https://github.com/beehive-innovation/examples.rainprotocol.xyz/blob/master/src/examples/DeploySaleExample/DeploySaleExample.tsx
 [react-example-live]:  https://examples.rainprotocol.xyz/deploy-sale-example

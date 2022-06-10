@@ -129,14 +129,14 @@ export default function TrustParticipantPage({}: any) {
 
 And that is it for our first example on how to integrate a GraphQL query into the Rain Subgraph in a Javascript based app.
 
-As always, join the [Discord][discord] for more discussion and to connect with other devs, and feel free to reach out with any questions.
+As always, join the [Telegram][telegram] for more discussion and to connect with other devs, and feel free to reach out with any questions.
 
 [graph-overview]: https://blog.rainprotocol.xyz/various/rain-protocol-the-graph-overview/
 [the-graph]: https://thegraph.com/en/
 [graph-ql]: https://graphql.org/
 [subgraph]: https://thegraph.com/docs/en/developer/define-subgraph-hosted/
 [rain-subgraph]: https://thegraph.com/hosted-service/subgraph/beehive-innovation/rain-protocol
-[discord]: https://discord.gg/dzYS3JSwDP
+[telegram]: https://t.me/+w4mJbCT6IfI2YTU0
 [postman]: https://www.postman.com/
 [rain-examples]: https://examples.rainprotocol.xyz/
 [previous-article]: https://blog.rainprotocol.xyz/various/rain-protocol-the-graph-overview/

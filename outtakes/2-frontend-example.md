@@ -207,7 +207,7 @@ And finally we will create the function which is called when the button is press
 [//]: # (todo what is the best way to get the abi in or are we using typechain)
 [//]: # (todo does josh use own connect button or a library?)
 
-[discord]: https://discord.gg/dzYS3JSwDP
+[telegram]: https://t.me/+w4mJbCT6IfI2YTU0
 [ethers]: https://docs.ethers.io/
 [hardhat]: https://hardhat.org/getting-started/
 

@@ -140,7 +140,7 @@ To `hardhat.config.js`, so go ahead and change this to `0.8.10` and the compilat
 
 You can see the repo with the code up to this point [here][repo-stage-base].
 
-[discord]: https://discord.gg/dzYS3JSwDP
+[telegram]: https://t.me/+w4mJbCT6IfI2YTU0
 [hardhat]: https://hardhat.org/getting-started/
 [npx]: https://www.freecodecamp.org/news/npm-vs-npx-whats-the-difference/
 [repo-stage-base]: https://github.com/unegma/rain-examples/releases/tag/stage-base

@@ -9,7 +9,7 @@ categories: development
 
 This article will take the developer through an example of how to get the Rain Protocol code running on their machine, and then writing a test which handles and processes opcodes for performing a very simple piece of functionality. 
 
-Please be aware, this project is under constant development, and these examples are likely to change. We would love your feedback on this article so please join our [Discord][discord] server in order to discuss with us and other like-minded developers who may also be able to help with any questions.
+Please be aware, this project is under constant development, and these examples are likely to change. We would love your feedback on this article so please join our [Telegram][telegram] server in order to discuss with us and other like-minded developers who may also be able to help with any questions.
 
 ## Setting Up
 
@@ -89,7 +89,7 @@ Finally, the result is obtained by running the calculator, and the the result ch
 
 And that is it for writing your first piece of Domain Specific Language using the Rain virtual machine. The possibilities are enormous, whilst the risk to companies using the tooling reduced, due to the limited set of functionality provided by the RainVM.
 
-From here, check out the other Opcodes in the vm directory and see what else you can create. And remember to join our [Discord][discord] to keep up with developments! 
+From here, check out the other Opcodes in the vm directory and see what else you can create. And remember to join our [Telegram][telegram] to keep up with developments! 
 
-[discord]: https://discord.gg/dzYS3JSwDP
+[telegram]: https://t.me/+w4mJbCT6IfI2YTU0
 [github]: https://github.com/beehive-innovation/rain-protocol

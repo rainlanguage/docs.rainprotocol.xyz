@@ -303,7 +303,7 @@ console.log(`Price: ${price}`);
 [sale]: https://docs.rainprotocol.xyz/smart-contracts/sale/
 [previous-tutorial]: https://docs.rainprotocol.xyz/guides/SDK/using-the-rain-sdk-to-deploy-your-first-rain-contract
 [token-gating]: https://medium.com/@jshanks21/nft-meaning-token-gating-ad83aef7cccd
-[discord]: https://discord.gg/dzYS3JSwDP
+[telegram]: https://t.me/+w4mJbCT6IfI2YTU0
 [docs]: https://docs.rainprotocol.xyz
 [react-example]: https://github.com/beehive-innovation/examples.rainprotocol.xyz/blob/master/src/examples/DeploySaleExample/DeploySaleExample.tsx
 [react-example-live]:  https://examples.rainprotocol.xyz/deploy-sale-example

@@ -26,11 +26,11 @@ In order to answer some of these questions without an indexing service, a develo
 
 The Rain Protocol is no exception regarding the need for indexing. We have built out our own Subgraph [available here][rain-subgraph] which can be used for answering questions such as: "Which raises have happened/are happening across every frontend?", "Which projects are nearly seeded and which have the highest seed fees?", and "Who are the biggest funders across the whole ecosystem?".
 
-In future articles we will give some examples of how to create some of these queries if you are a developer, but if you are already familiar with writing graphql, then you can already use the tools available on [our Subgraph][rain-subgraph] in order to experiment with what is currently possible using our tooling. And as always, drop into our [Discord][discord] for dev chat about our tooling! Happy BUIDLING. 
+In future articles we will give some examples of how to create some of these queries if you are a developer, but if you are already familiar with writing graphql, then you can already use the tools available on [our Subgraph][rain-subgraph] in order to experiment with what is currently possible using our tooling. And as always, drop into our [Telegram][telegram] for dev chat about our tooling! Happy BUIDLING. 
 
 [the-graph]: https://thegraph.com/en/
 [subgraph]: https://thegraph.com/docs/en/developer/define-subgraph-hosted/
 [ens]: https://thegraph.com/explorer/subgraph?id=0x06b3a0712f26c7e72dc379ca80915c67c24eff64-1&view=Overview
 [uniswap]: https://thegraph.com/explorer/subgraph?id=0x9bde7bf4d5b13ef94373ced7c8ee0be59735a298-2&view=Overview
 [rain-subgraph]: https://thegraph.com/hosted-service/subgraph/beehive-innovation/rain-protocol
-[discord]: https://discord.gg/dzYS3JSwDP
+[telegram]: https://t.me/+w4mJbCT6IfI2YTU0

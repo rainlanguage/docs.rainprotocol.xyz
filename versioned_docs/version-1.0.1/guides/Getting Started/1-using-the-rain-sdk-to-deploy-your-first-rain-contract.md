@@ -173,7 +173,7 @@ And that is a wrap on deploying your very first smart contract with Rain! If you
 Any questions, feel free to [reach out to us in our Discord][discord]. Happy buidling!
 
 [token-gating]: https://medium.com/@jshanks21/nft-meaning-token-gating-ad83aef7cccd
-[discord]: https://discord.gg/dzYS3JSwDP
+[telegram]: https://t.me/+w4mJbCT6IfI2YTU0
 [docs]: https://docs.rainprotocol.xyz
 [react-example]: https://github.com/beehive-innovation/examples.rainprotocol.xyz/tree/master/src/examples/DeployGatedNFTExample
 [react-example-live]:  https://examples.rainprotocol.xyz/deploy-gatednft-example
