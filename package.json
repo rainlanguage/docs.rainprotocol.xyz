@@ -36,8 +36,9 @@
     "@cmfcmf/docusaurus-search-local": "^0.10.0",
     "@docusaurus/module-type-aliases": "2.0.0-beta.17",
     "@tsconfig/docusaurus": "^1.0.4",
+    "hardhat": "^2.9.9",
     "prettier": "^2.6.0",
-    "rain-sdk": "^1.0.1",
+    "rain-sdk": "^1.1.0",
     "solc-0.8": "npm:solc@0.8.10",
     "solidity-docgen": "^0.5.16",
     "typescript": "^4.6.2"
