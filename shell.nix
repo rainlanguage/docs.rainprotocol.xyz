@@ -48,6 +48,7 @@ pkgs.stdenv.mkDerivation {
     pkgs.yarn
     pkgs.nodejs-16_x
     pkgs.jq
+    pkgs.watch
     prettier-check
     prettier-write
     check-contracts
