@@ -17,7 +17,7 @@ Existing marketplaces have been focussed on monetisation and walled gardens rath
 
 We have been focussing on the more complex and (we believe) exciting problem of how to use any currency or currencies to buy in-game assets like avatars, skins, land, vehicles, weapons; powered by any combination of rules to determine who can mint, how much they can mint and how much minting costs. 
 
-This has been a bugbear of mine since [digging into web3 game economies in 2018]("https://medium.com/embersword/announcement-david-atkinson-joins-the-ember-sword-team-d8e2caef25a2"). After getting increasingly frustrated at the one or two token model, I started wondering whether there is a technical rather than conceptual limitation. Maybe if we related to smart contracts differently and could read and write them differently, the game economies we created would be more creative also.
+This has been a bugbear of mine since [digging into web3 game economies in 2018](https://medium.com/embersword/announcement-david-atkinson-joins-the-ember-sword-team-d8e2caef25a2). After getting increasingly frustrated at the one or two token model, I started wondering whether there is a technical rather than conceptual limitation. Maybe if we related to smart contracts differently and could read and write them differently, the game economies we created would be more creative also.
 
 ## How does your work aim to address this problem? 
 
