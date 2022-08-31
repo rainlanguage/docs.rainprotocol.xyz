@@ -1,7 +1,7 @@
 ---
 slug: proposal-a-nextgen-game-marketplace
 title: Proposal&#58; A Rain-powered nextgen game marketplace
-authors: dcatki, highonhopium
+authors: dcatki
 tags: [rain interpreter, games, marketplace, tokenomics]
 ---
 
