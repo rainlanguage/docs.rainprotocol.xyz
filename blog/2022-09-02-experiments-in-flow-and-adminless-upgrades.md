@@ -1,3 +1,10 @@
+---
+slug: experiments-in-flow-and-adminless-upgrades
+title: "Experiments in flow and adminless upgrades"
+authors: thedavidmeister
+tags: [interpreter, upgrades, flow, gas, security, code-size]
+---
+
 # Experiments in flow and adminless upgrades
 
 This week I spent some time on a general purpose struct that defines token movements. In the [near future](https://github.com/beehive-innovation/rain-protocol/pull/452) this struct and associated logic will replace the `EmissionsERC20` contract.
