@@ -13,6 +13,8 @@ This is all a leadup to "adminless upgrades" for interpreters (previously known 
 
 In short, this is the crux of the flow code in Solidity from this week.
 
+<!--truncate-->
+
 ```rust
 struct ERC20IO {
     address token;

@@ -1,0 +1,47 @@
+---
+slug: creating
+title: "Creating a game asset system with the Rain Game Designer"
+authors: highonhopium
+tags: [rain interpreter, games, marketplace, tokenomics]
+---
+
+One of the ongoing experiments we've been working on in our collective is a Rain-powered asset designer and marketplace. At the moment it's a "game designer" but in reality this could be applied to any kind of marketplace-as-gamified-economy.
+
+Due to popular demand, I've recorded a demo of how you could use the Game Designer POC to quickly create a system of game assets, where the economy itself could be considered a game.
+<!--truncate-->
+
+Here's the rough asset system I create, and the demo.
+
+![](https://i.imgur.com/RY0pq8J.png)
+
+---
+
+<Embed />
+
+---
+
+Obviously there's an interface for managing your assets, uploading artwork etc, which is fine but definitely not ground-breaking.
+
+But, using Rain unlocks a few really cool things:
+
+### 1. I can price each asset in different currencies. 
+Usually that wouldn't be that interesting but in this case I can also add an unlimited number of currencies, and use any mix of ERC20's and ERC1155's, including the other game tokens. This means I can really easily create upgrade paths, by making one asset part of the price for the upgraded version.
+
+### 2. The prices themselves are dynamic.
+For example, in this demo I make the first-tier Dragon free, but only for holders of my game's founders/genesis NFT. This logic could get way more complex, e.g. imagine if there was tiered pricing for players who are staking different amounts of my game's token, pricing based on activity or holding soulbound tokens.
+
+### 3. I can also gate access to minting assets.
+In the same way rules can determine price, they can also determine quantity. This is how I easily set up a time-bound free mint. Anyone can mint 1 NFT within certain times, and outside of those times the quantity is 0.
+
+That logic could also be combined with the above (maybe the green dragon is only free for founders NFT holders within a certain timeframe).
+
+### What's next?
+This is just a proof of concept and we're working on many other ideas, much of which will be powered by the incoming improvements to Rain including the [Flow struct](https://docs.rainprotocol.xyz/blog/experiments-in-flow-and-adminless-upgrades) and [external calls](https://docs.rainprotocol.xyz/blog/experiments-in-unlimited-opcodes). Also keep an eye out for the parser, which will allow you to write Rain expressions directly in a format similar to Excel formulas.
+
+export const Embed = () => (
+    <div style={{position: 'relative', paddingBottom: '62.5%', height:'0'}}>
+    <iframe src="https://www.loom.com/embed/cc890e2a45d44d42a3e1894a0ed22d14" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style={{position: 'absolute', top: '0', left: '0', width: '100%', height: '100%'}}></iframe>
+    </div>
+    )
+
+

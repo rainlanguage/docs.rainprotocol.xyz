@@ -17,6 +17,7 @@ tags: [staking, proposal]
 - No admin keys required to manage or rescale rewards over time
 - Support third party tokens (but not necessarily "exotic" tokens, can be interactive)
 - Support "same token" rewards as "revenue share" style distributions
+<!--truncate-->
 
 ## Current situation
 

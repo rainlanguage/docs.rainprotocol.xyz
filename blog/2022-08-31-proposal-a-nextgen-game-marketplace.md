@@ -12,9 +12,12 @@ _This post is synthesised from conversations with the Game7 DAO during their gra
 ## Describe the problem that your potential users are facing today.
 Game economies are struggling to break the 1-2 token paradigm and so the ‘play-to-earn’ movement is being revisited with people not sure what will drive the next waves of adoption from web2 to web3 gaming.
 
+<!--truncate-->
+
 Existing marketplaces have been focussed on monetisation and walled gardens rather than supporting the actual needs of game economies. Existing products don’t think through the user experience of actual games - they are investing all time and effort into auction and secondary market sales.
 
 We have been focussing on the more complex and (we believe) exciting problem of how to use any currency or currencies to buy in-game assets like avatars, skins, land, vehicles, weapons; powered by any combination of rules to determine who can mint, how much they can mint and how much minting costs. 
+
 
 This has been a bugbear of mine since [digging into web3 game economies in 2018](https://medium.com/embersword/announcement-david-atkinson-joins-the-ember-sword-team-d8e2caef25a2). After getting increasingly frustrated at the one or two token model, I started wondering whether there is a technical rather than conceptual limitation. Maybe if we related to smart contracts differently and could read and write them differently, the game economies we created would be more creative also.
 

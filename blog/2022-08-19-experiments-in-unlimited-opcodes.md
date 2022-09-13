@@ -9,6 +9,8 @@ tags: [rainscript, gas, security, code-size]
 
 This week I experimented with our new 32 bit VM to create a viable implementation of 16 bit external calls. This is a really big deal imo, so I'll explain what's happening and why you should care.
 
+<!--truncate-->
+
 ## The problem
 
 EVM networks impose a hard limit on the size of a contract that is deployed to production. On ethereum this limit is ~24kb of code data.

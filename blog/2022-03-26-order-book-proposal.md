@@ -18,6 +18,8 @@ tags: [order-book, proposal]
 
 We have a finite Sale contract where a sale can start, facilitating one-way buys where the seller defines a curve and a buyer accepts it. The sale ends and at this point is judged "success" or "fail". In the failure case all the purchases can be rolled back by buyers, in the success case all the proceeds are forwarded to the seller in a single transaction.
 
+<!--truncate-->
+
 At a high level the Sale has some limitations:
 
 - It must end for the seller to receive funds so it is not suitable for long term distributions

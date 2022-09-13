@@ -19,6 +19,8 @@ The v1.0 system works fine as far as we know, there's no urgent need to stop usi
 
 This is just a blog post so here's only a high level summary, not comprehensive. Highly encourage you to checkout the latest branches in github and look around if you're interested.
 
+<!--truncate-->
+
 ## O(n) -> O(log n) -> O(1) gas costs for opcode dispatches
 
 We noticed that adding more opcodes increased the cost of dispatching each opcode

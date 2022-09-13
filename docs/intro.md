@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Rain Protocolzz
+# Rain Protocol
 
 Rain Protocol lets you build web3 economies at any scale.
 
