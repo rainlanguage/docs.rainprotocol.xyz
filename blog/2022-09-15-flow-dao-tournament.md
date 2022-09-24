@@ -1,3 +1,10 @@
+---
+slug: flow-dao-tournament
+title: "Flow DAO Tournament"
+authors: thedavidmeister
+tags: [flow, dao, tournament]
+---
+
 # Flow DAO Tournament
 
 As the Flow contracts progress through the QA process and test coverage improves, we can start to talk about things to do with Flow.

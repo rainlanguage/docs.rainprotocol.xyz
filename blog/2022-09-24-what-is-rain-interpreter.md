@@ -1,3 +1,10 @@
+---
+slug: what-is-rain-interpreter
+title: "What is the Rain Interpreter"
+authors: thedavidmeister
+tags: [interpreter]
+---
+
 # What is the Rain Interpreter
 
 I don't think it is immediately clear at all what it means or why it is good to have a "rain interpreter".
