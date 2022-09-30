@@ -127,12 +127,12 @@ See our [Guides][guides] for examples of how to use.
 Join our community here: [Telegram][telegram]
 
 
-[smart-contracts]: /smart-contracts/claim/EmissionsERC20
+[smart-contracts]: /1.2.10/developer-tools/smart-contracts/claim/EmissionsERC20
 
 [//]: # (todo add this to environment variables)
 [subgraph]: https://thegraph.com/hosted-service/subgraph/beehive-innovation/rain-protocol
 [polygon-subgraph]: https://thegraph.com/hosted-service/subgraph/beehive-innovation/rain-protocol-v2-polygon
 [mumbai-subgraph]: https://thegraph.com/hosted-service/subgraph/beehive-innovation/rain-protocol-v2-mumbai
 [github]: https://github.com/beehive-innovation/rain-protocol
-[guides]: /guides/Frontend/using-the-sdk-to-deploy-your-first-rain-contract
+[guides]: /1.2.10/guides/Getting%20Started/using-the-rain-sdk-to-deploy-your-first-rain-contract
 [telegram]: https://t.me/+w4mJbCT6IfI2YTU0

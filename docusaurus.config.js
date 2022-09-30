@@ -11,7 +11,7 @@ const config = {
   url: "https://docs.rainprotocol.xyz",
   baseUrl: "/",
   onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "warn",
+  onBrokenMarkdownLinks: "throw",
   favicon: "img/favicon.ico",
   organizationName: "beehive-innovation", // Usually your GitHub org/user name.
   projectName: "rain-protocol", // Usually your repo name.

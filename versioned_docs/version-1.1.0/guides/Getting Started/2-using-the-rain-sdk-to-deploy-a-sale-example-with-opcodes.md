@@ -300,8 +300,8 @@ console.log(`Price: ${price}`);
 ```
 
 [full-example]: https://github.com/unegma/sdk-tutorial-sale
-[sale]: /smart-contracts/sale/
-[previous-tutorial]: /guides/SDK/using-the-rain-sdk-to-deploy-your-first-rain-contract
+[sale]: /1.1.0/developer-tools/smart-contracts/sale/
+[previous-tutorial]: /1.1.0/guides/Getting%20Started/using-the-rain-sdk-to-deploy-your-first-rain-contract
 [token-gating]: https://medium.com/@jshanks21/nft-meaning-token-gating-ad83aef7cccd
 [telegram]: https://t.me/+w4mJbCT6IfI2YTU0
 [docs]: /
