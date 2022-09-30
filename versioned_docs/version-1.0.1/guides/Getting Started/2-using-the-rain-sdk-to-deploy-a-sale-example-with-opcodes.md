@@ -60,7 +60,7 @@ Next let's create `index.html`:
 </html>
 ```
 
-This boilerplate code may be slightly different to the example in the previous tutorial, so please make sure you copy exactly (especially re the version numbers). 
+This boilerplate code may be slightly different to the example in the previous tutorial, so please make sure you copy exactly (especially re the version numbers).
 
 ### index.js
 
@@ -72,7 +72,7 @@ import { ethers, BigNumber, utils } from "ethers";
 
 export async function saleExample() {
   try {
-  
+
   } catch (err) {
     console.log(err);
   }
@@ -202,7 +202,7 @@ saleState.canEndStateConfig = {
 };
 ```
 
-We won't go into too much depth as to what is happening here, the next section will cover a more configurable example, but if you are working with Rain Opcodes, this is the standard 'Opcodes block' format you will see and work with regularly. 
+We won't go into too much depth as to what is happening here, the next section will cover a more configurable example, but if you are working with Rain Opcodes, this is the standard 'Opcodes block' format you will see and work with regularly.
 
 As noted in the comments, `stackLength` and `argumentsLength` will be removed in future versions of the VM as they will be calculated automatically.
 
@@ -300,11 +300,11 @@ console.log(`Price: ${price}`);
 ```
 
 [full-example]: https://github.com/unegma/sdk-tutorial-sale
-[sale]: https://docs.rainprotocol.xyz/smart-contracts/sale/
-[previous-tutorial]: https://docs.rainprotocol.xyz/guides/SDK/using-the-rain-sdk-to-deploy-your-first-rain-contract
+[sale]: /smart-contracts/sale/
+[previous-tutorial]: /guides/SDK/using-the-rain-sdk-to-deploy-your-first-rain-contract
 [token-gating]: https://medium.com/@jshanks21/nft-meaning-token-gating-ad83aef7cccd
 [telegram]: https://t.me/+w4mJbCT6IfI2YTU0
-[docs]: https://docs.rainprotocol.xyz
+[docs]: /
 [react-example]: https://github.com/beehive-innovation/examples.rainprotocol.xyz/blob/master/src/examples/DeploySaleExample/DeploySaleExample.tsx
 [react-example-live]:  https://examples.rainprotocol.xyz/deploy-sale-example
 [unpkg]: https://unpkg.com/

@@ -16,7 +16,7 @@ If you remember, the Sale was configured using a pre existing Tier contract even
 
 ## Overview
 
-As an overview, this tutorial will show you how to do the following in this order: 
+As an overview, this tutorial will show you how to do the following in this order:
 
 1. Create an Asset (Digital Object/NFT) which the User is required to own in order to take part in the Sale.
 2. Create a Tier 'barrier' which connects with the Asset and is responsible for allowing (or not) access to the Sale based on ownership.
@@ -27,7 +27,7 @@ Finally:
 * We will mint an Asset for the User (i.e. we will send you one of these NFTs).
 * We will demonstrate the Sale passing after the User is given an access token (i.e. we will allow you to buy from the Sale).
 
-As always, you will need Polygon Mumbai Testnet Matic tokens for this tutorial, for both network fees AND for buying from the Sale. 
+As always, you will need Polygon Mumbai Testnet Matic tokens for this tutorial, for both network fees AND for buying from the Sale.
 
 ## Creating the Asset for use with Tier Gating the Sale
 
@@ -136,11 +136,11 @@ console.log('------------------------------'); // separator
 ## Creating and Tier Gating the Sale
 
 [full-example]: https://github.com/unegma/sdk-tutorial-sale
-[sale]: https://docs.rainprotocol.xyz/smart-contracts/sale/
-[previous-tutorial]: https://docs.rainprotocol.xyz/guides/SDK/using-the-rain-sdk-to-deploy-your-first-rain-contract
+[sale]: /smart-contracts/sale/
+[previous-tutorial]: /guides/SDK/using-the-rain-sdk-to-deploy-your-first-rain-contract
 [token-gating]: https://medium.com/@jshanks21/nft-meaning-token-gating-ad83aef7cccd
 [telegram]: https://t.me/+w4mJbCT6IfI2YTU0
-[docs]: https://docs.rainprotocol.xyz
+[docs]: /
 [react-example]: https://github.com/beehive-innovation/examples.rainprotocol.xyz/blob/master/src/examples/DeploySaleExample/DeploySaleExample.tsx
 [react-example-live]:  https://examples.rainprotocol.xyz/deploy-sale-example
 [unpkg]: https://unpkg.com/

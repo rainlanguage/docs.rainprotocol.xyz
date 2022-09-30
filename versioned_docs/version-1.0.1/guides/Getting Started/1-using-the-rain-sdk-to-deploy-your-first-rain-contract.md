@@ -62,7 +62,7 @@ Next let's create `index.html`:
 
 This is mostly boilerplate code which is pulling in `index.js` and importing the dependencies ([`rain-sdk`][rain-sdk] and [`ethers`][ethers]) using the `importmap` feature.
 
-If you use the code for this tutorial along with a frontend framework, instead of `importmap`, you will use `dependencies` in `package.json` and the `node_modules` folder. 
+If you use the code for this tutorial along with a frontend framework, instead of `importmap`, you will use `dependencies` in `package.json` and the `node_modules` folder.
 
 ### index.js
 
@@ -74,7 +74,7 @@ import { ethers, BigNumber } from "ethers";
 
 export async function gatedNFTExample() {
   try {
-  
+
   } catch (err) {
     console.log(err);
   }
@@ -168,13 +168,13 @@ After approving the transaction and waiting for a very short moment, you should 
 
 ## Conclusion
 
-And that is a wrap on deploying your very first smart contract with Rain! If you are wondering where to go next, [seeing how to integrate this example with React][react-example] would be a great next step ([demo here][react-example-live]). 
+And that is a wrap on deploying your very first smart contract with Rain! If you are wondering where to go next, [seeing how to integrate this example with React][react-example] would be a great next step ([demo here][react-example-live]).
 
 Any questions, feel free to [reach out to us in our Discord][discord]. Happy buidling!
 
 [token-gating]: https://medium.com/@jshanks21/nft-meaning-token-gating-ad83aef7cccd
 [telegram]: https://t.me/+w4mJbCT6IfI2YTU0
-[docs]: https://docs.rainprotocol.xyz
+[docs]: /
 [react-example]: https://github.com/beehive-innovation/examples.rainprotocol.xyz/tree/master/src/examples/DeployGatedNFTExample
 [react-example-live]:  https://examples.rainprotocol.xyz/deploy-gatednft-example
 [unpkg]: https://unpkg.com/
