@@ -7,11 +7,11 @@ tags: [economy, game, expression]
 
 # Writing a complete onchain game economy because it’s great fun
 
-## Introduction
-
 Josh has been working on a brainscan v0.0 where we we show an expression, written into a simple contract, in this case ERC20 emissions which is powered by the [Rain interpreter](https://docs.rainprotocol.xyz/blog/what-is-rain-interpreter).
 
 The expression is written in Rain script, a spreadsheet like expression writer. A simulation runs real time to tell you the rules for the wallet connected to the site and the expression is deployable using the Deploy Emissions ERC20 button when ready.
+
+<!--truncate-->
 
 If you aren’t feeling that creative (me) then you can look at recent expressions others have written.
 

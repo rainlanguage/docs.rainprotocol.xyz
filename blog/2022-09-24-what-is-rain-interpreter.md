@@ -17,6 +17,8 @@ How can this possibly be gas efficient, useful, secure, etc.?
 
 Everything that Rain can possibly do could be coded in Solidity (the Rain interpreter itself is Solidity) so what's the point?
 
+<!--truncate-->
+
 ## Who is this for?
 
 The Rain interpreter is for you. If it's not you, you're in a statistically negligible minority of humanity as an "elite dev", and you're already well served by the crypto ecosystem.

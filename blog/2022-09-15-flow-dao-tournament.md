@@ -13,6 +13,8 @@ Yes there's all the marketplace, escrow, sale, mint type stuff you'd expect.
 
 Maybe we can do something a little different and fun too?
 
+<!--truncate-->
+
 ## Flow DAO
 
 Start with a normal DAO governance process.
