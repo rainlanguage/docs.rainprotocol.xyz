@@ -40,7 +40,7 @@ const config = {
               ...args,
             });
           },
-          includeCurrentVersion: false,
+          includeCurrentVersion: true
         },
         blog: {
           blogSidebarTitle: "All posts",
