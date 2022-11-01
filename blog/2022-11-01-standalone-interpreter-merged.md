@@ -51,11 +51,11 @@ changes to frequency/sensitivity of price updates is subject to multisig changes
 at any time. If this is a problem for you, reach out and we can discuss pinning
 oracle versions in addition to stale timeout checks.
 
-There's also a new `ensure` word in the interpreter that words just like `require`
+There's also a new `ensure` word in the interpreter that works just like `require`
 in solidity, but has a different name in case it needs to work differently in the
 future without losing its identity. `Flow` has been modified to remove the "can sign"
 and "can flow" entrypoints as every round trip to an external contract costs
-additional gas, it's much better to simply `ensure` the same logic inline with a
+additional gas. It's much better to simply `ensure` the same logic inline with a
 single expression. Previously "can sign" ran on a loop over each signer, now every
 signer is provided in the second context column and can be matched pairwise with
 the subsequent columns in context that they have signed. ALWAYS `ensure` the signer
