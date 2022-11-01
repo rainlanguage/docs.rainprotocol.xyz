@@ -2,7 +2,7 @@
 slug: standalone-interpreter-merged
 title: "Standalone interpreter merged"
 authors: thedavidmeister
-tags: [words, interpreter]
+tags: [words, interpreter, chainlink, flow, sale, ensure, security, interface]
 ---
 
 Today we merged the standalone version of the interpreter which ships as a mere
