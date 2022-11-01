@@ -9,6 +9,8 @@ Today we merged the standalone version of the interpreter which ships as a mere
 interface from the perspective of the calling contract. New words added and
 significant changes to `Flow` usage and security model.
 
+<!--truncate-->
+
 There are two interfaces now, the interpreter itself and the deployer which
 handles all the integrity checks. The interpreter and deployer MAY be a single
 contract but they MAY also be two different contracts. This allows for various
