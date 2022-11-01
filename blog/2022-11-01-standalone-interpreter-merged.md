@@ -45,7 +45,7 @@ the interpreter. Both contracts now have an additional item in context that is t
 
 In addition to new words for `ISaleV2` we also added an opcode to read a price
 from any Chainlink oracle and have it returned in 18 decimal fixed point, and
-enforce a "stale" timeout to guard against paused/delayed oracles. Please note
+enforce a "stale" timeout to guard against paused/delayed oracles. Please note when
 reading from Chainlink that all oracles are upgradeable proxies so pausing and
 changes to frequency/sensitivity of price updates is subject to multisig changes
 at any time. If this is a problem for you, reach out and we can discuss pinning
