@@ -43,8 +43,9 @@ to a single point of failure/manipulation for the contract.
 
 Option 1 is a hardcore decentralised option, a high profile successful historical
 example is the SAI to DAI migration where the ability to support collateral other
-than ETH was added to the DAI ecosystem. These migrations tend to be very simple
-at the technical layer and very messy at the social layer.
+than ETH was added to the DAI ecosystem by launching an entirely new token and
+burning the old one. These migrations tend to be very simple at the technical
+layer and very messy at the social layer.
 
 Rain interpreters are an example of option 4:
 
@@ -107,7 +108,7 @@ implementations that look like "a vault".
 
 In Rain the focus is on identifying the archetype of some contract like "escrow",
 "vault", "tournament", formalising the security and economic guarantees in
-Solidity, but then handing the details off to the intepreter.
+Solidity, but then handing the incidental details off to the intepreter.
 
 The details layer is where experimentation and evolution (death and rebirth) can
 happen, e.g. via factories from rapidly scripted expressions.
@@ -122,8 +123,8 @@ browser logic to achieve many different things, and over time frameworks for
 certain types of websites evolve like "content management system", "ecommerce",
 etc. Web frameworks and the browser are decoupled from and don't need to know
 exactly what each website is doing, they often use [Inversion of Control](https://en.wikipedia.org/wiki/Inversion_of_control)
-to hand control back to the domain for domain specific logic, and retain it for
-general purpose logic and controls.
+to hand control back to the domain for domain specific logic, and retain control
+for general purpose logic and wheels that don't need or want to be reinvented.
 
 ### Leaner and simpler code
 
@@ -131,7 +132,8 @@ Following from the reduction in the need to predict the future there's also less
 complexity in the calling contract itself and generally a smaller code size overall.
 
 A lot of branching conditional code and struct based configuration gives way to
-simply handing control back to the expression for any signal of intent.
+simply handing control back to the expression for any signal of intent and ad-hoc
+bean counting.
 
 This is similar to how Open Zeppelin enables [contract extension via hooks](https://docs.openzeppelin.com/contracts/4.x/extending-contracts).
 
@@ -151,7 +153,7 @@ interpreter can be handled within the interpreter, such as overflows, nuances
 of external interfaces, etc. And associated tooling can provide simulation,
 documentation and explanations of the expressions for end users who are interested.
 
-The primary concer of the calling contract is to enforce security and economic
+The primary concern of the calling contract is to enforce security and economic
 constraints such as reentrancy prevention and defining trust relationships between
 participants.
 
@@ -199,10 +201,16 @@ In the future it should be possible to have "word packs" where an interpreter
 can further delegate processing of individual opcodes to support extending what
 can be read from external interfaces by the expression itself.
 
+Rain contracts are designed to be able to both be programmable via expressions
+and also read from each other via. words to allow for "expression lego". For
+example, the `CombineTier` contract can deploy an expression to merge several
+KYC policies into a unified access control to be used as a restriction for
+participation in a staking vault.
+
 ### If you want to inherit the interpreter code to make a new interpreter
 
 This is the "old skool" way to interact with Rain and is probably less useful
-as the external interfaces stabilise.
+as the external interfaces stabilise and overall number of words increases.
 
 It is possible to inherit the interpreter and call `eval` internally rather than
 call a standalone interpreter. The benefit is that your contract has full control
@@ -212,7 +220,7 @@ in exchange for an immutable operating environment.
 Realistically the same thing can be achieved by setting the external interpreter
 as an immutable value on the calling contract itself.
 
-There are also some minor gas benefits to calling `eval` locally rather than as
+There are also some modest gas benefits to calling `eval` locally rather than as
 an external contract call. This is offset somewhat by the large code size implied
 by compiling dozens of opcodes into the calling contract, which can lead to external
 calls anyway due to splitting out logic elsewhere as the 24.5kb code size limit
@@ -295,10 +303,10 @@ between the deployer and other callers of the deployed expression.
 
 The simplest scenario is a factory where some EOA deploys a child and initializes
 it with an immutable reference to an expression. All the entrypoints are deployed
-together and cannot be changed after launch. Each child has its own expressions
-and state and so cannot interfere with each other. Anyone else can read the
-expressions as initialized and decide for themselves whether to use this child,
-or move on to some other child, or deploy their own.
+together and cannot be changed after initialization. Each child has its own
+expressions and state and so cannot interfere with each other. Anyone else can
+read the expressions as initialized and decide for themselves whether to use
+this child, or move on to some other child, or deploy their own.
 
 This simple scenario works best when the children are associated with some event,
 such as a sale, or real world event, or where there are some natural bounds on
@@ -365,7 +373,7 @@ honest front ends that want to protect end-users.
 Of course, phishing/malicious front ends can also reference arbitrary
 phishing/malicious smart contracts, which is always the case and deployer/interpreter
 pairings are no different or less important than selecting the correct "USDC"
-token address to send/receive.
+token address to approve/send/receive.
 
 **The calling contract MUST pin the deployer/interpreter pairing along with the
 expressions it is willing to execute so that users cannot "bait and switch" the
@@ -439,15 +447,15 @@ deployed under unknown/untrusted interpreters.**
 
 **If the calling contract chooses to apply state changes it MUST assume the
 interpreter is malicious and may attempt some kind of reentrancy attack. This is
-no different to any other external call and MUST be treated with all due care.
+no different to any other external call and MUST be treated with due care.
 As always, the simplest solution may be to wrap interpreter state changes in a
 reentrancy guard such as the one that Open Zeppelin provides, but there are other
-safe patterns that MAY be applied by the calling contract.
+safe patterns that MAY be applied by the calling contract.**
 
 ### Namespaces and state collisions
 
-You may have noticed in the API documentation that `eval` and `stateChanges` come
-with `withNamespace` variants. The namespace is used to further disambiguate
+You may have noticed in the API documentation that `eval` and `stateChanges` both
+have `WithNamespace` variants. The namespace is used to further disambiguate
 gets and sets _between expressions from the same calling contract_.
 
 For a simple factory based deployment namespacing is typically NOT required as
