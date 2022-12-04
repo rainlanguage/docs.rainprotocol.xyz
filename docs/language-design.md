@@ -673,7 +673,7 @@ simply tally the size of the stack by looking at the code.
 Knowing the shape of a Rainlang stack is critical as the calling contract will be
 using the stack values by their final positions to drive its own internal logic.
 For example an order on an order book could be the final 2 positions on a stack
-as the amounta and ratio of token inputs and outputs.
+as the amount and ratio of token inputs and outputs.
 
 Consider a word `foo` with 1 input and 2 outputs.
 
@@ -800,17 +800,59 @@ This seems unavoidable to support use cases such as:
 
 As a stack language it is trivial to implement multiple values, we simply add more than one value to the stack. The challenge comes from a visual/text representation that explicitly and bidirectionally embodies the structure of the stack. One saving grace here is that we always know how many inputs/outputs on the stack a word has (see above) without needing to run it.
 
-There are two forms that multiple outputs can appear in, external and inline. External outputs sit to the left of `:` and can be named and referenced in subsequent arguments to words, or may be anonymous denoted with `_`. Inline outputs may be the inputs to nested logic and can be disambiguated with `'` but must be anonymous (e.g. `_'foo`) as they are consumed by their nesting and so are unavailable to be referenced later.
+Multiple outputs are ONLY supported on the LHS as either named or placeholder items.
 
-External outputs MAY cover multiple expressions.
+Technically this can be enforced onchain by integrity checks that disallow popping
+of multivalue outputs, forcing a subsequent stack copy to use those values.
 
-The referencing logic relies on the existence of a word that copies previous values from the stack to the top of the stack. Such a word is provided by the reference interpreter implementation.
+Older versions of Rainlang included placeholders in the RHS to support nested
+multioutputs but the results were confusing.
 
-Inline outputs MAY be elided and ambiguated but external outputs MUST be provided for every position, much as destructuring/pattern matching in other languages such as [haskell](https://www.haskell.org/tutorial/patterns.html), [clojure](https://clojure.org/guides/destructuring), and [javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment).
+For example consider the following nested outputs assuming `_` can be a placeholder
+on the RHS.
 
-External outputs that sit behind `:` MUST always be the first expressions to build a stack. The final expressions MAY elide the external outputs if the author/reader is comfortable mentally tracking their arity.
+```
+_ _ _: _ _ add(_ call<1 4 1>(x) 1 2);
+```
 
-Overall this allows for both multiple outputs in a nested context and a direct textual/visual representation of the structure of the stack behind `:`.
+This represents a `call` with 4 outputs, 2 being consumed by `add` and 2 being
+"free" to match against the LHS, with a net result of 3 LHS values.
+
+The problem is that a slight change to the ordering of the inputs causes `add` to
+apparently no longer be commutative and in fact error. The following produces an
+impossible stack movement where `1 2` would have to somehow inject itself
+between the outputs of `call` to be popped by `add`.
+
+```
+_ _ _: _ _ add(1 2 _ call<1 4 1>(x));
+```
+
+An experienced author would be able to understand the relationship between stack
+movements and Rainlang words. They could see that the split outputs from `call`
+are invalid, even if the wrapping `add` is otherwise valid.
+
+The question is whether on the whole, does the value provided by allowing for the
+nesting of multioutput functions justify the barrier to entry.
+
+Consider the alternative form of both the above expressed purely in terms of LHS.
+
+```
+a b c d: call<1 4 1>(x),
+_ _ _: a b add(c d 1 2);
+```
+
+```
+a b c d: call<1 4 1>(x),
+_ _ _: a b add(1 2 c d);
+```
+
+In this case BOTH the rearrangements of `add` are valid (as expected for addition)
+and overall the expressions read more cleanly, at the cost of some additional
+stack copies.
+
+Newer versions of Rainlang ONLY support the LHS form of multioutputs, preferring
+the improved legibility and removal of a footgun over the moderate gas saving
+afforded by the RHS form.
 
 ### External outputs examples
 
