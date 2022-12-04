@@ -832,7 +832,7 @@ movements and Rainlang words. They could see that the split outputs from `call`
 are invalid, even if the wrapping `add` is otherwise valid.
 
 The question is whether on the whole, does the value provided by allowing for the
-nesting of multioutput functions justify the barrier to entry.
+nesting of multioutput functions justify the barrier to entry?
 
 Consider the alternative form of both the above expressed purely in terms of LHS.
 
