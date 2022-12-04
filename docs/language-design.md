@@ -24,7 +24,7 @@ When describing the functional units of a language we have to consider that ever
 
 The [EVM opcodes](https://github.com/crytic/evm-opcodes) are very much ~80% the third item, and ~20% the second item, and 0% the first, and most languages with a reputation for being "low level" follow that.
 
-Languages like Solidity ([algol-like](https://en.wikipedia.org/wiki/ALGOL)) focus more on syntax than opcodes. The structure of the code controls the execution code paths (functions, loops, etc.), and there's some keywords to move data between hardware locations such as storage and memory. There are some affordances such as overflow protection on math (version 0.8+) but Solidity is mostly _structural_ over the underlying EVM logic.
+Languages like Solidity ([algol-like](https://en.wikipedia.org/wiki/ALGOL)) focus more on syntax than opcodes. The structure of the code controls the execution code paths (functions, loops, etc.), and there's some keywords to move data between hardware locations such as storage and memory. There are some affordances such as overflow protection on math (version 0.8+) but Solidity is mostly _structural_ over the underlying EVM logic. That is to say, it still has a similar _focus_ (on hardware and math) but with a more ergonomic experience for common concerns such as dispatching function calls, looping, handling bitwise offsets in memory, etc.
 
 Rainlang is much closer to EVM in structure, but with a primary focus on human concepts, secondary on logic and trying to avoid hardware concerns everywhere.
 
@@ -41,15 +41,106 @@ With the focus on human concepts/language in mind rainlang calls:
 
 Rainlang is designed so that implementers can hot swap every aspect of the implementation down to _all_ opcodes and even the interpreter itself. As long as the interpreter implementer can provide metadata about their opcodes and interpreter then the bytecode can be parsed and formatted bidirectionally (see below). A malicious expression author or solidity dev cannot change the formatting of an honest interpreter+metadata combination, so end-users protect themselves by carefully selecting which interpreters to trust.
 
+## Rainlang is designed for a "code is law" environment
+
+This is NOT an idealogical statement or a manifesto of what "ought to be".
+
+It's a simple description of what IS that also HAS BEEN for over a decade now.
+
+When a user cryptographically signs a valid transaction with sufficient gas and
+sends it to a compatible network's mempool it WILL execute and WILL be irreversible.
+
+This "law" is NOT enforced by a local monopoly on violence but a global emergence
+of greed. It's fascinating and useful that the greed of the masses can be channeled
+peacefully much like their fear can be channeled violently. Because the mechanism
+and scope are very different, it's awkward to call it a "law", in fact the local
+laws of nation states often collide head on with the outcomes of functional p2p
+systems.
+
+In many ways centralised organisations justify their bads as "necessary evils"
+that are necessitated by the apparent impossibility of achieving "roads and hospitals"
+via any other means. Much as science grinds away at the [god of the gaps](https://en.wikipedia.org/wiki/God_of_the_gaps), undermining the church's monopoly on all creation, p2p systems
+slowly but irreversibly convert "necessary evils" into unnecessary ones. This
+causes friction with corrupt pawns of the state apparatus who in turn find it harder
+to break legs to sell crutches. No honest bureaucrat should fear p2p systems as
+the end goal is the same, to protect the weak and shephard each generation toward
+greater things.
+
+It's worth remembering however that bibles and legislations are mere _technologies_
+crafted by humans for humans. By accepting at a societal level to drive on the
+same side of the road, the impossible-to-build slab of asphalt also becomes a
+miracle of modern transportation. It's also worth remembering that newer technologies
+eventually replace older ones. This is something to celebrate as the main reason
+our species is more relevant than monkeys in a jungle somewhere being cat food.
+
+It's worth specifying what the "code is law" technology enables. We can point to
+technical abstractions like [Byzantine Generals](https://en.wikipedia.org/wiki/Byzantine_fault), but more concisely it's something like this:
+
+> Compliant participants that know and follow some rules can defend themselves with
+> some confidence from disruption and damage by non-compliant participants.
+> Following the rules somehow has some net benefit to the collective even though
+> breaking them often benefits the individual.
+
+Which is broadly the same problem domain that bibles and legislation tackle. The
+issue with all these systems is that their effectiveness comes down to the ratio
+of conformance. There's some threshold of compliance below which the system is
+stable and anything above that is chaotic or even dangerous/deadly.
+
+The nice thing about code is that it can be perfectly compliant for as long as
+and to the limit of the infrastructure it runs on being operational. Code can
+also be perfectly malicious, executing attacks with superhuman persistence, scale
+and subterfuge.
+
+This is where Rainlang comes in.
+
+Much like a 10 thousand page legal disclaimer in front of a $1 purchase from your
+favourite app store, there are limits to human attention and comprehension. Taking
+10 thousand pages and condensing it to an equivalent 10 sentences is a significant
+win for legalese. Human brains work best with a small number of potentially subtle
+and irregular abstractions, like "lake", "river", and "brook" instead of something
+like  "waterplace", "waterfast", and "waterslow", whereas machines prefer the
+opposite and gladly churn through millions of lines of what looks to us like
+repetitive white noise in it's raw binary representation.
+
+The million scams and hacks in crypto aren't forced upon anybody at all, they're
+all relying on exploits and mistakes in the human psyche. The code all runs exactly
+as it was written every time.
+
+Humans _feel_ entitled to the "undo button" when something happens that they don't
+like in a way that _feels_ like it was outside their control, especially when
+"forced" on them by another human. It's this feeling that has and will continue
+to drive court cases around the world, many of which will rule and set precedent
+against many of the things that fundamentally make crypto possible at all. In
+reality _nothing_ happens onchain without a signature and a fully informed,
+deterministic code path defined and accepted by the transaction sender, but it
+often doesn't _feel_ that way to the end user.
+
+For crypto to survive the next decade, humans have to _feel_ like they can understand
+and control the outcomes of what they sign. If something suspicious is being asked
+to be signed the user needs to be able to recognise and reject it themselves. If
+something bad happens then people need to be able to see where they went wrong
+and feel like they can learn from their mistakes and improve in the future. In the
+best case this can even trigger a highly rewarding mental state called [Flow](https://en.wikipedia.org/wiki/Flow_(psychology)).
+
+Rainlang explicitly aims to give a reasonably motivated, reasonably technical
+person this feeling of control. The target audience is somewhere around the
+average accountant or spreadsheet jockey, which is far below the current expertise
+required to interface with the EVM.
+
+
 ## Rainlang is read-write (in that order) not write-only
 
 Most programming languages are designed to be write-only. The sole purpose of the language is to take the intent of the author(s) and execute it on a machine. Users are not expected to understand or even be aware of the code; it would be considered a serious design flaw in the language if they were.
 
-Rainlang is designed to be read-write with a priority on reading. The bytecode can be directly formatted into a form that is both concise and difficult to misinterpret. Where there may be ambiguity or confusion about the calculation or provenance of some data, we err on the side of being as explicit/unambiguous as possible. The user may opt in to more concise forms that imply/elide more, but it's not the default/canonical representation of Rainlang.
+Rainlang is designed to be read-write with a priority on reading. The bytecode can be directly formatted into a form that is both concise and difficult to misinterpret. Where there may be ambiguity or confusion about the calculation or provenance of some data, we err on the side of being as explicit/unambiguous as possible.
 
-Most programming languages are designed to scale into the 10k-10M+ of lines of code (e.g. Rust, Java, Solidity, etc.), relying heavily on compilers and other automation to prove correctness and introduce efficiencies over inefficient human bumblings.
+Most programming languages are designed to scale into the 10k-10M+ of lines of code (e.g. Rust, Java, Solidity, etc.), relying heavily on compilers and other automation to prove correctness and introduce efficiencies over inefficient human bumblings. More recently AI assistance such as Github Copilot have generated much excitement in the code janitor arena, showing that our appetite for generating more lines of code is far from sated.
 
-Many programming paradigms (e.g. sophisticated type systems, macrology, compiler optimisations, async/await, etc.) follow a certain circular logic to justify their existence. They exist so that authors can write millions of lines of source code that are unrecognisable from the compiled output. The decoupling of input/output means that both reading and writing outputs directly by hand is beyond the realms of human understanding and skill. Writing source code is relatively easy for a human, reading/auditing someone else's source code (or your own after 6 months) is generally harder (wE jUsT nEeD mOrE dOcUmEnTaTiOn!?!?), and reading compiled code is a task best left to the underworld looking for a high effort, high reward, payout in million/billion dollar zero day exploits.
+> My point today is that, if we wish to count lines of code, we should not regard them as “lines produced” but as “lines spent”: the current conventional wisdom is so foolish as to book that count on the wrong side of the ledger.
+>
+> Edsger W. Dijkstra
+
+Many programming paradigms (e.g. sophisticated type systems, macrology, compiler optimisations, async/await, etc.) follow a certain circular logic to justify their existence. They exist so that authors can write millions of lines of source code that are unrecognisable from the compiled output. The decoupling of input/output means that both reading and writing outputs directly by hand is beyond the realms of human understanding and skill. Writing source code is relatively easy for a human, reading/auditing someone else's source code (or your own after 6 months) is generally harder (wE jUsT nEeD mOrE dOcUmEnTaTiOn!?!?), and reading compiled code is a task best left to the criminal underworld and state actors looking for a high effort, high reward, payout in million/billion dollar and military grade zero day exploits.
 
 Rich hickey, [author of the highest paid programming language in the world (clojure)](https://survey.stackoverflow.co/2022/?utm_source=thenewstack&utm_medium=website&utm_content=inline-mention&utm_campaign=platform#section-top-paying-technologies-top-paying-technologies), [puts it like this](https://github.com/matthiasn/talk-transcripts/blob/master/Hickey_Rich/SimpleMadeEasy.md):
 
@@ -257,11 +348,11 @@ Decompiled:
         var var9 = var8;
         var var10 = var9;
         var var11 = var10;
-    
+
         if (block.number <= arg2) { revert(memory[0x00:0x00]); }
-    
+
         var1 = block.blockHash(arg2);
-    
+
         if (var1) {
         label_022B:
             var temp0 = memory[0x40:0x60];
@@ -285,7 +376,7 @@ Decompiled:
             var4 = var12;
             var12 = 0x30;
             var13 = memory[0x40:0x60];
-        
+
             if (MSIZE() < var13) {
                 var temp5 = var13;
                 var temp6 = var12;
@@ -293,11 +384,11 @@ Decompiled:
                 memory[0x40:0x60] = temp5 + temp6 * 0x20 + 0x20;
                 var5 = temp5;
                 var8 = 0x00;
-            
+
                 if (var8 >= 0x0c) {
                 label_03EE:
                     var6 = 0x00;
-                
+
                     if (var6 >= 0x30) {
                     label_053E:
                         var12 = 0x0547;
@@ -307,13 +398,13 @@ Decompiled:
                     label_03FD:
                         var11 = 0x00;
                         var12 = !(var6 % 0x04);
-                    
+
                         if (!var12) {
                         label_0440:
-                        
+
                             if (!var12) {
                             label_0491:
-                            
+
                                 if (var11 & 0xff <= 0x00) {
                                     var12 = 0x04cc;
                                     var13 = var1;
@@ -322,39 +413,39 @@ Decompiled:
                                     var12 = func_0668(var13, var14, var15);
                                     var10 = var12;
                                     var2 = var2 + 0x01;
-                                
+
                                     if (var10 != 0x00) {
                                         var12 = var4;
                                         var13 = var6;
-                                    
+
                                         if (var13 >= memory[var12:var12 + 0x20]) { assert(); }
-                                    
+
                                         var12 = memory[var13 * 0x20 + var12 + 0x20:var13 * 0x20 + var12 + 0x20 + 0x20];
                                         var13 = var5;
                                         var14 = var6;
-                                    
+
                                         if (var14 >= memory[var13:var13 + 0x20]) { assert(); }
-                                    
+
                                         memory[var13 + var14 * 0x20 + 0x20:var13 + var14 * 0x20 + 0x20 + 0x20] = var12 & 0xff;
-                                    
+
                                     label_0533:
                                         var11 = var11;
                                         var6 = var6 + 0x01;
-                                    
+
                                         if (var6 >= 0x30) { goto label_053E; }
                                         else { goto label_03FD; }
                                     } else {
                                         var12 = var3;
                                         var13 = var6;
-                                    
+
                                         if (var13 >= memory[var12:var12 + 0x20]) { assert(); }
-                                    
+
                                         var12 = memory[var13 * 0x20 + var12 + 0x20:var13 * 0x20 + var12 + 0x20 + 0x20];
                                         var13 = var5;
                                         var14 = var6;
-                                    
+
                                         if (var14 >= memory[var13:var13 + 0x20]) { assert(); }
-                                    
+
                                     label_04AA:
                                         memory[var13 + var14 * 0x20 + 0x20:var13 + var14 * 0x20 + 0x20 + 0x20] = var12 & 0xff;
                                         goto label_0533;
@@ -363,7 +454,7 @@ Decompiled:
                                     var12 = var11;
                                     var13 = var5;
                                     var14 = var6;
-                                
+
                                     if (var14 < memory[var13:var13 + 0x20]) { goto label_04AA; }
                                     else { assert(); }
                                 }
@@ -378,9 +469,9 @@ Decompiled:
                                 var12 = 0x048e;
                                 var13 = var3;
                                 var14 = var6;
-                            
+
                                 if (var14 >= memory[var13:var13 + 0x20]) { assert(); }
-                            
+
                                 var12 = func_0468(var4, var6, var10, var13, var14);
                                 var11 = var12;
                                 goto label_0491;
@@ -388,15 +479,15 @@ Decompiled:
                         } else {
                             var12 = var4;
                             var13 = var6;
-                        
+
                             if (var13 >= memory[var12:var12 + 0x20]) { assert(); }
-                        
+
                             var12 = memory[var13 * 0x20 + var12 + 0x20:var13 * 0x20 + var12 + 0x20 + 0x20] & 0x01;
                             var13 = var3;
                             var14 = var6;
-                        
+
                             if (var14 >= memory[var13:var13 + 0x20]) { assert(); }
-                        
+
                             var12 = memory[var14 * 0x20 + var13 + 0x20:var14 * 0x20 + var13 + 0x20 + 0x20] & 0x01 != var12;
                             goto label_0440;
                         }
@@ -404,12 +495,12 @@ Decompiled:
                 } else {
                 label_02A7:
                     var9 = 0x03;
-                
+
                     if (var9 < 0x01) {
                     label_03E3:
                         var11 = var11;
                         var8 = var8 + 0x01;
-                    
+
                         if (var8 >= 0x0c) { goto label_03EE; }
                         else { goto label_02A7; }
                     } else {
@@ -422,7 +513,7 @@ Decompiled:
                         var12 = func_0668(var13, var14, var15);
                         var10 = var12;
                         var2 = var2 + 0x02;
-                    
+
                         if (var10 != 0x00) {
                         label_0349:
                             var12 = 0x0355;
@@ -432,67 +523,67 @@ Decompiled:
                             var12 = func_0668(var13, var14, var15);
                             var10 = var12;
                             var2 = var2 + 0x02;
-                        
+
                             if (var10 != 0x00) {
                             label_03D7:
                                 var11 = var11;
                                 var9 = var9 + ~0x00;
-                            
+
                                 if (var9 < 0x01) { goto label_03E3; }
                                 else { goto label_02B4; }
                             } else {
                                 var12 = var4;
                                 var13 = var6;
-                            
+
                                 if (var13 >= memory[var12:var12 + 0x20]) { assert(); }
-                            
+
                                 var7 = memory[var13 * 0x20 + var12 + 0x20:var13 * 0x20 + var12 + 0x20 + 0x20];
                                 var12 = var4;
                                 var13 = var6 - 0x01;
-                            
+
                                 if (var13 >= memory[var12:var12 + 0x20]) { assert(); }
-                            
+
                                 var12 = memory[var13 * 0x20 + var12 + 0x20:var13 * 0x20 + var12 + 0x20 + 0x20];
                                 var13 = var4;
                                 var14 = var6;
-                            
+
                                 if (var14 >= memory[var13:var13 + 0x20]) { assert(); }
-                            
+
                                 memory[var13 + var14 * 0x20 + 0x20:var13 + var14 * 0x20 + 0x20 + 0x20] = var12 & 0xff;
                                 var12 = var7;
                                 var13 = var4;
                                 var14 = var6 + ~0x00;
-                            
+
                                 if (var14 >= memory[var13:var13 + 0x20]) { assert(); }
-                            
+
                                 memory[var13 + var14 * 0x20 + 0x20:var13 + var14 * 0x20 + 0x20 + 0x20] = var12 & 0xff;
                                 goto label_03D7;
                             }
                         } else {
                             var12 = var3;
                             var13 = var6;
-                        
+
                             if (var13 >= memory[var12:var12 + 0x20]) { assert(); }
-                        
+
                             var7 = memory[var13 * 0x20 + var12 + 0x20:var13 * 0x20 + var12 + 0x20 + 0x20];
                             var12 = var3;
                             var13 = var6 - 0x01;
-                        
+
                             if (var13 >= memory[var12:var12 + 0x20]) { assert(); }
-                        
+
                             var12 = memory[var13 * 0x20 + var12 + 0x20:var13 * 0x20 + var12 + 0x20 + 0x20];
                             var13 = var3;
                             var14 = var6;
-                        
+
                             if (var14 >= memory[var13:var13 + 0x20]) { assert(); }
-                        
+
                             memory[var13 + var14 * 0x20 + 0x20:var13 + var14 * 0x20 + 0x20 + 0x20] = var12 & 0xff;
                             var12 = var7;
                             var13 = var3;
                             var14 = var6 + ~0x00;
-                        
+
                             if (var14 >= memory[var13:var13 + 0x20]) { assert(); }
-                        
+
                             memory[var13 + var14 * 0x20 + 0x20:var13 + var14 * 0x20 + 0x20 + 0x20] = var12 & 0xff;
                             goto label_0349;
                         }
@@ -505,14 +596,14 @@ Decompiled:
                 memory[0x40:0x60] = temp7 + temp8 * 0x20 + 0x20;
                 var5 = temp7;
                 var8 = 0x00;
-            
+
                 if (var8 >= 0x0c) { goto label_03EE; }
                 else { goto label_02A7; }
             }
         } else {
             var temp9 = (block.number & ~0xff) + (arg2 & 0xff);
             arg2 = temp9;
-        
+
             if (arg2 < block.number) {
                 var1 = block.blockHash(arg2);
                 goto label_022B;
@@ -576,7 +667,7 @@ While an explicit goal of Rainlang is to be as comprehensible as possible _witho
 
 The metadata format for expressions is designed to be compatible with onchain logging to allow a social "immune system" that does not rely on centralised tooling such as etherscan. For example it should be possible for a skilled reader of rainlang to provide alternative metadata to the author, perhaps to correct a malicious/incorrect comment that doesn't accurately describe the behaviour of the script.
 
-Rainlang rejects the idea that there is "one true metadata" for some contract, that only the author knows, and is gated behind signatures from the deployment key on etherscan. 
+Rainlang rejects the idea that there is "one true metadata" for some contract, that only the author knows, and is gated behind signatures from the deployment key on etherscan.
 
 Audits of honest code frequently pick up typos and stale documentation. Vulnerabilities are often discovered after the fact. The ability for peers to post metadata about rainlang expressions on equal footing with the authors allows deception to be uncovered in a decentralised way.
 
