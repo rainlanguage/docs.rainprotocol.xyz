@@ -127,7 +127,6 @@ person this feeling of control. The target audience is somewhere around the
 average accountant or spreadsheet jockey, which is far below the current expertise
 required to interface with the EVM.
 
-
 ## Rainlang is read-write (in that order) not write-only
 
 Most programming languages are designed to be write-only. The sole purpose of the language is to take the intent of the author(s) and execute it on a machine. Users are not expected to understand or even be aware of the code; it would be considered a serious design flaw in the language if they were.
@@ -634,7 +633,9 @@ Following from the extensible/moddable/bidirectional nature, we avoid syntax/str
 
 This is a similar (but different) problem to the implementation (or lack) of macros in languages. A macro is code that creates or modifies other code. The more syntax and lexical structure that exists in some language, the more difficult macros become. We can see this by comparing the process of writing macros in e.g. [Rust](https://doc.rust-lang.org/reference/procedural-macros.html) vs. [Clojure](https://clojure.org/reference/macros).
 
-I don't expect the reader of this document to have significant experience writing macros across (m)any languages. The summary is that the more regular (simpler) the structure of a language, the fewer edge cases that need to be handled when writing code _about_ code, so the easier and less buggy it is to manipulate the code.
+I don't expect the reader of this document to have significant experience writing macros across (m)any languages. The summary is that the more regular (simpler) the structure of a language, the fewer edge cases that need to be handled when writing code _about_ code, so the easier and less buggy it is to manipulate the code. Similarly we can reduce the need for and improve the
+implementation of metadata for highly regular code that focuses on small chunks
+of calculations that build up to an overall intended final outcome.
 
 For that (and other) reason(s) we adopt a [forth-y](https://en.wikipedia.org/wiki/Forth_(programming_language)) slash [lisp-y](https://en.wikipedia.org/wiki/Lisp_(programming_language)) slash [spreadsheet-y](https://en.wikipedia.org/wiki/OpenFormula) syntax for Rainlang.
 
@@ -646,7 +647,7 @@ Rainlang words and binary opcodes and operands map 1:1.
 
 Rainlang has its own opcodes which may mimic low level opcodes such as addition/subtraction but may also be complex and high level such as fetching token balances or more complex math functions.
 
-Smart contracts that intepret Rainlang loop over the binary opcodes and may read/write to a [stack of values](https://en.wikipedia.org/wiki/Stack-oriented_programming) in memory. Implementations of interpreters are strongly encouraged to implement an O(1) dispatch for opcodes if possible, e.g. mapping Rainlang words to function pointers in Solidity.
+Smart contracts that intepret Rainlang loop over the binary opcodes and may read/write to a [stack of values](https://en.wikipedia.org/wiki/Stack-oriented_programming) in memory. Implementations of interpreters are strongly encouraged to implement an O(1) dispatch for opcodes if possible, e.g. directly mapping Rainlang words to function pointers in Solidity by an index in memory.
 
 ## Rainlang stack movements are predictable
 
@@ -660,6 +661,102 @@ This allows:
 - Out of bounds reads/writes to be caught at deploy time rather than runtime
 
 Overall we sacrifice some generality for the ability to guarantee/calculate certain things ahead of time in tooling and contracts, which gives us a better legibility/security posture and can save gas for whoever runs the contract.
+
+## Rainlang structurally represents its stack movements
+
+Every Rainlang expression has a "left" (LHS) and "right" (RHS) separated by `:`.
+
+This is probably the main Thing To Learn for new authors and readers. The benefit
+is that the values on the stack are visible in the code itself so any reader can
+simply tally the size of the stack by looking at the code.
+
+Knowing the shape of a Rainlang stack is critical as the calling contract will be
+using the stack values by their final positions to drive its own internal logic.
+For example an order on an order book could be the final 2 positions on a stack
+as the amounta and ratio of token inputs and outputs.
+
+Consider a word `foo` with 1 input and 2 outputs.
+
+```
+a b: foo(5);
+```
+
+The symbols `a` and `b` on the LHS represent the values pushed into the stack by
+`foo`. Once a value appears on the LHS it is _immutable_ and so cannot be popped
+by subsequent words.
+
+This implies that a LHS symbol later in a rainlang expression is a _copy_
+operation NOT a reference. I.e. it is an alias to copying a previous stack value
+to the top of the stack to be popped by the current operation.
+
+```
+a b: foo(5),
+c d: foo(a);
+```
+
+Is the same as:
+
+```
+a b: foo(5),
+c d: foo(stack(0));
+```
+
+The RHS MAY be empty if the stack itself starts prepopulated with some values,
+such as the inputs to a source designed to be entered by `call`.
+
+```
+a b:,
+c d: foo(b);
+```
+
+The LHS MAY be empty if the RHS has zero outputs, such as when using `ensure` to
+enforce some condition and rollback the transaction (c.f. Solidity's `require`).
+
+```
+: ensure(some-condition);
+```
+
+Values on the LHS MAY be unnamed placeholders merely provided to ensure the stack
+height tally is accurate. Placeholders are `_` and cannot be referenced later in
+the script as this would be ambiguous. `_` is selected as it appears in a similar
+role in other languages either formally (e.g. Rust) or by common convention.
+
+```
+a _: foo(5),
+b c: foo(a);
+```
+
+For all non-placeholder values shadowing (i.e. using the same name multiple times)
+is NOT allowed. For example the following would be INVALID as `a` appears twice.
+Shadowing is an advanced technique in other languages that requires deep understanding
+of relevant scoping/hoisting/etc. rules and a common source of bugs when applied
+accidentally or inappropriately.
+
+```
+a b: foo(5),
+/* INVALID due to second appearance of `a` */
+a _: foo(6);
+```
+
+By enforcing immutable "checkpoints" Rainlang works a lot like how every child is
+taught algebra from early high school. Value semantics are generally more intuitive
+to reason about and less buggy than mutable/reference semantics. Typically references
+are ONLY introduced to a language/system to introduce hardware efficiencies, such
+as Solidity itself passing references to structs rather than paying gas to copy
+potentially large chunks of data. It's very rare that reference semantics would
+be introduced for the sake of legibility, it's almost always the inverse, that
+legibility is being sacrificed for a hardware constraint.
+
+This copying is relatively cheap in the EVM. As we know the total stack size ahead
+of time it never causes us to reallocate and copy the entire stack to a new
+region of memory. It's only `3` gas to `mload` and `3` gas to `mstore` assuming
+no new memory allocations and a single 32 byte value to copy. Total cost including
+opcode overheads etc. is about 150-200 gas. Comparable with simple checked math
+operations from Solidity 0.8+. We only copy one value at a time and there is no
+bitwise manipulation to clean the values or complex ABI encoding to handle.
+Sometimes this pattern (e.g. during `call`) even allows us to efficiently
+deallocate a stack of known size and reuse the same memory region across many
+iterations of some logic.
 
 ## Rainlang has wiki-style metadata
 
