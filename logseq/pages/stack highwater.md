@@ -3,8 +3,9 @@
 - 2 rules:
 - all [[multioutput opcodes]] MUST move the [[stack highwater]] past ALL their outputs
 - [[stack]] MUST move the highwater past the index it reads from
-  
-  the idea is to prevent nesting multioutputs or consuming things that have been copied from the stack
+- the idea is to prevent nesting multioutputs or consuming things that have been copied from the stack
+- it is an [[integrity error]] to pop below the highwater, it will be treated exactly as a stack underflow has been treated up to this point
+- the net result is that certain operations suck as [[stack]] and anything multioutput such as [[call]] or even inputs to a [[call]] [[entrypoint]] become immutable on the stack during an [[eval]] and can only be copied in order to be read
 - # Context
 -
 - previously in [[rainlang]] we allowed `_` on the RHS when some [[word]] [[pushes]] more than one value on the [[stack]], this is confusing
