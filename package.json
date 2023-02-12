@@ -7,7 +7,7 @@
     "pull-rain-sdk": "npm install rain-sdk",
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
-    "build-rain-docs": "solidity-docgen -i ./node_modules/@beehiveinnovation/rain-protocol/contracts/ -o ./docs/developer-tools/smart-contracts/ --solc-module solc-0.8 --exclude ./node_modules/@beehiveinnovation/rain-protocol/contracts/test/ -t ./.templates/",
+    "build-rain-docs": "solidity-docgen -i ./node_modules/@rainprotocol/rain-protocol/contracts/ -o ./docs/reference/smart-contracts/ --solc-module solc-0.8 --exclude ./node_modules/@rainprotocol/rain-protocol/contracts/test/ -t ./.templates/",
     "build-rain-sdk-docs": "rm -rf \"./docs/developer-tools/sdk/!(_category_.json)\" && cp -r ./node_modules/rain-sdk/docs/. ./docs/developer-tools/sdk",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
@@ -32,14 +32,14 @@
     "react-dom": "^17.0.1"
   },
   "devDependencies": {
-    "@beehiveinnovation/rain-protocol": "github:beehive-innovation/rain-protocol#e590ce7ef673224afba04c43384a278a9500500d",
+    "@rainprotocol/rain-protocol": "github:rainprotocol/rain-protocol#d5e2e485843905707b8fda1bc6bac43ae9d242a7",
     "@cmfcmf/docusaurus-search-local": "^0.10.0",
     "@docusaurus/module-type-aliases": "2.0.0-beta.17",
     "@tsconfig/docusaurus": "^1.0.4",
     "hardhat": "^2.9.9",
     "prettier": "^2.6.0",
     "rain-sdk": "^1.2.10",
-    "solc-0.8": "npm:solc@0.8.10",
+    "solc-0.8": "npm:solc@0.8.17",
     "solidity-docgen": "^0.5.16",
     "typescript": "^4.6.2"
   },

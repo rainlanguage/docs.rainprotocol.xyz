@@ -12,8 +12,8 @@ const config = {
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "throw",
-  favicon: "img/favicon.ico",
-  organizationName: "beehive-innovation", // Usually your GitHub org/user name.
+  favicon: "img/favicon.png",
+  organizationName: "rainprotocool", // Usually your GitHub org/user name.
   projectName: "rain-protocol", // Usually your repo name.
 
   presets: [
@@ -40,7 +40,7 @@ const config = {
               ...args,
             });
           },
-          includeCurrentVersion: true
+          includeCurrentVersion: true,
         },
         blog: {
           blogSidebarTitle: "All posts",
@@ -58,10 +58,10 @@ const config = {
     ({
       navbar: {
         title: "Rain Protocol",
-        // logo: {
-        //   alt: 'My Site Logo',
-        //   src: 'img/logo.svg',
-        // },
+        logo: {
+          alt: "My Site Logo",
+          src: "img/logo.svg",
+        },
         items: [
           {
             type: "doc",
@@ -71,7 +71,7 @@ const config = {
           },
           { to: "/blog", label: "Blog", position: "left" },
           {
-            href: "https://github.com/beehive-innovation",
+            href: "https://github.com/rainprotocol",
             label: "GitHub",
             position: "right",
           },
