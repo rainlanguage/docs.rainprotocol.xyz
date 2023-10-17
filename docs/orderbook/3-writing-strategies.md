@@ -78,13 +78,13 @@ total-sendable-by-now: mul(dollars-per-second sub(block-timestamp() start-timest
 total-sent: get(storage-key),
 sendable-in-this-order: sub(total-sendable-by-now total-sent),
 
-arb-bounty-factor: 0.999,
+arb-bounty-factor: 999e15,
 
 /* Get the USDT-ETH price from the Chainlink oracle */
 usdt-eth: chainlinkprice(0x00 0x00),
 
 /* Calculate the amount and price of the order */
-amount price: sendable-in-this-order mul(usdt-eth arb-bounty-factor),
+amount price: sendable-in-this-order scale-18-mul(usdt-eth arb-bounty-factor),
 
 /* Update the total amount of dollars sent using the storage key */
 :set(storage-key add(total-sent amount);
