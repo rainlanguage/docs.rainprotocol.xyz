@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Rain Protocol
+# Rainlang
 
 Rain is a framework that aims to simplify smart contracts and make them more accessible to a wider audience.
 
