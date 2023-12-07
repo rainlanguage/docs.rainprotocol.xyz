@@ -14,7 +14,7 @@ const config = {
   onBrokenMarkdownLinks: "throw",
   favicon: "img/favicon.png",
   organizationName: "rainlanguage", // Usually your GitHub org/user name.
-  projectName: "rain.interpreter", // Usually your repo name.
+  // projectName: "rain.interpreter", // Usually your repo name.
 
   presets: [
     [
