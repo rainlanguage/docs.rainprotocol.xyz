@@ -6,15 +6,15 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Rain Protocol",
-  tagline: "Build Your Economy",
+  title: "Rain Language",
+  tagline: "Rain exists to make smart contracts accessible to everyone, grounded in our belief that accessibility is the difference between theoretical and practical decentralisation.",
   url: "https://docs.rainprotocol.xyz",
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "throw",
   favicon: "img/favicon.png",
-  organizationName: "rainprotocool", // Usually your GitHub org/user name.
-  projectName: "rain-protocol", // Usually your repo name.
+  organizationName: "rainlanguage", // Usually your GitHub org/user name.
+  projectName: "rain.interpreter", // Usually your repo name.
 
   presets: [
     [
@@ -57,9 +57,9 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: "Rain Protocol",
+        title: "Rain Language",
         logo: {
-          alt: "My Site Logo",
+          alt: "Rain logo",
           src: "img/logo.svg",
         },
         items: [
@@ -71,7 +71,7 @@ const config = {
           },
           { to: "/blog", label: "Blog", position: "left" },
           {
-            href: "https://github.com/rainprotocol",
+            href: "https://github.com/rainlanguage",
             label: "GitHub",
             position: "right",
           },
