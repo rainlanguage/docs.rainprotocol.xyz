@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 5
 ---
 # Writing strategies
 Rain Orderbook strategies are written in Rainlang.
