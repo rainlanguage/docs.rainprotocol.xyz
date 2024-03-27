@@ -26,7 +26,7 @@ Here's an example of an expression that uses the standard Rain interpeter:
 _: if(greater-than(erc20-balance-of(0x123456 0xabcdef) 999) 10 5);
 ```
 
-> If you'd like to learn to write Rainlang expressions, you can take the [Rainlang course](https://studio.rainprotocol.xyz/docs) on Rain Studio.
+> If you'd like to learn to write Rainlang expressions, you can take the [Rainlang course](../learning-rainlang/10-introduction/) on Rain Studio.
 
 ## How to read Rainlang
 

@@ -13,7 +13,7 @@ A FlowERC20 expression is a set of instructions written in Rainlang that defines
 
 ## How can I use a FlowERC20 expression?
 
-To use a FlowERC20 expression, you would deploy a FlowERC20 contract and provide your expression as an input. This can be done using Rain Studio, a web-based tool for creating, deploying, and managing Rain expressions. Once your FlowERC20 contract is deployed, you can use it to mint, burn, and transfer tokens according to the instructions defined in your expression.
+To use a FlowERC20 expression, you would deploy a FlowERC20 contract and provide your expression as an input. Once your FlowERC20 contract is deployed, you can use it to mint, burn, and transfer tokens according to the instructions defined in your expression.
 
 ## Structure of the expression
 

@@ -35,10 +35,6 @@ We want users to be able to make informed decisions about the contracts they int
 
 The user needs to always be in control and have access to multiple layers of curation, each focused on a specific outcome and degree of decentralization. For this we can lean on a model pioneered in the space by sites such as Token Lists and Chainlist. If a user encounters an expression using an unknown interpreter, they can cross-reference their trusted lists, or make a decision based on their own understanding of the interpreter. This decision-making process applies to all participants, both human and bot, on a per-expression basis.
 
-To further support this user choice, Rain maintains open-source dashboards in Rain Studio. These dashboards can be hosted locally or on IPFS, reducing the risk of MIM/phishing/DNS attacks. The dashboards show the Rain expressions for any known contract and warn the user about unknown bytecode, allowing them to quickly cross-reference with the dashboard.
-
-In addition to the dashboards, an open-source JavaScript simulator for Rain expressions has been developed to allow users to analyze the behavior of any algorithm off-chain. This enables users to run simulations, such as Monte Carlo statistical models, or integrate with spreadsheeting tools.
-
 For the whole system to work, everyone needs the option be a full particpant in the infrastructure. This is why all of the Rain contracts and tooling libraries are open source and fully open for participation.
 
 ## Lindy

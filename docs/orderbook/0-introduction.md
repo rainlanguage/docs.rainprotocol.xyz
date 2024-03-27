@@ -4,9 +4,9 @@ sidebar_position: 1
 
 # Introduction
 
-The Rain Orderbook is an onchain orderbook contract that enables users to deploy complex, onchain strategies for managing token trades.
+Raindex is an onchain orderbook contract that enables users to deploy complex, onchain strategies for managing token trades.
 
-Unlike traditional order books, Rain Orderbook orders contain dynamic algorithms that express how tokens should move between vaults.
+Unlike traditional order books, Raindex orders contain dynamic algorithms that express how tokens should move between vaults.
 
 Strategies are expressed using Rainlang, a domain specific language that is interpreted onchain. Every strategy must evaluate to a maximum amount and a price ratio for a trade; but other than that, strategies are near-infinitely flexible. In addition, Rainlang itself is permissionlessly extensible - the protocol allows for many interpreters supporting many possible versions of the language.
 
@@ -14,12 +14,12 @@ Rather than doing token approvals, users deposit their tokens into **vaults**, w
 
 <figure>
 <img src="/img/rain-order.png" />
-<figcaption style={{textAlign: 'center'}}>A Rain Orderbook order</figcaption>
+<figcaption style={{textAlign: 'center'}}>A Raindex order</figcaption>
 </figure>
 
 Once an order placer deploys their strategy onchain, it is live perpetually until removed. It is not expected that an order placer pays the gas to continually execute their strategy. Instead, the protocol naturally encourages an ecosystem where fillers capitalize on arbitrage opportunities, ensuring active strategy execution without burdening the original order placer. Arbitrage may be between two orders on the orderbook, or between an order and some external liquidity.
 
-In this way, the Rain Orderbook supports an intents-like system. Users can deposit their tokens and define their strategies, without being concerned with the specifics of how their order is filled.
+In this way, Raindex supports an intents-like system. Users can deposit their tokens and define their strategies, without being concerned with the specifics of how their order is filled.
 
 <figure>
 <img src="/img/orderbook-protocol.png" />
