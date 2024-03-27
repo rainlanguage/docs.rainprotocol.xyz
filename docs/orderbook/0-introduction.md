@@ -4,6 +4,9 @@ sidebar_position: 1
 
 # Introduction
 
+<img class="inline-logo-light" src="/img/raindex-logo-light.svg" />
+<img class="inline-logo-dark" src="/img/raindex-logo-dark.svg" />
+
 Raindex is an onchain orderbook contract that enables users to deploy complex, onchain strategies for managing token trades.
 
 Unlike traditional order books, Raindex orders contain dynamic algorithms that express how tokens should move between vaults.

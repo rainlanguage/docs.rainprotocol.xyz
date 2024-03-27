@@ -44,3 +44,25 @@ body {
 [data-theme="dark"] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
 }
+
+body[data-theme="dark"] .inline-logo-dark {
+  display: block;
+}
+
+body[data-theme="dark"] .inline-logo-light {
+  display: none;
+}
+
+body[data-theme="light"] .inline-logo-dark {
+  display: none;
+}
+
+body[data-theme="light"] .inline-logo-light {
+  display: block;
+}
+
+.inline-logo-dark,
+.inline-logo-light {
+  width: 25em;
+  margin: 2em auto;
+}
