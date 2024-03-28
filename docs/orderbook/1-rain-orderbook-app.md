@@ -1,9 +1,9 @@
 ---
 sidebar_position: 2
 ---
-# The Rain Orderbook app
+# The Raindex app
 
-The Rain Orderbook app is an open source, standalone app you can use to write, deploy and manage your orders.
+The Raindex app is an open source, standalone app you can use to write, deploy and manage your orders.
 
 It was important for us to build a front-end that was totally self-hosted and that anyone could build from source.
 

@@ -2,7 +2,7 @@
 sidebar_position: 5
 ---
 # Writing strategies
-Rain Orderbook strategies are written in Rainlang.
+Raindex strategies are written in Rainlang.
 
 Rainlang is an extensible, stack-based, domain specific language (DSL) that is interpreted onchain. It is 1-1 readable from deployed bytecode, so no code verification is needed to read a strategy (unlike EVM bytecode).
 

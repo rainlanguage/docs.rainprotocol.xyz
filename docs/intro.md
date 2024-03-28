@@ -4,14 +4,26 @@ sidebar_position: 1
 
 # Rainlang
 
-Rain is a framework that aims to simplify smart contracts and make them more accessible to a wider audience.
+Rainlang is a smart contract language designed to be easier to read and write. If you can write an Excel formula, you can learn to write rainlang. 
 
-This is grounded in our belief that accessibility is the difference between theoretical and practical decentralisation. There are many people who would like to participate in authoring and auditing smart contracts but currently cannot. When this scenario arises, people delegate to someone who can do the thing they want - this is by definition centralisation.
+Rainlang is:
+- Parsed & interpreted onchain (by a smart contract)
+- Permissionlessly extensible (add your own words to the language)
+- Immutable (none of the contracts are upgradable or have admin keys)
 
-The goal of Rain is to further decentralize the industry - make contracts more readable, make centralized solutions more visible, increase developer accessibility and create new applications and business models.
+Because Rainlang is parsed and interpreted onchain, it means there’s no compilation necessary - everything you need to write and execute rainlang is already stored immutably onchain.
+
+That also means it’s permissionless to extend. Have your own oracle and want to add support to Rainlang? You can do it without asking anyone’s permission.
+
+The goal of Rain is to further decentralize web3 - make contracts more readable, make centralized solutions more visible, increase developer accessibility and create new applications and business models.
+
+# Raindex
+
+The first big use case for Rainlang is [Raindex](./orderbook/0-introduction.md). Raindex allows anyone to write, deploy and manage perpetual token trading strategies, written in rainlang, on any EVM network.
 
 ## Dive in
 * [Core concepts][core-concepts]
+* [Raindex](./orderbook/0-introduction.md)
 * [Github][github]
 
 ## Community

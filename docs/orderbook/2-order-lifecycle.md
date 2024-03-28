@@ -2,9 +2,9 @@
 sidebar_position: 2
 ---
 # Order lifecycle
-Understanding the lifecycle of an order within the Rain Orderbook is crucial for both users looking to place orders and those aiming to interact with them.
+Understanding the lifecycle of an order within the Raindex is crucial for both users looking to place orders and those aiming to interact with them.
 
-As yet there is no generic web based GUI front end for the Rain Orderbook protocol. Active users of the orderbook currently use scripts or bespoke front ends developed for a specific project.
+As yet there is no generic web based GUI front end for the Raindex protocol. Active users of the orderbook currently use scripts or bespoke front ends developed for a specific project.
 
 However, regardless of how a user interacts with orderbook, the flow is the same. Here's a step-by-step breakdown of an order's journey:
 
@@ -14,7 +14,7 @@ However, regardless of how a user interacts with orderbook, the flow is the same
 
 **Order Deployment**: Once the strategy is ready and tokens are deposited, the user deploys the order onchain. At this point, the order is live on the network but has not yet been executed.
 
-**Token Depositing**: They deposit the necessary tokens into a vault within the Rain Orderbook. Vaults act like virtual accounts for the order.
+**Token Depositing**: They deposit the necessary tokens into a vault within the Raindex. Vaults act like virtual accounts for the order.
 
 **Order Discovery**: Other participants can discover live orders. They can evaluate the strategy's conditions, price ratios, and potential profits.
 
