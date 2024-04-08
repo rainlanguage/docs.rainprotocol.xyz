@@ -23,7 +23,7 @@ Rain's mission is to support decentralization - make smart contracts more readab
 <img class="inline-logo-light" src="/img/raindex-logo-light.svg" />
 <img class="inline-logo-dark" src="/img/raindex-logo-dark.svg" />
 
-The first big use case for Rainlang is [Raindex](./raindex/0-introduction.md). Raindex allows anyone to write, deploy and manage perpetual token trading strategies, written in rainlang, on any EVM network.
+The first big use case for Rainlang is [Raindex](./raindex/0-overview.md). Raindex allows anyone to write, deploy and manage perpetual token trading strategies, written in rainlang, on any EVM network.
 
 ## Community
 
