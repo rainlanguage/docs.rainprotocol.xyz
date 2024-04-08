@@ -7,14 +7,13 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Rain Language",
-  tagline: "Rain exists to make smart contracts accessible to everyone, grounded in our belief that accessibility is the difference between theoretical and practical decentralisation.",
-  url: "https://docs.rainprotocol.xyz",
+  tagline: "Rainlang is defi's native language. If you know your way around a spreadsheet, you can learn Rain.",
+  url: "https://docs.rainlang.xyz",
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "throw",
   favicon: "img/favicon.png",
   organizationName: "rainlanguage", // Usually your GitHub org/user name.
-  // projectName: "rain.interpreter", // Usually your repo name.
 
   presets: [
     [
