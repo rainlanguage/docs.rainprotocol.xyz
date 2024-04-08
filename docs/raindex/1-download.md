@@ -9,6 +9,6 @@ The app is in its early development stages and contracts are unaudited so be car
 
 Available for Intel or ARM Mac running macOS 14. Linux support is coming soon.
 
-[Download (ARM Mac)](https://github.com/rainlanguage/rain.orderbook/releases/download/app-v0.0.0-fb6d1480c4a8b3dfd0c8eb8bc344cc19e2570b56/Rain.Orderbook_0.0.0_aarch64.dmg)
+[Download (ARM Mac)](https://github.com/rainlanguage/rain.orderbook/releases/download/app-v0.0.0-48ac71c620fec91e7e7807ea3f6d663b6f3ff326/Raindex_0.0.0_aarch64.dmg)
 
-[Download (Intel Mac)](https://github.com/rainlanguage/rain.orderbook/releases/download/app-v0.0.0-fb6d1480c4a8b3dfd0c8eb8bc344cc19e2570b56/Rain.Orderbook_0.0.0_x64.dmg)
+[Download (Intel Mac)](https://github.com/rainlanguage/rain.orderbook/releases/download/app-v0.0.0-48ac71c620fec91e7e7807ea3f6d663b6f3ff326/Raindex_0.0.0_x64.dmg)
