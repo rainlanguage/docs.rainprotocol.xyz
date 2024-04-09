@@ -7,9 +7,11 @@ You'll find examples of strategies that you can try deploying, modifying and sim
 
 https://github.com/rainlanguage/raindex.pubstrats
 
-Here are some of the strategies we've created so far. Most of these use the Flare Time Series Oracle (FTSO), a decentralized oracle available only on Flare. To allow users to access the FTSO price feeds in their strategies, there is a Flare-only subparser which extends the standard set of words available.
+Here are some of the strategies we've created so far. Most of these use the [Flare Time Series Oracle (FTSO)](https://flare.network/ftso/), a decentralized oracle available only on Flare. To allow users to access the FTSO price feeds in their strategies, there is a Flare-only subparser which extends the standard set of words available.
 
 Note that these aren't necessarily fit for production use, as they are meant primarily as educational examples. Please be careful and always DYOR.
+
+Note: These examples use Wrapped Flare (WFLR) instead of FLR, as Raindex works with ERC20 tokens only. To wrap some Flare head to the [Flare Portal](https://portal.flare.network/).
 
 ## DCA Order
 
