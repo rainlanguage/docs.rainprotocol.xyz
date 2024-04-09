@@ -55,6 +55,25 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      metadata: [
+        { name: 'description', content: "Rainlang is defi's native language. Write trading strategies in Rainlang with Raindex." },
+
+        // Open Graph
+        { property: 'og:title', content: 'Rainlang | Raindex' },
+        { property: 'og:description', content: "Rainlang is defi's native language. Write trading strategies in Rainlang with Raindex." },
+        { property: 'og:image', content: 'https://raw.githubusercontent.com/rainlanguage/rain.brand/main/Rainlang-og.png' },
+        { property: 'og:url', content: 'https://rainlang.xyz/' },
+        { property: 'og:type', content: 'website' },
+
+        // Twitter Card
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:title', content: 'Rainlang | Raindex' },
+        { name: 'twitter:description', content: "Rainlang is defi's native language. Write trading strategies in Rainlang with Raindex." },
+        { name: 'twitter:image', content: 'https://raw.githubusercontent.com/rainlanguage/rain.brand/main/Rainlang-og.png' },
+      ],
+
+      image: 'https://raw.githubusercontent.com/rainlanguage/rain.brand/main/Rainlang-og.png', // Default Open Graph image
+
       navbar: {
         logo: {
           alt: "Rain logo",
