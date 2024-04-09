@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
 title: Getting started
+description: A guide to getting started with Raindex.
 ---
 
 <div style={{ position: 'relative', paddingBottom: '64.63%', height: 0 }}>
