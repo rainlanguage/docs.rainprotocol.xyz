@@ -6,7 +6,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Rain Language",
+  title: "Rainlang | Raindex",
   tagline: "Rainlang is defi's native language. If you know your way around a spreadsheet, you can learn Rain.",
   url: "https://docs.rainlang.xyz",
   baseUrl: "/",
