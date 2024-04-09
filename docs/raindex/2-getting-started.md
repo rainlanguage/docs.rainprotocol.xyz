@@ -3,6 +3,15 @@ sidebar_position: 2
 title: Getting started
 ---
 
+<div style={{ position: 'relative', paddingBottom: '64.63%', height: 0 }}>
+    <iframe
+      src="https://www.loom.com/embed/fca750f31f0a43258891cea0ddacb588?sid=60d203be-a4a0-4597-ab18-5ab43fc10516"
+      frameborder="0"
+      allowFullScreen
+      style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+    ></iframe>
+  </div>
+
 ### Download the app
 
 First, head to the [download page](./1-download.md) and get a copy of the app.
