@@ -11,7 +11,7 @@ First, head to the [download page](./1-download.md) and get a copy of the app.
 
 When you open the app for the first time you won't see any orders or vaults. This is because there can be many Raindex orderbook contracts across many chains, so you'll need to set them up.
 
-Head to the settings page (link in the sidebar of the app) and paste in the settings below.
+Head to the settings page (link in the sidebar of the app), paste in the settings below and click 'Apply settings'.
 
 These are example settings for Raindex contracts currently deployed, but new versions are being deployed often so head over to the [Rainlang Telegram](https://t.me/+w4mJbCT6IfI2YTU0) to keep up with updates.
 
