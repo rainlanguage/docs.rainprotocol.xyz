@@ -78,7 +78,7 @@ orderbooks:
     network: flare
     subgraph: flare
   bsc:
-    address: 0xf1224A483ad7F1E9aA46A8CE41229F32d7549A74
+    address: 0xb1d6D10561D4e1792A7c6B336b0529e4bFb5Ea8F
     network: bsc
     subgraph: bsc
 
@@ -87,7 +87,7 @@ deployers:
     address: 0xF77b3c3f61af5a3cE7f7CE3cfFc117491104432E
     network: polygon
   mainnet:
-    address: 0x4D69ec4d0112E42c385B5cCb6897cCdfeAfC3136
+    address: 0x56Fa1748867fD547F3cc6C064B809ab84bc7e9B9
     network: mainnet
   arbitrum-one:
     address: 0x2AeE87D75CD000583DAEC7A28db103B1c0c18b76
