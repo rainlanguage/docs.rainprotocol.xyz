@@ -55,6 +55,13 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      announcementBar: {
+        id: "support_us", // Any value that will identify this message.
+        content:
+          "<a href='https://docs.rainlang.xyz/blog/were-hiring'>We're hiring! Want to help us make Rain better?</a>",
+        backgroundColor: "#0F2F83", // Defaults to `#fff`.
+        textColor: "#FFF", // Defaults to `#000`.
+      },
       metadata: [
         { name: 'description', content: "Rainlang is defi's native language. Write trading strategies in Rainlang with Raindex." },
 
@@ -93,11 +100,6 @@ const config = {
             label: "GitHub",
             position: "right",
           },
-          // {
-          //   type: "docsVersionDropdown",
-          //   position: "left",
-          //   dropdownActiveClassDisabled: true,
-          // },
         ],
       },
       prism: {
