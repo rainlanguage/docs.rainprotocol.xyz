@@ -51,4 +51,14 @@ RareSkills is the leading resource for advanced blockchain education. Rainlang i
 
 ### Judges
 
-Coming soon...
+#### David Meister
+
+David is an experienced developer, long time trader and inventor of Rainlang.
+
+#### Thanos
+
+Thanos, a DeFi analyst, leverages his extensive experience trading on-chain primitives to fortify the decentralized finance ecosystem on Flare.
+
+#### Jeffrey Scholz
+
+Jeffrey is the founder of Rareskills, has a passion for education and is an experienced developer in his own right. The RareSkills blog has significantly influenced major projects in the web3 space.
