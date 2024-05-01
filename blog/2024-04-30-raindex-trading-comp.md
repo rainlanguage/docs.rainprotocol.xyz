@@ -22,7 +22,7 @@ Support will be given to all entrants to learn Rainlang and get their questions 
 
 ### How to participate
 1. Join the Raindex community [Telegram](https://t.me/+W0aQ36ptN_E2MjZk) to get help as you put your strategy together
-2. Develop a trading strategy in Rainlang through Raindex.
+2. Develop a trading strategy in Rainlang through Raindex (Mac only support for now)
 3. Deploy your strategy on the Flare network and deposit assets to trade
 4. Share your strategy on X or Farcaster, tagging [@flarenetworks](https://twitter.com/FlareNetworks) and [@rainprotocol](https://twitter.com/rainprotocol). This could be in the form of a post, screenshot, video or long form writing. If you are submitting for the technical writing prize, the best would be a blogging platform like Medium.
 5. Submit your strategy and the deployed strategy’s order ID (submission form coming soon)
@@ -51,4 +51,14 @@ RareSkills is the leading resource for advanced blockchain education. Rainlang i
 
 ### Judges
 
-Coming soon...
+#### David Meister
+
+David is an experienced developer, long time trader and inventor of Rainlang.
+
+#### Thanos
+
+Thanos, a DeFi analyst, leverages his extensive experience trading on-chain primitives to fortify the decentralized finance ecosystem on Flare.
+
+#### Jeffrey Scholz
+
+Jeffrey is the founder of Rareskills, has a passion for education and is an experienced developer in his own right. The RareSkills blog has significantly influenced major projects in the web3 space.
