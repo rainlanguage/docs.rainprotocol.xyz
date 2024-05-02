@@ -26,33 +26,33 @@ Head to the settings page (link in the sidebar of the app), paste in the setting
 These are example settings for Raindex contracts currently deployed, but new versions are being deployed often so head over to the [Rainlang Telegram](https://t.me/+w4mJbCT6IfI2YTU0) to keep up with updates.
 
 ```
-networks: 
-  polygon: 
-    rpc: https://rpc.ankr.com/polygon 
-    chain-id: 137 
-    network-id: 137 
+networks:
+  polygon:
+    rpc: https://rpc.ankr.com/polygon
+    chain-id: 137
+    network-id: 137
     currency: MATIC
-  mainnet: 
-    rpc: https://1rpc.io/eth 
-    chain-id: 1 
-    network-id: 1 
+  mainnet:
+    rpc: https://1rpc.io/eth
+    chain-id: 1
+    network-id: 1
     currency: ETH
-  arbitrum-one: 
-    rpc: https://1rpc.io/arb 
-    chain-id: 42161 
-    network-id: 42161 
+  arbitrum-one:
+    rpc: https://1rpc.io/arb
+    chain-id: 42161
+    network-id: 42161
     currency: ETH
   flare:
-    rpc: https://rpc.ankr.com/flare 
+    rpc: https://rpc.ankr.com/flare
     chain-id: 14
     network-id: 14
     currency: FLR
-  bsc: 
-    rpc: https://1rpc.io/bnb 
-    chain-id: 56 
-    network-id: 56 
+  bsc:
+    rpc: https://1rpc.io/bnb
+    chain-id: 56
+    network-id: 56
     currency: BNB
-  
+
 subgraphs:
   polygon: https://api.thegraph.com/subgraphs/name/h20liquidity/polygon-0xc95a5f8e
   mainnet: https://api.thegraph.com/subgraphs/name/h20liquidity/ethereum-0xf1224a48
@@ -93,7 +93,7 @@ deployers:
     address: 0x2AeE87D75CD000583DAEC7A28db103B1c0c18b76
     network: arbitrum-one
   flare:
-    address: 0x550878091b2B1506069F61ae59e3A5484Bca9166
+    address: 0xE8Fe3fa05Abd468105d659D42a679E0505E2Be9f
     network: flare
   bsc:
     address: 0x1eFd85E6C384fAD9B80C6D508E9098Eb91C4eD30
