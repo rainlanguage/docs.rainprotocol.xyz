@@ -57,7 +57,7 @@ subgraphs:
   polygon: https://api.thegraph.com/subgraphs/name/h20liquidity/polygon-0xc95a5f8e
   mainnet: https://api.thegraph.com/subgraphs/name/h20liquidity/ethereum-0xf1224a48
   arbitrum-one: https://api.thegraph.com/subgraphs/name/h20liquidity/arbitrum-0x90caf23e
-  flare: http://subgraphs.h20liquidity.tech/subgraphs/name/flare-0xD0790C27
+  flare: https://subgraphs.h20liquidity.tech/subgraphs/name/flare-0xD0790C27
   bsc: https://api.thegraph.com/subgraphs/name/h20liquidity/binance-0xb1d6d105
 
 orderbooks:
