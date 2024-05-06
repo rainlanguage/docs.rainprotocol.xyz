@@ -1,3 +1,3 @@
-# Learn Dotrain in 10 minutes
+# Learn DotRain in 10 minutes
 
 @todo
