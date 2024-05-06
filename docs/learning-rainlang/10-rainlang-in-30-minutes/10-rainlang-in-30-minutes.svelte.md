@@ -72,6 +72,8 @@ Overall we typically see about 10-30% runtime overhead vs. optimised solidity co
 
 ### Structure of a rainlang file
 
+Note: In the examples below, the '|' character is used just for visual separation in this explanation and is not part of the actual Rainlang syntax.
+
 Rainlang files look like this.
 
 ```
