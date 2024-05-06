@@ -1,8 +1,8 @@
-# Learn rainlang in 30 minutes
+# Learn Rainlang in 30 minutes
 
 Rainlang is a native onchain language for defi that aims to be understood by as many people as possible.
 
-## What is rainlang?
+## What is Rainlang?
 
 Rainlang is a smart contract language that is a smart contract itself.
 
