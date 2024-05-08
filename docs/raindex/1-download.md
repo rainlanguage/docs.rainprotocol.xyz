@@ -8,8 +8,12 @@ The Raindex app is an open source, standalone app you can use to write, deploy a
 
 The app is in its early development stages and contracts are unaudited so be careful and as always, DYOR.
 
-Available for Intel or Apple Silicon running macOS 14. Linux support is coming soon.
+Available for Intel or Apple Silicon running macOS 14.
 
-[Download (Apple Silicon - M1, M2 etc)](https://github.com/rainlanguage/rain.orderbook/releases/download/app-v0.0.0-bab65e22d823ac5c347d5c5c2b2ade898bfee7d1/Raindex_0.0.0_aarch64.dmg)
+[Download (Apple Silicon - M1, M2 etc)](https://github.com/rainlanguage/rain.orderbook/releases/download/app-v0.0.0-8101cb81c9034715ae1a18b59b4752741375a6c2/Raindex_0.0.0_aarch64.dmg)
 
-[Download (Intel Mac)](https://github.com/rainlanguage/rain.orderbook/releases/download/app-v0.0.0-bab65e22d823ac5c347d5c5c2b2ade898bfee7d1/Raindex_0.0.0_x64.dmg)
+[Download (Intel Mac)](https://github.com/rainlanguage/rain.orderbook/releases/download/app-v0.0.0-8101cb81c9034715ae1a18b59b4752741375a6c2/Raindex_0.0.0_x64.dmg)
+
+## Linux and Windows support
+
+Immediate and native support for Linux/Windows is on the roadmap, however for now its best if you [join our Telegram](https://t.me/+w4mJbCT6IfI2YTU0) where we can support directly.
