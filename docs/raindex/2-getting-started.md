@@ -66,7 +66,7 @@ subgraphs:
   polygon: https://api.goldsky.com/api/public/project_clv14x04y9kzi01saerx7bxpg/subgraphs/ob-matic-0xc95A5f8e/1.0.0/gn
   mainnet: https://api.goldsky.com/api/public/project_clv14x04y9kzi01saerx7bxpg/subgraphs/ob-mainnet-0xf1224A48/1.0.0/gn
   arbitrum-one: https://api.goldsky.com/api/public/project_clv14x04y9kzi01saerx7bxpg/subgraphs/ob-arb-0x90CAF23e/1.0.0/gn
-  flare: https://subgraphs.h20liquidity.tech/subgraphs/name/flare-0xb06202aA
+  flare: https://api.goldsky.com/api/public/project_clv14x04y9kzi01saerx7bxpg/subgraphs/ob-flare-0xb06202aA/1.0.0/gn
   bsc: https://api.goldsky.com/api/public/project_clv14x04y9kzi01saerx7bxpg/subgraphs/ob-bsc-0xb1d6D105/1.0.0/gn
   base: https://api.goldsky.com/api/public/project_clv14x04y9kzi01saerx7bxpg/subgraphs/ob-base-0x2AeE87D7/1.0.0/gn
   sepolia: https://api.goldsky.com/api/public/project_clv14x04y9kzi01saerx7bxpg/subgraphs/ob-sepolia-0xfca89cD1/0.0.2/gn
