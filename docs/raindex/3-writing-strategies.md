@@ -10,7 +10,7 @@ The standard Rainterpreter has words for arithmetic, block specific information 
 
 This means that it's relatively simple to create a extremely wide range of sophisticated strategies.
 
-The best way to get started is to tinker with [an example](./1-examples.md). If you need help, [jump into our Telegram group](https://t.me/+w4mJbCT6IfI2YTU0). There'll usually be someone there who can answer your questions.
+The best way to get started is to tinker with [an example](./example-strats/1-examples.md). If you need help, [jump into our Telegram group](https://t.me/+w4mJbCT6IfI2YTU0). There'll usually be someone there who can answer your questions.
 
 ### Outputs
 Every strategy must return a max amount and a price ratio for the input/output tokens.
