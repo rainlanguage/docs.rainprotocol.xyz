@@ -103,17 +103,11 @@ Tranches always recharge **in order** back to the first tranche, so immediately 
 This means that over the course of the day, as that tranche recharges, there will be arbitrage opportunites and we'll see a full tranche of tokens clear at $1.50.
 
 ### Recharge delay
-After a trade occurs, there is a delay before the next tranche starts recharging. This delay serves two primary purposes:
+After a tranche is fully cleared, there is a configurable delay before the tranche starts recharging.
 
-- Market Feedback: This allows the market to absorb and react to the recent trade, helping to determine if the price adjustment from the trade needs to be sustained or if it was an anomaly. By observing the market's response, the strategy can adapt and potentially offer the next tranche at a different price before resetting to the previous setup.
-- Dynamic Pricing: The pause enables the strategy to offer the next tranche at a different price, adapting to market conditions. This dynamic approach can capture better trading opportunities and enhance the effectiveness of the strategy.
- 
-However, the delay must be balanced:
+This pause enables the strategy to offer the next tranche at a different price, adapting to market conditions. Tokens from two tranches cannot clear in a single trade, so at the tranche boundary we need to provide some time to allow the market to move into the next tranche, before recharging the previous one.
 
-- Too Long: If the delay is excessive, it could be exploited by market participants who aim to halt the recharging process, creating a stagnant market.
-- Too Short: A very short delay might lead to rapid transitions between tranches, making it difficult for the market to stabilize and for the strategy to effectively track price movements.
-
-The default delay is set to 5 minutes (300 seconds), which generally provides a good balance between observing market reactions and maintaining fluid trading.
+The default delay is set to 5 minutes (300 seconds), which generally provides a good balance between allowing a reaction to the market, and maintaining fluid trading.
 
 ### Shy liquidity
 When a tranche is fully cleared, the strategy may introduce the next tranche partially, a concept known as "shy liquidity." Here’s how it works:
@@ -126,6 +120,9 @@ Shyness Setting: The shyness parameter can be adjusted:
 - Zero Shyness: If set to 0, each tranche will be fully available as soon as it is entered.
 
 It’s important to note that shyness must be less than 1e18 to avoid skipping tranches entirely.
+
+### Minimum trade size
+Because clearing a tranche causes a delay, somebody could grief the strategy by clearing the smallest possible trade every time the current tranche started to recharge. To mitigate this, we can set a minimum trade size.
 
 ## Parameters
 

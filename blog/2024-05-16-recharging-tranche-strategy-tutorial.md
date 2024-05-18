@@ -113,7 +113,7 @@ orders:
 ```
 
 ### Scenarios
-I set up the parameters that are consistent across both buy and sell scenarios. This is scriptable. These include:
+I set up the parameters that are consistent across both buy and sell scenarios (to learn more about these [read the reference](/raindex/example-strats/tranche-strat)). These include:
 * Subparser details
 * How many seconds a tranche space lasts for
 * Tranche space recharge delay
@@ -296,11 +296,3 @@ You can see the orders:
 
 0x5259dd5154f7d8478cb395cd5b7c2e574384ded28872712a185336e2e2f84915
 0x8f5fd9e9ea6015d9939818828184ee9811ca10035cf28e71d64b17a79022102c
-
-## Extending your tranche space strategy
-
-Users can put in a minimum trade size, if you put in a trade for less than x% of a tranche it wont clear, which mitigates people pinging strat for dust orders to stop recharging.
-
-Tranches can also be snapped to the nearest tranche to avoid dust issues at the edges, either due to rounding in the EVM or potentially malicious trades.
-
-This is only relevant if the tranche size/ratio is denominated in some token other than the input/output tokens. For example, if the TKN was being traded for WETH but the tranche size was denominated in USD, the reference-stable would be USD and the reference-reserve would be WETH, and the identity multiplier needs to be swapped out for e.g. a TWAP USDT based multiplier. Typically this is not needed, as the tranche size and ratio are denominated in the input/output tokens.
