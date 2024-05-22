@@ -1,5 +1,5 @@
 ---
-slug: recharging-tranche-strategy-tutorial
+slug: recharging-grid-strategy-tutorial
 title: "Deploying a market making strategy with Raindex"
 authors: dcatki
 tags: [market making, strategy, raindex]
@@ -12,24 +12,24 @@ These strategies are:
 - Self custodial (nobody else handles your tokens)
 - Don't require any bot infra (the open Raindex solver network actually clears transactions)
 
-One such strategy is the Recharging Tranche Strategy, which ensures continuous liquidity and effective price discovery through an innovative recharging mechanism.
+One such strategy is the Recharging Grid Strategy, which ensures continuous liquidity and effective price discovery through an innovative recharging mechanism.
 
-## What is the Recharging Tranche Strategy?
+## What is the Recharging Grid Strategy?
 
-The Recharging Tranche Strategy involves setting firm prices for batches of tokens, known as "tranches." These tranches form a stepped price curve, which can be used to manage buy and sell orders programmatically. The strategy stands out due to its ability to "recharge" tranches, meaning that as each tranche clears, more tokens become available at predefined prices. This recharging mechanism allows the strategy to adapt to market movements and maintain liquidity over time.
+The Recharging Grid Strategy involves setting firm prices for batches of tokens, known as "tranches." These tranches form a stepped price curve, which can be used to manage buy and sell orders programmatically. The strategy stands out due to its ability to "recharge" tranches, meaning that as each tranche clears, more tokens become available at predefined prices. This recharging mechanism allows the strategy to adapt to market movements and maintain liquidity over time.
 
-Key features of the Recharging Tranche Strategy include:
+Key features of the Recharging Grid Strategy include:
 
-- Continuous Liquidity: By recharging tranches, the strategy ensures that liquidity is always available, helping to smooth out market fluctuations.
+- Continuous Liquidity: By "rechargin" the batches of tokens available at each price, the strategy ensures that liquidity is always available, helping to smooth out market fluctuations.
 - Dynamic Pricing: The strategy adjusts prices based on market conditions, enabling efficient price discovery.
 - Arbitrage Opportunities: When market prices move into or past a tranche, arbitrage opportunities arise, promoting active trading and liquidity.
 
-For a detailed explanation of how the Recharging Tranche Strategy works, including its parameters and configuration options, you can refer to the [strategy documentation](/raindex/example-strats/tranche-strat).
+For a detailed explanation of how the Recharging Grid Strategy works, including its parameters and configuration options, you can refer to the [strategy documentation](/raindex/example-strats/recharging-grid-strategy).
 
-In this blog post, we will guide you through the process of deploying a market making strategy using Raindex, specifically focusing on the Recharging Tranche Strategy. Whether you are a trader looking to capitalize on market volatility, a market maker aiming to provide continuous liquidity, or a token issuer managing your treasury, this strategy could be for you.
+In this blog post, we will guide you through the process of deploying a market making strategy using Raindex, specifically focusing on the Recharging Grid Strategy. Whether you are a trader looking to capitalize on market volatility, a market maker aiming to provide continuous liquidity, or a token issuer managing your treasury, this strategy could be for you.
 
 ## Example strategy wFLR / eUSDT
-> Use the [recharging tranche space strategy](https://github.com/rainlanguage/rain.dex.pubstrats/blob/main/src/tranche-space.rain).
+> Use the [recharging grid strategy](https://github.com/rainlanguage/rain.dex.pubstrats/blob/main/src/tranche-space.rain).
 
 In this strategy I sell wFLR when it is greater than $0.03 and buy when it is less than $0.03 and I can set increasing sell/buy sizes as the price diverges from the starting point.
 
@@ -39,7 +39,7 @@ This is a great treasury management or token management strategy for believers i
 The strategy works well while the token price is initially ranging around $0.03 and I've got capital to deploy or tokens to liquidate as it diverges significantly. 
 
 ### Network parameters
-First I go to Raindex pubstrats and fork the [tranche space strategy](https://github.com/rainlanguage/rain.dex.pubstrats/blob/main/src/tranche-space.rain).
+First I go to Raindex pubstrats and fork the [tranche grid strategy](https://github.com/rainlanguage/rain.dex.pubstrats/blob/main/src/tranche-space.rain).
 
 Then I enter the network details, in this case Flare. I label each parameter so these don't conflict with my app settings. 
 
@@ -113,7 +113,7 @@ orders:
 ```
 
 ### Scenarios
-I set up the parameters that are consistent across both buy and sell scenarios (to learn more about these [read the reference](/raindex/example-strats/tranche-strat)). These include:
+I set up the parameters that are consistent across both buy and sell scenarios (to learn more about these [read the reference](/raindex/example-strats/recharging-grid-strategy)). These include:
 * Subparser details
 * How many seconds a tranche space lasts for
 * Tranche space recharge delay

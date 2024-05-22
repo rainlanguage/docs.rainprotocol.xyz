@@ -1,18 +1,21 @@
 ---
 sidebar_position: 5
 ---
-# Recharging Tranche Strategy
+# Recharging Grid Strategy
 
 ## Introduction
-The recharging tranche strategy offers a firm price for batches of tokens via a publicly visible and continual spread backed with real liquidity. Each individual batch of tokens is referred to as a "tranche".
+The Recharging Grid Strategy offers a firm price for batches of tokens via a publicly visible and continual spread backed with real liquidity.
 
-Aggregated, these tranches form a stepped price curve:
+This strategy shares similarities with a traditional [grid strategy](https://www.investopedia.com/terms/g/grid-trading.asp), which involves placing a series of buy and sell orders at predefined intervals above and below a set price.
+
+> Example: in the traditional forex market, a trader decides to use a grid strategy for EUR/USD, with the current price at 1.2000. The trader sets up buy orders at 1.1950, 1.1900, and 1.1850, and sell orders at 1.2050, 1.2100, and 1.2150. Each order size is 1,000 units. As the market moves, these orders get filled, allowing the trader to profit from price movements.
+
+For the purposes of this document, the batch of tokens available at a specific price can also be referred to as a "tranche". Aggregated, these tranches form a stepped price curve:
 
 - A sell curve can be used to liquidate treasury or to help even out spikes in the market price by offering additional liquidity.
 - A buy curve can be used to "buy the dip" or become a buyer of last resort at decreasing prices.
 
 When the market price moves into or past a tranche, an arbitrage opportunity is created, causing tokens in the tranche to clear. Each time a batch of tokens fully clears, a new batch is made available in the next tranche. Tranches can partially or fully clear, and multiple tranches can clear in a single trade.
-
 
 <figure> 
     
@@ -22,13 +25,9 @@ When the market price moves into or past a tranche, an arbitrage opportunity is 
     
 </figure>
 
-## Similarity to grid strategies
+## What does it mean to "recharge"?
 
-This strategy shares similarities with a traditional [grid strategy](https://www.investopedia.com/terms/g/grid-trading.asp), which involves placing a series of buy and sell orders at predefined intervals above and below a set price.
-
-For example, in the traditional forex market, a trader decides to use a grid strategy for EUR/USD, with the current price at 1.2000. The trader sets up buy orders at 1.1950, 1.1900, and 1.1850, and sell orders at 1.2050, 1.2100, and 1.2150. Each order size is 1,000 units. As the market moves, these orders get filled, allowing the trader to profit from price movements.
-
-The key difference to the Recharging Tranche Strategy (apart from the fact it's onchain and completely algorithmic) is that it "recharges". This means that unlike a grid strategy, where each order is filled only once, each tranche will continually make more tokens available over time.
+The key addition to this strategy vs traditional grid strategies (apart from the fact it's onchain and completely algorithmic) is that it "recharges". This means instead of each order being filled only once, the strategy will continually make more tokens available over time.
 
 Importantly, the tranches recharge in order back to the starting point, ie if a higher sell tranche continues to clear out as it recharges, the lower priced tranches will not offer any tokens. This allows the strategy to "track" and dynamically respond to the market.
 
