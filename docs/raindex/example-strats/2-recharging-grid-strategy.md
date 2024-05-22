@@ -36,7 +36,7 @@ Importantly, the tranches recharge in order back to the starting point, ie if a 
 - Trading in a volatile market within a range.
 - Increasing TKN holdings by offering a spread that cycles through peaks and troughs.
 
-> Example: A trader in the cryptocurrency market notices that Bitcoin (WBTC) experiences significant price volatility within a range of $45,000 to $50,000. Using the recharging tranche strategy, the trader sets the highest buy tranche at $47,000 and the lowest sell tranche at $48,000. Each tranche contains 0.1 WBTC, and the price of each subsequent tranche increases by $500 for sells and decreases by $500 for buys. As the market fluctuates, these tranches allow the trader to buy WBTC when the price drops to $47,000 or lower and sell WBTC when the price rises to $48,000 or higher, continually capitalizing on market movements within this range.
+> Example: A trader notices that Bitcoin (WBTC) experiences significant price volatility within a range of $45,000 to $50,000. Using the recharging tranche strategy, the trader sets the highest buy tranche at $47,000 and the lowest sell tranche at $48,000. Each tranche contains 0.1 WBTC, and the price of each subsequent tranche increases by $500 for sells and decreases by $500 for buys. As the market fluctuates, these tranches allow the trader to buy WBTC when the price drops to $47,000 or lower and sell WBTC when the price rises to $48,000 or higher, continually capitalizing on market movements within this range.
 
 #### As a market maker
 - Liquidate tokens above a target price, provide buy support below.

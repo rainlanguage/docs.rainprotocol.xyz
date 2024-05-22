@@ -20,7 +20,7 @@ The Recharging Grid Strategy involves setting firm prices for batches of tokens,
 
 Key features of the Recharging Grid Strategy include:
 
-- Continuous Liquidity: By "rechargin" the batches of tokens available at each price, the strategy ensures that liquidity is always available, helping to smooth out market fluctuations.
+- Continuous Liquidity: By "recharging" the batches of tokens available at each price, the strategy ensures that liquidity is always available, helping to smooth out market fluctuations.
 - Dynamic Pricing: The strategy adjusts prices based on market conditions, enabling efficient price discovery.
 - Arbitrage Opportunities: When market prices move into or past a tranche, arbitrage opportunities arise, promoting active trading and liquidity.
 
@@ -29,7 +29,7 @@ For a detailed explanation of how the Recharging Grid Strategy works, including 
 In this blog post, we will guide you through the process of deploying a market making strategy using Raindex, specifically focusing on the Recharging Grid Strategy. Whether you are a trader looking to capitalize on market volatility, a market maker aiming to provide continuous liquidity, or a token issuer managing your treasury, this strategy could be for you.
 
 ## Example strategy wFLR / eUSDT
-> Use the [recharging grid strategy](https://github.com/rainlanguage/rain.dex.pubstrats/blob/main/src/tranche-space.rain).
+> Use the [recharging grid strategy](https://gist.github.com/thedavidmeister/d1c21bb3a6d6ebedcd44cdc70ce42597).
 
 In this strategy I sell wFLR when it is greater than $0.03 and buy when it is less than $0.03 and I can set increasing sell/buy sizes as the price diverges from the starting point.
 
@@ -39,7 +39,7 @@ This is a great treasury management or token management strategy for believers i
 The strategy works well while the token price is initially ranging around $0.03 and I've got capital to deploy or tokens to liquidate as it diverges significantly. 
 
 ### Network parameters
-First I go to Raindex pubstrats and fork the [tranche grid strategy](https://github.com/rainlanguage/rain.dex.pubstrats/blob/main/src/tranche-space.rain).
+First I go to Raindex pubstrats and fork the [tranche grid strategy](https://gist.github.com/thedavidmeister/d1c21bb3a6d6ebedcd44cdc70ce42597).
 
 Then I enter the network details, in this case Flare. I label each parameter so these don't conflict with my app settings. 
 
