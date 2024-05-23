@@ -68,6 +68,7 @@ You'll see these options in the strategy YAML frontmatter.
 The growth curves can govern the amount of tokens in each tranche as well as the price jump between each tranche. 
 
 These can be:
+- **Constant** - the same amount of tokens in each tranche, ie no growth. Using this curve for price wouldn't make sense.
 - **Linear** - same differential between tranches
 - **Exponential** - differential grows each tranche. 
 
@@ -86,13 +87,13 @@ If the market is currently sitting at $1.57, when you deploy the strategy it's l
 To deal with this undesirable outcome we can initialise the strategy in the 6th tranche, or in other words, we can initialise the strategy as if tranches 1-5 have already cleared.
 
 ### Recharge rate
-The recharge rate is defined by how many tranches we move through in a second. For the purposes of the rate, 1e18 is one tranche.
+The recharge rate is defined by how many tranches we move through in a second, ie for a recharge rate of 1, we'd recharge tranches every second. This is far too fast, so most likely the recharge rate will be a small fraction of a tranche every second.
 
-For example, to recharge tranches once per day:
+For example, to recharge 1 tranche per day:
 
 ```
 seconds in a day = 60 * 60 * 24 = 86400
-recharge rate = 1e18 / 86400 = 11574e9
+recharge rate = 1 / 86400 = 0.000011574074074
 ```
 
 What does this mean in practice? Consider the example above, where we have initialised our strategy in tranche 6, which means we have tokens available for $1.60. The market starts at $1.57, and for the first 24 hours it hovers at that value, edging up to just under $1.60.

@@ -1,7 +1,7 @@
 ---
 slug: recharging-grid-strategy-tutorial
 title: "Deploying a market making strategy with Raindex"
-authors: dcatki
+authors: [dcatki, highonhopium]
 tags: [market making, strategy, raindex]
 ---
 
