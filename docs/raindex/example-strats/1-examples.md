@@ -1,7 +1,7 @@
 ---
 sidebar_position: 5
 ---
-# Examples
+# Basic examples
 
 You'll find examples of strategies that you can try deploying, modifying and simulating on Github.
 
