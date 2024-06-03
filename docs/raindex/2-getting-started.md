@@ -135,7 +135,7 @@ You should now see orders and vaults across multiple networks on the Orders and 
 
 Try deploying your first order by following one of [the examples](./example-strats/1-examples.md).
 
-### Contract addresses by networks for reference.OrderBook
+### Contract addresses by networks for reference.
 
 | Network | Chain Id | OrderBook | RainterpreterExpressionDeployerNPE2 | RouteProcessorOrderBookV3ArbOrderTaker | OrderBookSubParser | UniswapWords | 
 | ------- | -------- | --------- | ----------------------------------- | -------------------------------------- | ------------------ | ------------ |
