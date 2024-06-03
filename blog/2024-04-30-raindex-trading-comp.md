@@ -4,6 +4,9 @@ title: "$12,000 Rainlang Trading Strategy Competition on Flare Network"
 authors: highonhopium
 tags: [raindex, competition]
 ---
+
+**🚨 The competition closes 4 June at midnight UTC - [submit your entry here](https://tv86pfemvyg.typeform.com/to/Kdo9tnQD) 🚨**
+
 To celebrate the release of the Raindex app and deployment on Flare, we’re launching a trading strategy competition with $12,000 worth of FLR in prizes.
 
 Whether you’re new to decentralized finance or a seasoned strategist, this competition is a platform to innovate, impact, and get inspired. 
